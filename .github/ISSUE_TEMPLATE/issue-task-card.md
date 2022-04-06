@@ -27,7 +27,6 @@ assignees: ''
 > ### `2.5h`
 > ### `3h`
 > ### Labels
-> * Estimated time: `E: 1h`
-> * Group : `client`, `server`
+> * Actual time taken: `A: 1h`
 > * Sprint: `Sprint__NUMBER__`
 > * Urgency: `High`, `Middle`, `Low`
