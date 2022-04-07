@@ -237,7 +237,7 @@ body {
   font-weight: 700;
 }
 
-button {
+/* button {
   background-color: #deceff;
   border: none;
   border-radius: 1rem;
@@ -254,17 +254,18 @@ button:hover {
   color: white;
   background-color: #4000c7;
   box-shadow: 1px 2px 1px rgb(189, 189, 189);
-}
+} */
 
 #nav-body {
-  background-color: white;
+  background-color: #904BD4;
   width: 100%;
   height: 4rem;
-  position: sticky;
+  position: sticky; 
   top: 0;
   border-bottom: solid 1px rgb(212, 212, 212);
   display: grid;
-  place-items: center;
+  place-items: center start;
+  padding-left: 10px;
 }
 
 #title {
@@ -273,31 +274,51 @@ button:hover {
 }
 
 #name {
-  vertical-align: middle;
+  /* vertical-align: middle; */
+  font-size: 35px;
+  padding-left: 15px;
 }
 
 #logo {
-  width: 40px;
-  margin-right: 1rem;
-  vertical-align: middle;
+  width: 250px;
+  margin: 0 1rem;
+  vertical-align: top;
 }
 
 #menu {
-  margin: 1.5rem;
+  margin: 0rem;
   right: 0;
   font-weight: 300;
   position: absolute;
+  width: 524px;
 }
 
 a {
   text-decoration: none;
-  color: black;
+  color: white;
   font-size: 1rem;
+  font-weight: 350;
   margin: 0.7rem;
 }
 
 a:hover {
   color: #4000c7
+}
+
+#nav-btn {
+  width: 17%;
+  padding: 0.5rem 1rem;
+  margin-left: 0;
+  border: none;
+  border-radius: 22px;
+  font-size: 0.9rem;
+  font-weight: 390;
+  text-align: center;
+}
+
+#nav-btn:hover {
+  color: white;
+  background-color: #4000c7;
 }
 
 #nav-item-counter {
@@ -313,6 +334,19 @@ a:hover {
   height: 1.2rem;
   width: 1.2rem;
   line-height: 1.2rem;
+}
+
+#footer {
+  background-color: hsl(0, 7%, 94%);
+  height: 16rem;
+  padding: 15px;
+}
+
+#footer-text {
+  display: inline-block;
+  margin: 5px 20px;
+  color: rgb(94, 95, 97);
+  font-size: small;
 }
 
 @media (max-width: 1000px) {
