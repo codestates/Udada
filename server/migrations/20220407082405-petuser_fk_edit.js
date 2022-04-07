@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('petsitters', {
+    await queryInterface.createTable('petusers', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -32,11 +32,20 @@ module.exports = {
       location: {
         type: Sequelize.STRING
       },
-      license: {
-        type: Sequelize.BOOLEAN
+      careType: {
+        type: Sequelize.STRING
+      },
+      howMany: {
+        type: Sequelize.INTEGER
       },
       content: {
         type: Sequelize.STRING
+      },
+      howBig: {
+        type: Sequelize.STRING
+      },
+      petAge: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -46,9 +55,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    })
+    });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('petsitters');
+    await queryInterface.dropTable('petusers');
   }
 };
