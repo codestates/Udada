@@ -1,0 +1,38 @@
+{
+  "petUser": [
+    {
+      "id": 1,
+      "userId": "hello",
+      "name": "초롱이",
+      "img": "../images/cat_linux.png",
+      "email": "hello@gmail.com",
+      "phoneNumber": 1234,
+      "photo": "",
+      "location": "강남구",
+      "careType": "산책",
+      "howMany": "2",
+      "content": "잘부탁드립니다.",
+      "howBig": "중형"
+    },
+    {
+      "id": 2
+    }
+  ],
+  "petSitter": [
+    {
+      "id": 1,
+      "userId": "peson1",
+      "name": "송혜원",
+      "img": "../images/anti-gravity-2.png",
+      "email": "apple@gmail.com",
+      "phoneNumber": 2352,
+      "photo": "",
+      "location": "용산구",
+      "license": true,
+      "content": "성실, 사랑, 강아지러버"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
