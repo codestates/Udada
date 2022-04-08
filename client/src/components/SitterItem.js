@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Item({ item }) {
+export default function SitterItem({ item }) {
 
   return (
     <div key={item.id} className="item">

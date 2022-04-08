@@ -13,6 +13,7 @@ export const dummyData = {
             "howMany": "2",
             "content": "잘부탁드립니다.",
             "howBig": "중형",
+            "petage":5,
             "review": ["너무 스윗한 강아지"]
         },
         {
@@ -28,6 +29,7 @@ export const dummyData = {
             "howMany": "1",
             "content": "잘 짖어요 왕왕 주의부탁.",
             "howBig": "중형",
+            "petage":2,
             "review": ["너무 얌전하고 귀여워요"]
         },
         {
@@ -39,10 +41,11 @@ export const dummyData = {
             "phoneNumber": 8902,
             "photo": "",
             "location": "양천구",
-            "careType": "산책",
+            "careType": "집돌봄",
             "howMany": "4",
             "content": "많이 먹어대서 다이어트 필요, 간식조절 주의요망.",
             "howBig": "대형",
+            "petage":1,
             "review": ["깨발랄 먹보지만 귀여워"]
         }
 
