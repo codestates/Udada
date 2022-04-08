@@ -13,6 +13,8 @@ export const dummyData = {
             "howMany": "2",
             "content": "잘부탁드립니다.",
             "howBig": "중형",
+            "petage":5,
+        
 
         },
         {
@@ -28,6 +30,8 @@ export const dummyData = {
             "howMany": "1",
             "content": "잘 짖어요 왕왕 주의부탁.",
             "howBig": "중형",
+            "petage":2,
+    
 
         },
         {
@@ -39,10 +43,12 @@ export const dummyData = {
             "phoneNumber": 8902,
             "photo": "",
             "location": "양천구",
-            "careType": "산책",
+            "careType": "집돌봄",
             "howMany": "4",
             "content": "많이 먹어대서 다이어트 필요, 간식조절 주의요망.",
             "howBig": "대형",
+            "petage":1,
+           
 
         }
 
@@ -57,6 +63,7 @@ export const dummyData = {
             "phoneNumber": 2352,
             "photo": "",
             "location": "용산구",
+            "age": 22,
             "license": true,
             "content": "성실, 사랑, 강아지러버",
 
@@ -70,6 +77,7 @@ export const dummyData = {
             "phoneNumber": 1111,
             "photo": "",
             "location": "동작구",
+            "age":28,
             "license": true,
             "content": "온세상을 밝히는 밝은 성격의 동물친구",
 
@@ -83,6 +91,7 @@ export const dummyData = {
             "phoneNumber": 2348,
             "photo": "",
             "location": "노원구",
+            "age":25,
             "license": true,
             "content": "온세상을 밝히는 밝은 성격의 동물친구",
 
@@ -96,6 +105,7 @@ export const dummyData = {
             "phoneNumber": 3224,
             "photo": "",
             "location": "마포구",
+            "age":26,
             "license": true,
             "content": "동물들의 이야기를 잘 들어드립니다.",
 

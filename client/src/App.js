@@ -33,7 +33,6 @@ function App() {
         <Route path="/petlist" element={<PetListContainer petUserInfo={petUserInfo} setPetUserInfo={setPetUserInfo} />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-
       </Routes>
       {/*<NotificationCenter />*/}
       <Footer />
