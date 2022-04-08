@@ -44,8 +44,8 @@ Kingvatco는 동물을 사랑하고 아이디어가 가득한 사람들이 모�
 |역할|이름|포지션|GitHub|
 |---|---|---|---|
 |팀장|유태의|Back-end|[cookiemiro](https://github.com/cookiemiro)|
-|팀원|박보미|Fornt-end|[parkbomi-77](https://github.com/parkbomi-77)|
-|팀원|송혜원|Fornt-end|[Hojewl](https://github.com/Hojewl)|
+|팀원|박보미|Front-end|[parkbomi-77](https://github.com/parkbomi-77)|
+|팀원|송혜원|Front-end|[Hojewl](https://github.com/Hojewl)|
 |팀원|권형안|Full-stack|[HyeongAn](https://github.com/HyeongAn)|
 
 # 📑More Info
