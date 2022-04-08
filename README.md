@@ -1,6 +1,3 @@
-배포 환경 AWS
-ec2-34-221-241-107.us-west-2.compute.amazonaws.com
-
 # 서비스 소개
 ![image](https://user-images.githubusercontent.com/93849618/162344775-67d7bfe5-b9cf-4ddf-99fe-e7486deed926.png)
 
@@ -17,7 +14,8 @@ ec2-34-221-241-107.us-west-2.compute.amazonaws.com
   - 반려동물과 1인가구의 수는 늘어나는데 반해 관련한 정보들은 쉽게 찾아볼 수 없습니다.
   - 반려인의 편의를 위한 서비스 중심의 편의를 제공하기 위해 모든 반려인들이 정보를 공유하고 서로 돕는 커뮤니티를 건설할 계획입니다.
 
-<div align=center><h1>📚 STACKS</h1></div>
+
+# 📚 STACKS
 
 <div align=center> 
   <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
@@ -35,7 +33,20 @@ ec2-34-221-241-107.us-west-2.compute.amazonaws.com
   <img src="https://img.shields.io/badge/amazonaws-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white">
   <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
   <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
-  <img src="https://img.shields.io/badge/jwt-FC494A?style=for-the-badge&logo=JSONWebToken&logoColor=white">
+  <img src="https://img.shields.io/badge/JWT-FC494A?style=for-the-badge&logo=JSON%20Web%20Tokens&logoColor=white">
   <br>
   
 </div>
+
+# 👾Team
+Kingvatco는 동물을 사랑하고 아이디어가 가득한 사람들이 모여 만들어진 팀입니다.
+
+|역할|이름|포지션|GitHub|
+|---|---|---|---|
+|팀장|유태의|Back-end|[cookiemiro](https://github.com/cookiemiro)|
+|팀원|박보미|Fornt-end|[parkbomi-77](https://github.com/parkbomi-77)|
+|팀원|송혜원|Fornt-end|[Hojewl](https://github.com/Hojewl)|
+|팀원|권형안|Full-stack|[HyeongAn](https://github.com/HyeongAn)|
+
+# More Info
+🚢[배포사이트](ec2-34-221-241-107.us-west-2.compute.amazonaws.com)
