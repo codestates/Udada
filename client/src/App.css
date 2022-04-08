@@ -196,20 +196,22 @@ body {
   height: calc(100vh - 4rem);
 }
 
-#main-title {
-  font-size: 1.5rem;
-  font-weight: 800;
-  padding-bottom: 1rem;
-  margin: 0.5rem;
-}
 
-.main-reviews {
+.main-content {
   display: inline-block;
   width: 230px;
   height: 300px;
   border: solid rgb(238, 238, 238) 0.1rem;
   margin: 0.3rem;
   background-color: white;
+}
+
+.main-carousel {
+
+}
+
+.carousel-status {
+  color: red
 }
 
 .item:hover {
@@ -271,6 +273,7 @@ button:hover {
 #title {
   font-weight: 700;
   font-size: 1.5rem;
+  color: #fff;
 }
 
 #name {
