@@ -1,24 +1,15 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('booking_petusers', {
+    await queryInterface.createTable('petsitter_petusers', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      location: {
+      ect: {
         type: Sequelize.STRING
-      },
-      isBooking:{
-        type: Sequelize.BOOLEAN
-      },
-      payment :{
-        type: Sequelize.INTEGER
-      },
-      date: {
-        type: Sequelize.DATE
       },
       createdAt: {
         allowNull: false,
@@ -31,6 +22,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('booking_petusers');
+    await queryInterface.dropTable('petsitter_petusers');
   }
 };
