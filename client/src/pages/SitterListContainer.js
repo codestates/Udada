@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Item from '../components/Item';
+import SitterItem from '../components/SitterItem';
 
 
 import '../App.css';
@@ -45,7 +45,7 @@ function SitterListContainer({petSitterInfo}) {
     </div>
 
     <div id="petSitterInfo-body">
-      {petSitterInfo.map((item, idx) => <Item item={item} key={idx} />)}
+      {petSitterInfo.map((item, idx) => <SitterItem item={item} key={idx} />)}
     </div>
     </div>
   );
