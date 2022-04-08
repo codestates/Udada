@@ -20,10 +20,6 @@ module.exports = {
       date: {
         type: Sequelize.DATE
       },
-      petuser_id: {
-        type: Sequelize.INTEGER,
-        reference : {model : 'petusers', key:'id'}
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

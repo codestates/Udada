@@ -17,7 +17,6 @@ module.exports = (sequelize, DataTypes) => {
   booking_petsitter.init({
     location: DataTypes.STRING,
     isBooking : DataTypes.BOOLEAN,
-    payment: DataTypes.INTEGER,
     date: DataTypes.DATE,
     petsitter_id: DataTypes.INTEGER
   }, {
