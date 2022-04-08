@@ -1,5 +1,4 @@
 # 서비스 소개
-<br>
 
 ![logo](https://user-images.githubusercontent.com/71679085/162355139-84960f7f-ff86-436a-920b-bed45f545737.png)
 
