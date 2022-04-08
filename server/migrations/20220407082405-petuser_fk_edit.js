@@ -8,9 +8,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userId: {
-        type: Sequelize.STRING
-      },
       name: {
         type: Sequelize.STRING
       },
@@ -34,9 +31,6 @@ module.exports = {
       },
       careType: {
         type: Sequelize.STRING
-      },
-      howMany: {
-        type: Sequelize.INTEGER
       },
       content: {
         type: Sequelize.STRING

@@ -2,6 +2,6 @@ const express = require('express');
 const router = express.Router()
 const controller = require('../controllers');
 
-router.post('/signout', controller.signout)
+router.post('/signout/:id', controller.signout)
 
 module.exports = router;
