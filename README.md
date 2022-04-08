@@ -49,4 +49,4 @@ Kingvatco는 동물을 사랑하고 아이디어가 가득한 사람들이 모�
 |팀원|권형안|Full-stack|[HyeongAn](https://github.com/HyeongAn)|
 
 # 📑More Info
-🚢[배포사이트](ec2-34-221-241-107.us-west-2.compute.amazonaws.com)
+🚢 [배포사이트](ec2-34-221-241-107.us-west-2.compute.amazonaws.com)
