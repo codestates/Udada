@@ -1,3 +1,6 @@
+배포 환경 AWS
+ec2-34-221-241-107.us-west-2.compute.amazonaws.com
+
 # 서비스 소개
 ![image](https://user-images.githubusercontent.com/93849618/162344775-67d7bfe5-b9cf-4ddf-99fe-e7486deed926.png)
 
