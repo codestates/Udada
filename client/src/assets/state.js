@@ -62,8 +62,12 @@ export const dummyData = {
             "location": "용산구",
             "age": 22,
             "license": true,
+            "date": 12,
             "content": "성실, 사랑, 강아지러버",
-            "review": ["너무 스윗한 시터, 강아지 헤어질때 울었다."]
+            "startTime": 10,
+            "lastTime": 12,
+            "days": '월화수',
+            "payment" : 10000
         },
         {
             "id": 2,
@@ -77,7 +81,10 @@ export const dummyData = {
             "age":28,
             "license": true,
             "content": "온세상을 밝히는 밝은 성격의 동물친구",
-            "review": ["밝아서 우리 미미가 좋아했어요"]
+            "startTime": 10,
+            "lastTime": 12,
+            "days": '월화수',
+            "payment" : 10000
         },
         {
             "id": 2,
@@ -91,7 +98,10 @@ export const dummyData = {
             "age":25,
             "license": true,
             "content": "온세상을 밝히는 밝은 성격의 동물친구",
-            "review": ["우리 아이 지쳐서 오자마자 잠듬, 체력 갑 시터님~"]
+            "startTime": 10,
+            "lastTime": 12,
+            "days": '월화수',
+            "payment" : 10000
         },
         {
             "id": 3,
@@ -105,7 +115,10 @@ export const dummyData = {
             "age":26,
             "license": true,
             "content": "동물들의 이야기를 잘 들어드립니다.",
-            "review": ["우리 아이가 달라져서 집에 왔어요. 너무 친절한 시터~"]
+            "startTime": 10,
+            "lastTime": 12,
+            "days": '월화수',
+            "payment" : 10000
         }
     ]
 }
