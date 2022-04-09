@@ -31,10 +31,12 @@ const handlePetSitter = (item) => {
 const handlePetSitterLogin = () => {
   setIsPetSitter(false);
 }
+console.log(isPetSitter)
   return (
     <div>
       {isPetSitter ?  <Profile petSitterInfo={sitterInfo} 
                                handlePetSitterLogin={handlePetSitterLogin}/> : 
+
       <div id="petSitterInfo-container">
         <div id="petSitterInfo-header">
             <div id='petSitterInfo-btn-div'>
@@ -78,32 +80,32 @@ const handlePetSitterLogin = () => {
 
 
         <div id="petSitterInfo-apply"> 
-          <div class="popup-wrap" id="popup"> 
-            <div class="popup">	
-              <div class="popup-head">	
-                  <span class="head-title">UDADA</span>
+          <div className="popup-wrap" id="popup"> 
+            <div className="popup">	
+              <div className="popup-head">	
+                  <span className="head-title">UDADA</span>
               </div>
-              <div class="popup-body">	
-                <div class="body-content">
-                  <div class="body-titlebox">
+              <div className="popup-body">	
+                <div className="body-content">
+                  <div className="body-titlebox">
                     <h1>registration💕</h1>
                   </div>
-                  <div class="body-infobox">
-                    <div class="body-infobox-img">
-                      <img src={sitterInfo[1].img} alt={sitterInfo[1].name} />
+                  <div className="body-infobox">
+                    <div className="body-infobox-img">
+                      <img src={petSitterInfo[1].img} alt={petSitterInfo[1].name} />
                     </div>
-                    <div class="body-infobox-info">
-                      <div class="body-infobox-name">{sitterInfo[1].name}</div>
-                      <div class="body-infobox-age">{sitterInfo[1].age}살</div>
-                      <div class="body-infobox-location">{sitterInfo[1].location}</div>
-                      <div class="body-infobox-content">{sitterInfo[1].content}</div>
+                    <div className="body-infobox-info">
+                      <div className="body-infobox-name">{petSitterInfo[1].name}</div>
+                      <div className="body-infobox-age">{petSitterInfo[1].age}살</div>
+                      <div className="body-infobox-location">{petSitterInfo[1].location}</div>
+                      <div className="body-infobox-content">{petSitterInfo[1].content}</div>
 
                     </div>
                   </div>
-                  <div class="body-infobox-input">
-                    <div class="days">
-                      <div class="days-title">✔︎ 가능한 요일을 체크해주세요</div>
-                      <div class="all_days">
+                  <div className="body-infobox-input">
+                    <div className="days">
+                      <div className="days-title">✔︎ 가능한 요일을 체크해주세요</div>
+                      <div className="all_days">
                         <input type="checkbox" id="a1" name="월" />
                         <label for="a1"><span>Mon</span></label>
                         <input type="checkbox" id="a2" name="화" />
@@ -120,9 +122,9 @@ const handlePetSitterLogin = () => {
                         <label for="a7"><span>Sun</span></label>
                       </div>
                     </div>
-                    <div class="days">
-                      <div class="days-title">✔︎ 가능한 시간을 체크해주세요</div>
-                      <div class="registrationTime-container">
+                    <div className="days">
+                      <div className="days-title">✔︎ 가능한 시간을 체크해주세요</div>
+                      <div className="registrationTime-container">
                         <select name="" id="registrationStartTime">
                           <option value="">07</option>
                           <option value="">08</option>
@@ -161,7 +163,7 @@ const handlePetSitterLogin = () => {
                           <option value="">22</option>
                         </select><span>시까지 가능해요</span>
                       </div>
-                      <div class="days-title">✔︎ 희망시급을 입력해주세요</div>
+                      <div className="days-title">✔︎ 희망시급을 입력해주세요</div>
                       <div>
                         <input type="text" id="registrationPay"/>
                         <span>(원)</span>
@@ -170,8 +172,8 @@ const handlePetSitterLogin = () => {
                   </div>
                 </div>
               </div>
-                  <div class="popup-foot"> 
-                    <span class="pop-btn confirm" id="confirm" onClick={() => hide()}>등록하기</span>
+                  <div className="popup-foot"> 
+                    <span className="pop-btn confirm" id="confirm" onClick={() => hide()}>등록하기</span>
                 {/* <span class="pop-btn close" id="close">창 닫기</span> */}
                   </div>
             </div>
