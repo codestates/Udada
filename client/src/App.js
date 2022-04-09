@@ -28,7 +28,7 @@ function App() {
     <Router>
       <Nav />
       <Routes>
-        <Route exact={true} path="/" element={<HomeContainer petUserInfo={petUserInfo} petSitterInfo={petSitterInfo} />} />
+        <Route exact={true} path="/" element={<HomeContainer />} />
         <Route path="/petsitterlist" element={<SitterListContainer petSitterInfo={petSitterInfo} setPetSitterInfo={setPetSitterInfo} />} />
         <Route path="/petlist" element={<PetListContainer petUserInfo={petUserInfo} setPetUserInfo={setPetUserInfo} />} />
         <Route path="/signup" element={<Signup />} />

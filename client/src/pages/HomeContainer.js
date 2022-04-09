@@ -1,27 +1,18 @@
 import React from 'react';
+import { homeImages } from "../assets/images"
+import { Carousel } from 'react-responsive-carousel';
 
 
-function HomeContainer({ petUserInfo, petSitterInfo }) {
-    //petUser의 review들만 모아둔 배열
-    let petUserReviews = petUserInfo.map((el) => {
-        return el.review;
-    })
-
-    let petSitterReviews = petSitterInfo.map((el) => {
-        return el.review;
-    })
-
+function HomeContainer() {
 
     return (
         <div id="main-container">
             <div id="main-body">
-                <div id="main-title">소개글</div>
+                <div id="main-carousel">
+                    <Carousel infiniteLoop useKeyboardArrows autoPlay>
+                        {homeImages.map((src, idx) => <img src={src} alt={idx} />)}
 
-                <div id="main-reviews">고객 만족 후기들...
-                    {petUserReviews.map((review) => <div id="review-card">{review}</div>)}
-                </div>
-                <div id="main-reviews">시터 만족 후기들...
-                    {petSitterReviews.map((review) => <div id="review-card">{review}</div>)}
+                    </Carousel>
                 </div>
             </div>
         </div>

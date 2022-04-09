@@ -117,14 +117,8 @@ body {
   height: calc(100vh - 4rem);
 }
 
-#main-title {
-  font-size: 1.5rem;
-  font-weight: 800;
-  padding-bottom: 1rem;
-  margin: 0.5rem;
-}
 
-.main-reviews {
+.main-content {
   display: inline-block;
   width: 230px;
   height: 300px;
@@ -148,6 +142,7 @@ body {
 #title {
   font-weight: 700;
   font-size: 1.5rem;
+  color: #fff;
 }
 
 #name {

@@ -14,7 +14,8 @@ export const dummyData = {
             "content": "잘부탁드립니다.",
             "howBig": "중형",
             "petage":5,
-            "review": ["너무 스윗한 강아지"]
+        
+
         },
         {
             "id": 2,
@@ -30,7 +31,8 @@ export const dummyData = {
             "content": "잘 짖어요 왕왕 주의부탁.",
             "howBig": "중형",
             "petage":2,
-            "review": ["너무 얌전하고 귀여워요"]
+    
+
         },
         {
             "id": 3,
@@ -46,7 +48,8 @@ export const dummyData = {
             "content": "많이 먹어대서 다이어트 필요, 간식조절 주의요망.",
             "howBig": "대형",
             "petage":1,
-            "review": ["깨발랄 먹보지만 귀여워"]
+           
+
         }
 
     ],
@@ -68,6 +71,7 @@ export const dummyData = {
             "lastTime": 12,
             "days": '월화수',
             "payment" : 10000
+
         },
         {
             "id": 2,

@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.petuser.hasMany(models.booking_petuser)
+      models.petuser.hasMany(models.petuser_registration)
     }
   }
   petuser.init({
@@ -24,7 +25,6 @@ module.exports = (sequelize, DataTypes) => {
     photo: DataTypes.STRING,
     location: DataTypes.STRING,
     careType: DataTypes.STRING,
-    howMany: DataTypes.INTEGER,
     content: DataTypes.STRING,
     howBig: DataTypes.STRING,
     petAge : DataTypes.INTEGER
