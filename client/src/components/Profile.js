@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 function Profile({petSitterInfo, handlePetSitterLogin}) {
+
+    function show() {
+        const box = document.getElementById("profile-modal")
+        box.style.display = "block"
+    }
 
     return (
         <div id="profile-container">
@@ -23,7 +29,19 @@ function Profile({petSitterInfo, handlePetSitterLogin}) {
             <div id="profile-date">
                 {/* 예약시간 달력 */}API 예약 달력 들어갈 자리 
             </div>
-            <button id="profile-btn" onClick={handlePetSitterLogin}>신청하기</button>
+            <button id="profile-btn" onClick={() => show()}>신청하기</button>
+
+
+            <div id="profile-modal">
+                <span id="profile-modal-close" onClick={handlePetSitterLogin}>✕</span>
+                <div id="profile-modal-text">신청이 완료되었습니다! 🎉</div>
+                <div id="profile-modal-btn-container">
+                    <button className="profile-modal-btn" onClick={handlePetSitterLogin}>둘러보기</button>
+                    <Link to="/mypage">
+                        <button className="profile-modal-btn">나의 예약현황</button>
+                    </Link>
+                </div>
+            </div>
         </div>
         
     );

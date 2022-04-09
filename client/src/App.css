@@ -500,3 +500,68 @@ a:hover {
   background-color: #8f4bd4e6;
   color: #F9F9F9;
 }
+
+#profile-modal {
+  background-color: rgba(151, 73, 223, 0.9);
+  /* background-color: rgba(0, 0, 0, 0.5); */
+
+
+  position: absolute;
+  top: 160px;
+  left: 20%;
+
+  width: 600px;
+  height: 340px;
+  border-radius: 18px;
+
+  display: none;
+}
+
+#profile-modal-close {
+  position: absolute;
+  top: 45px;
+  right: 9%;
+
+  font-size: 25px;
+  cursor:pointer;
+}
+
+/* #profile-modal-close:focus {
+
+} */
+
+#profile-modal-text {
+  background-color: #F9F9F9;
+  position: absolute;
+  top: 134px;
+  left: 31%;
+
+  font-size: 22px;
+}
+
+#profile-modal-btn-container {
+  background-color:rgb(249, 249, 249);
+  /* width: 600px; */
+  height: 270px;
+  border-radius: 14px;
+
+  margin: 35px 33px;
+  padding-top: 148px;
+  padding-left: 115px;
+}
+
+#profile-modal-btn-container button {
+  width: 130px;
+  padding: 0.8rem 0.8rem;
+  margin-left: 10px;
+  border: none;
+  border-radius: 22px;
+  font-size: 0.9rem;
+  font-weight: 390;
+  text-align: center;
+}
+
+#profile-modal-btn-container button:hover {
+  color: white;
+  background-color: #9749df;
+}
