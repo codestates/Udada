@@ -47,29 +47,33 @@ module.exports = {
 
     // TODO 아래의 petuser와 petsitter의 데이터를 찾을 때 따로 구분하여 찾지말고 join을 이용해서 가져오자.
     findUserData : async (data) => {
-        try{
-            const petuserData = await petuser.findOne({
-                where : data
-            })
-
+        // console.log(data)
+        
+        const petuserData = await petuser.findOne({
+            where : data
+        })
+        if(petuserData){
+            //console.log(petuserData)
             return petuserData
-
-        }catch(e){
-            return null;
         }
+            return null;
+        
         
     },
     
     findSitterData : async (data) => {
-        try{
-            const petsitterData = await petsitter.findOne({
-                where : data
-            })
-
+        
+        const petsitterData = await petsitter.findOne({
+            where : data
+        })
+        
+        if(petsitterData){
+            // console.log(petsitterData)
             return petsitterData  
-        }catch(e){
-            return null;
         }
+        
+        return null;
+        
         
     }
 }
