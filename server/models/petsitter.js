@@ -11,11 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.petsitter.hasMany(models.booking_petsitter, {foreignKey: "petsitter_id"})
+      models.petsitter.hasMany(models.booking_petsitter)
+      models.petsitter.hasMany(models.petsitter_registration)
     }
   }
   petsitter.init({
-    userId: DataTypes.STRING,
     name: DataTypes.STRING,
     age : DataTypes.INTEGER,
     password: DataTypes.STRING,
