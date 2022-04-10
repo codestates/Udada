@@ -567,6 +567,29 @@ input[type="checkbox"]:checked + label {
   width: 430px;
   font-size: 14px;
 }
+#pet-registration-careType-container{
+  display: flex;
+  flex-direction: row;
+}
+#pet-registration-careType-container div{
+  padding: 0 5px;
+}
+#pet-registration-careType{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#careType{
+  width:80px;
+  padding:3px;
+  margin: 0 61px;
+  border:1px solid #999;
+  font-family:'Nanumgothic';
+  border-radius:3px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance : none;
+}
 
 /* Profile.js */
 
