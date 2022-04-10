@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   petsitter_petuser.init({
-    ect : string
+    ect : DataTypes.STRING
   }, {
     sequelize,
     modelName: 'petsitter_petuser',
