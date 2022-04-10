@@ -13,7 +13,9 @@ export const dummyData = {
             "howMany": "2",
             "content": "잘부탁드립니다.",
             "howBig": "중형",
-            "petage":5,
+            "petAge": 5,
+            "days": '월화수',
+
         
 
         },
@@ -30,7 +32,9 @@ export const dummyData = {
             "howMany": "1",
             "content": "잘 짖어요 왕왕 주의부탁.",
             "howBig": "중형",
-            "petage":2,
+            "petAge": 2,
+            "days": '월화수',
+
     
 
         },
@@ -47,7 +51,9 @@ export const dummyData = {
             "howMany": "4",
             "content": "많이 먹어대서 다이어트 필요, 간식조절 주의요망.",
             "howBig": "대형",
-            "petage":1,
+            "petAge": 1,
+            "days": '월화수',
+
            
 
         }
@@ -70,7 +76,8 @@ export const dummyData = {
             "startTime": 10,
             "lastTime": 12,
             "days": '월화수',
-            "payment" : 10000
+            "payment" : 10000,
+
 
         },
         {
@@ -88,7 +95,8 @@ export const dummyData = {
             "startTime": 10,
             "lastTime": 12,
             "days": '월화수',
-            "payment" : 10000
+            "payment" : 10000,
+
         },
         {
             "id": 2,
@@ -105,7 +113,8 @@ export const dummyData = {
             "startTime": 10,
             "lastTime": 12,
             "days": '월화수',
-            "payment" : 10000
+            "payment" : 10000,
+
         },
         {
             "id": 3,
@@ -122,7 +131,8 @@ export const dummyData = {
             "startTime": 10,
             "lastTime": 12,
             "days": '월화수',
-            "payment" : 10000
+            "payment" : 10000,
+
         }
     ]
 }

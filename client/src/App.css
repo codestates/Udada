@@ -588,7 +588,7 @@ input[type="checkbox"]:checked + label {
 #profile-title {
   position: absolute;
   top: 42px;
-  left: 30%;
+  /* left: 33%; */
 
   font-size: 40px;
   font-weight: 800;
