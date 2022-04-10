@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('booking_petusers', {
+    await queryInterface.createTable('petuser_registrations', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -9,16 +9,16 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       location: {
-        type: Sequelize.STRING
-      },
-      isBooking:{
-        type: Sequelize.BOOLEAN
-      },
-      payment :{
         type: Sequelize.INTEGER
       },
       date: {
         type: Sequelize.DATE
+      },
+      payment: {
+        type: Sequelize.INTEGER
+      },
+      content: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -31,6 +31,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('booking_petusers');
+    await queryInterface.dropTable('petuser_registrations');
   }
 };
