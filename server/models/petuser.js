@@ -16,7 +16,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   petuser.init({
-    userId: DataTypes.STRING,
     name: DataTypes.STRING,
     age : DataTypes.INTEGER,
     password: DataTypes.STRING,

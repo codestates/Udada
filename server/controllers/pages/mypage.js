@@ -2,6 +2,7 @@ const {isAuthorized, checkRefreshToken, findUserData, findSitterData, createAcce
 
 module.exports = {
     get : (req, res) =>{
+        console.log(req.body)
         const accessTokenData = isAuthorized(req)
         const refreshTokenData = checkRefreshToken(req)
 
