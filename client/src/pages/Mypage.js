@@ -4,6 +4,26 @@ import { dummyData } from '../assets/state'
 
 export default function Mypage({  }) {
 
+function show() {
+    const box = document.getElementById("mypage-modal-container")
+    box.style.display = "flex"
+}
+function hide() {
+    const box = document.getElementById("mypage-modal-container")
+    box.style.display = "none"
+}
+function secessionShow(){
+    const box = document.getElementById("mypage-modal-container")
+    box.style.display = "none"
+
+    const box1 = document.getElementById("mypage-secession-container")
+    box1.style.display = "flex"
+}
+function secessionHide(){
+    const box1 = document.getElementById("mypage-secession-container")
+    box1.style.display = "none"
+}
+
  const info = dummyData.petUser[1]
  
   return (
@@ -24,7 +44,7 @@ export default function Mypage({  }) {
 
             <div className="mypage-section">
                 <div className="mypage-section-btn">
-                    <button className="mypage-edit-password">탈퇴하기</button>
+                    <button className="mypage-edit-password" onClick={() => show()}>탈퇴하기</button>
                     <button className="mypage-secession">P/W 수정</button>
                 </div>
                 <div className="mypage-section-profile">
@@ -37,6 +57,29 @@ export default function Mypage({  }) {
                     <div className="mypage-content">{info.content}</div>
                 </div>
             </div>
+
+            <div className="popup-wrap" id="mypage-modal-container" >
+                <div id="profile-modal">
+                    <span id="profile-modal-close" onClick={() => hide()}>✕</span>
+                    <div id="profile-modal-text" >정말 탈퇴하시겠습니까? 🙄</div>
+                    <div id="profile-modal-btn-container">
+                        <button className="profile-modal-btn" onClick={() => secessionShow()}>예, 탈퇴합니다</button>
+                        {/* <Link to="/mypage"> */}
+                            <button className="profile-modal-btn" onClick={() => hide()}>아니요</button>
+                        {/* </Link> */}
+                    </div>
+                </div>
+            </div>
+
+            <div className="popup-wrap" id="mypage-secession-container" >
+                <div id="profile-modal">
+                    <span id="profile-modal-close" onClick={() => secessionHide()}>✕</span>
+                    <div id="profile-modal-text">정상적으로 탈퇴되었습니다 <br/> 다음에 다시 만나요🤙🏻</div>
+                    <div id="profile-modal-btn-container">
+                    </div>
+                </div>
+            </div>
+            
 
         </div>
 
