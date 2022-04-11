@@ -4,8 +4,10 @@ const { petuser, petsitter } = require('../../models')
 
 module.exports = {
 
+
     createAccessToken: (data) => {
-        return jwt.sign(data, process.env.ACCESS_SECRET, { expiresIn: '15m' })
+        return jwt.sign(data, process.env.ACCESS_SECRET, { expiresIn: '1h' })
+
     },
 
     createRefreshToken: (data) => {
@@ -20,7 +22,7 @@ module.exports = {
             return null
         } else {
             // ! 여기는 들어오는 값에 따라서 바꾸어야 할 수도 있음.
-            const token = authorization.split('=')[1];
+            const token = authorization.split(' ')[1];
 
             try {
                 return jwt.verify(token, process.env.ACCESS_SECRET)
@@ -30,12 +32,16 @@ module.exports = {
         }
     },
 
+
     checkRefreshToken: (req) => {
-        const refreshToken = req.cookies.refreshToken;
+        const refreshToken = req.headers.cookie;
 
         if (!refreshToken) {
             return null
         } else {
+
+            const token = refreshToken.split('=')[1]
+
             try {
                 return jwt.verify(token, process.env.REFRESH_SECRET)
             } catch (e) {
