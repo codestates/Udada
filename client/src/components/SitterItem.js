@@ -1,13 +1,13 @@
 import React from 'react'
 
-export default function SitterItem({ item }) {
+export default function SitterItem({ item , handlePetSitter}) {
 
   return (
     <div key={item.id} className="item">
         <div className="item-imgdiv">
             <img className="item-img" src={item.img} alt={item.name}></img>
         </div>
-        <div className="item-infodiv">
+        <div className="item-infodiv" onClick={() => handlePetSitter(item)}>
             <div className="item-name">{item.name}</div>
             <div className="item-age">{item.age}세</div>
             <div className="item-location">{item.location}</div>
