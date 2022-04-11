@@ -7,8 +7,10 @@ router.post('/login/petuser', controller.login.petuser);
 router.post('/login/petsitter', controller.login.petsitter);
 router.post('/signup/petsitter', controller.signup.petsitter);
 router.post('/signup/petuser', controller.signup.petuser);
-router.get('/mypage', controller.mypage.get);
-router.post('/mypage', controller.mypage.post);
+router.get('/mypage/petuser', controller.mypage.petuser.get);
+router.post('/mypage/petuser', controller.mypage.petuser.post);
+router.get('/mypage/petsitter', controller.mypage.petsitter.get);
+router.post('/mypage/petsitter', controller.mypage.petsitter.post);
 router.use('/signout', controller.signout);
 
 module.exports = router;
