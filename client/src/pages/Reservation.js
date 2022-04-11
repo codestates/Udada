@@ -31,11 +31,10 @@ export default function Reservation() {
                 }
             </div>
             <div className="mypage-section">
-                <div>
                     {info.map((petUser) => {
                         return <Booking info={petUser} nameWrite="님이 기다리고 있어요"/>
                     })}
-                </div>
+
             </div>
             
 

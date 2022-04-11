@@ -986,26 +986,28 @@ input[type="checkbox"]:checked + label {
 }
 
 /* Booking.js */
+
 .mypage-section{
-  width: 900px;
-  overflow: auto;
+  /* width: 900px; */
+  height: 578px;
+  overflow-y: scroll
 }
 
-.mypage-section>div{
+/* .booking-item-samll-container{
   margin-top: 100px;
   margin-bottom: 200px;
-
-
-}
+} */
 .booking-item{
   display: flex;
   background-color: rgb(255, 255, 255);
   border-radius: 15px;
   width: 80%;
-  margin: 20px 92px;
+  margin: 50px 86px 0px 86px;
   /* justify-content: space-evenly; */
   padding: 6px 10px;
   cursor: pointer;
+
+
 }
 .booking-item:hover{
   background-color: rgb(237, 237, 237);
