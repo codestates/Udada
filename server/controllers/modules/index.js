@@ -59,9 +59,7 @@ module.exports = {
             //console.log(petuserData)
             return petuserData
         }
-            return null;
-        
-        
+        return null;
     },
     
     findSitterData : async (data) => {
@@ -75,8 +73,18 @@ module.exports = {
             return petsitterData  
         }
         
-        return null;
-        
-        
+        return null;     
+    },
+
+    deleteUserData : async (data) => {
+        await petuser.destroy({
+            where : data
+        })
+    },
+
+    deleteSitterData : async (data) => {
+        await petsitter.destroy({
+            where : data
+        })
     }
 }
