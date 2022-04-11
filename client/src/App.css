@@ -741,6 +741,7 @@ input[type="checkbox"]:checked + label {
   margin: 35px 33px;
   padding-top: 149px;
   padding-left: 126px;
+  
 }
 
 #profile-modal-btn-container button {
@@ -849,8 +850,6 @@ input[type="checkbox"]:checked + label {
   background-color: #fffffff4;
   color: #9a53dcf4;
   cursor: pointer;
-
-
 }
 .mypage-section-profile{
   display: flex;
@@ -889,5 +888,85 @@ input[type="checkbox"]:checked + label {
   height: 130px;
   text-align: center;
   line-height: 100px;
+}
+#mypage-modal-container, #mypage-secession-container{
+  display: none;
+}
 
+
+
+/* PwChange.js */
+
+
+.mypage-pwchange-section{
+  background-color: rgb(244, 236, 251);
+  
+  width: 880px;
+  height: 580px;
+  border-radius: 15px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.mypage-pwchange-box {
+  width: 340px;
+  height: 400px;
+  background-color: rgb(244, 236, 251);
+  margin-bottom: 60px;
+}
+.mypage-pwchange-title{
+  width: 100%;
+  line-height: 5rem;
+  margin: 45px 0;
+  /* padding: 0 auto; */
+  font-size: 2rem;
+  font-style: inherit;
+  font-weight: 730;
+}
+.mypage-pwchange-input{
+  display: flex;
+  flex-direction: column;
+}
+.mypage-pwchange-input input{
+  display: block;
+
+  width: 100%;
+  height: 50px;
+  margin: 18px 0;
+
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid black;
+  background-color: rgb(244, 236, 251);
+
+  text-align: center;
+} 
+.mypage-pwchange-input input:focus{
+  outline: none;
+}
+#mypage-pwchange-btn{
+  margin-top: 20px;
+  border-bottom: none;
+  background-color: #9a53dcf4;
+  color: hsl(0, 7%, 94%);
+  font-weight: 600;
+  cursor: pointer;
+}
+#mypage-pwchange-btn:hover{
+  background-color: hsl(0, 7%, 94%);
+  color: #9a53dcf4;
+}
+#mypage-pwchange-modal-text {
+  background-color: #F9F9F9;
+  position: absolute;
+  top: 115px;
+  left: 33%;
+  font-size: 21px;
+  text-align: center;
+}
+#mypage-pwchange-container button{
+  margin-left: 20%;
 }

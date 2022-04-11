@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { dummyData } from '../assets/state'
+import PwChange from '../components/PwChange';
 
 
-export default function Mypage({  }) {
+
+export default function Mypage() {
+
+const [pwChange, setPwChange] = useState(false)
+const handlePwChange = () => {
+    setPwChange(!pwChange)
+}
 
 function show() {
     const box = document.getElementById("mypage-modal-container")
@@ -41,11 +48,12 @@ function secessionHide(){
                 }
                 
             </div>
-
+            
+            {pwChange ? <PwChange handlePwChange={handlePwChange}/> : 
             <div className="mypage-section">
                 <div className="mypage-section-btn">
+                    <button className="mypage-secession" onClick={handlePwChange}>P/W 수정</button>
                     <button className="mypage-edit-password" onClick={() => show()}>탈퇴하기</button>
-                    <button className="mypage-secession">P/W 수정</button>
                 </div>
                 <div className="mypage-section-profile">
                     <div className="mypage-section-nameAge">
@@ -57,6 +65,7 @@ function secessionHide(){
                     <div className="mypage-content">{info.content}</div>
                 </div>
             </div>
+            }
 
             <div className="popup-wrap" id="mypage-modal-container" >
                 <div id="profile-modal">
