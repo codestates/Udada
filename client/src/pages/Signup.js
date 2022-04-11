@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
 export default function Signup() {
+    /*
     const [userinfo, setuserinfo] = useState({
         email: '',
         name: '',
@@ -86,4 +87,6 @@ export default function Signup() {
             </center>
         </div>
     );
+
+    */
 }

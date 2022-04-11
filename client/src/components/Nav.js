@@ -1,5 +1,4 @@
 import React from 'react';
-//import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 function Nav() {
@@ -7,8 +6,9 @@ function Nav() {
     return (
         <div id="nav-body">
             <span id="title">
-                {/* <img id="logo" src="../udadaLogoSmallSize.png" alt="logo" /> */}
-                <span id="name">Udada</span>
+                <Link to="/">
+                    <span id="name">Udada</span>
+                </Link>
             </span>
             <div id="menu">
                 <Link to="/">HOME</Link>
