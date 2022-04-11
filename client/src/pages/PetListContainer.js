@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PetItem from '../components/PetItem';
 import Profile from '../components/Profile';
 
-
+// 내정보 불러와서 프롭스로 내려줘야함
 
 import '../App.css';
 

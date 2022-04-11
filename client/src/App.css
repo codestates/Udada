@@ -112,7 +112,7 @@ body {
 
 #main-container{
   display: table;
-  margin: 0 auto;
+  margin: 60px auto;
   width: 100%;
   height: calc(100vh - 4rem);
 }
@@ -131,7 +131,8 @@ body {
   background-color: #904BD4;
   width: 100%;
   height: 4rem;
-  position: sticky; 
+  position: fixed; 
+  z-index: 1;
   top: 0;
   border-bottom: solid 1px rgb(212, 212, 212);
   display: grid;
@@ -244,6 +245,7 @@ a:hover {
   align-items: center;
   
   margin: 140px;
+  padding-top: 50px;
   height: 60vh;
 }
 
@@ -493,6 +495,7 @@ input[type="checkbox"]:checked + label {
   align-items: center;
   
   margin: 140px;
+  padding-top: 50px;
   height: 80vh;
 }
 
@@ -599,7 +602,7 @@ input[type="checkbox"]:checked + label {
   align-items: center;
 
   background-color: rgb(255, 249, 186);
-  margin: 160px auto 350px;
+  margin: 215px auto 350px;
 
   width: 1000px;
   height: 700px;
@@ -753,4 +756,137 @@ input[type="checkbox"]:checked + label {
 #profile-modal-btn-container button:hover {
   color: white;
   background-color: #9749df;
+  cursor: pointer;
+}
+
+/* Mypage */
+.mypage-container{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  background-color: #9749df;
+  margin: 215px auto 350px;
+
+  width: 1000px;
+  height: 720px;
+  border-radius: 20px;
+
+  position: relative;
+}
+.mypage-header h1{
+  font-size: 40px;
+  font-weight: 800;
+  margin: 0;
+  color: #7326bb;
+  font-style: inherit;
+  text-shadow: -4px 0 #fffde7, 0 4px #fffde7, 4px 0 #fffde7, 0 -4px #fffde7;
+}
+.mypage-body{
+  display: flex;
+}
+
+.mypage-sidebar{
+  background-color: #9749df;
+  width: 46px;
+  height: 580px;
+  border-radius: 15px;
+  padding-top: 30px;
+
+}
+.mypage-sidebar button{
+  display: block;
+  width: 55px;
+  padding: 16px;
+  margin: 5px auto;
+
+  font-size: 15px;
+
+  border: #9749df solid 1px;
+  /* border-radius: 18px; */
+  border-top-left-radius: 18px;
+  border-bottom-left-radius: 18px;
+  outline: 1;
+  background-color: rgb(244, 236, 251);
+}
+.mypage-sidebar button:nth-child(2){
+  background-color: rgb(255, 255, 255);
+
+}
+.mypage-sidebar button:hover{
+  cursor: pointer;
+}
+
+.mypage-section{
+  background-color: rgb(244, 236, 251);
+  width: 880px;
+  height: 580px;
+  border-radius: 15px;
+  position: relative;
+}
+.mypage-section-btn{
+  position: absolute;
+  right: 20px;
+  width: 250px;
+
+}
+.mypage-section button{
+  width: 46%;
+  padding: 0.9rem 0.9rem;
+  margin: 35px 10px 35px 0px;
+  border: none;
+  border-radius: 40px;
+  font-size: 0.9rem;
+  font-weight: 390;
+  text-align: center;
+  background-color: #9a53dcf4;
+  color: rgb(244, 236, 251);
+  font-weight: 550;
+}
+.mypage-section button:hover{
+  background-color: #fffffff4;
+  color: #9a53dcf4;
+  cursor: pointer;
+
+
+}
+.mypage-section-profile{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  margin-top: 135px;
+}
+.mypage-section-nameAge{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.mypage-section-nameAge div{
+  width: 45%;
+}
+.mypage-section-nameAge div:first-child{
+  border-right : 2px solid #d8d8d8;
+  height : 20px;
+  
+}
+.mypage-section-profile>div{
+  background-color: #ffffff;
+  width: 60%;
+  margin: 11px;
+  padding: 15px;
+  border-radius: 20px;
+  
+}
+.mypage-section-profile>div:not(:last-of-type){
+  height: 45px;
+  text-align: center;
+}
+
+.mypage-content{
+  height: 130px;
+  text-align: center;
+  line-height: 100px;
+
 }
