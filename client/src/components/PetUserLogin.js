@@ -5,7 +5,7 @@ import axios from 'axios';
 
 axios.defaults.withCredentials = true;
 
-export default function PetUserLogin({ handleResponseSuccess, setAccessToken, setRefreshToken }) {
+export default function PetUserLogin({ accessToken, setAccessToken }) {
     const [loginInfo, setLoginInfo] = useState({
         email: '',
         password: ''
@@ -26,9 +26,10 @@ export default function PetUserLogin({ handleResponseSuccess, setAccessToken, se
                 },
                 { headers: { "Content-Type": "application/json" }, withCredentials: true }
             ).then((res) => {
-                setAccessToken(res.data.accessToken);
-                setRefreshToken(res.cookies);
-                handleResponseSuccess();
+                // accessToken 변화가 생길때마다 state 끌어올려주기
+                console.log(res.data.data.accessToken);
+                console.log(res.cookie);
+                setAccessToken(res.data.data.accessToken);
             })
         } else {
             setErrorMessage('이메일과 비밀번호를 입력하세요');
