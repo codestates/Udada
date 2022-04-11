@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 
 
-export default function PwChange({handlePwChange}) {
+export default function PwChange({handlePwChangeout}) {
 
     function show() {
         const box = document.getElementById("mypage-pwchange-container")
@@ -23,7 +23,7 @@ export default function PwChange({handlePwChange}) {
                         <div>
                             <input type="password" id="newPassword" placeholder="새 비밀번호를 입력하세요"/>
                         </div>
-                        <input id="mypage-pwchange-btn" type="submit" 
+                        <input id="mypage-pwchange-btn" type="button" 
                             value="비밀번호 변경"
                             onClick={() => show()}/>
                     </form>
@@ -32,10 +32,10 @@ export default function PwChange({handlePwChange}) {
 
             <div className="popup-wrap" id="mypage-pwchange-container" >
                 <div id="profile-modal">
-                    <span id="profile-modal-close" onClick={handlePwChange}>✕</span>
+                    <span id="profile-modal-close" onClick={handlePwChangeout}>✕</span>
                     <div id="mypage-pwchange-modal-text"><br/>비밀번호가 변경되었습니다</div>
                     <div id="profile-modal-btn-container">
-                        <button className="mypage-pwchange-container-btn" onClick={handlePwChange}>확인</button>
+                        <button className="mypage-pwchange-container-btn" onClick={handlePwChangeout}>확인</button>
                     </div>
                 </div>
             </div>

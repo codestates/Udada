@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { dummyData } from '../assets/state'
 import PwChange from '../components/PwChange';
 
@@ -8,7 +9,10 @@ export default function Mypage() {
 
 const [pwChange, setPwChange] = useState(false)
 const handlePwChange = () => {
-    setPwChange(!pwChange)
+    setPwChange(true)
+}
+const handlePwChangeout = () => {
+    setPwChange(false)
 }
 
 function show() {
@@ -41,15 +45,21 @@ function secessionHide(){
         </div>
         <div className="mypage-body">
             <div className="mypage-sidebar">
-                <button className="mypage-sidebar-userInfo">내<br/><br/>정<br/>보</button>
-                {info.petAge ? <button className="mypage-sidebar-booking">예<br/>약<br/><br/> 현<br/>황</button> 
+                <Link to="/mypage">
+                    <button id="mypage-sidebar">내<br/><br/>정<br/>보</button>
+                </Link>
+                {info.petAge ? 
+                <Link to="/reservation">
+                    <button id="mypage-sidebar">예<br/>약<br/><br/> 현<br/>황</button> 
+                </Link>
                 :
-                <button className="mypage-sidebar-registration">신<br/>청<br/><br/> 현<br/>황</button>
-                }
-                
+                <Link to="/application">
+                    <button id="mypage-sidebar">신<br/>청<br/><br/> 현<br/>황</button>
+                </Link>
+                } 
             </div>
             
-            {pwChange ? <PwChange handlePwChange={handlePwChange}/> : 
+            {pwChange ? <PwChange handlePwChangeout={handlePwChangeout}/> : 
             <div className="mypage-section">
                 <div className="mypage-section-btn">
                     <button className="mypage-secession" onClick={handlePwChange}>P/W 수정</button>
