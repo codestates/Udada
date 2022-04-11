@@ -6,6 +6,8 @@ import SitterListContainer from './pages/SitterListContainer';
 import PetListContainer from './pages/PetListContainer';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import Mypage from './pages/Mypage';
+
 
 //import NotificationCenter from './components/NotificationCenter';
 import './App.css';
@@ -33,6 +35,7 @@ function App() {
         <Route path="/petlist" element={<PetListContainer petUserInfo={petUserInfo} setPetUserInfo={setPetUserInfo} />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/mypage" element={<Mypage />} />
       </Routes>
       {/*<NotificationCenter />*/}
       <Footer />
