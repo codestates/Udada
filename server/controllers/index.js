@@ -5,5 +5,7 @@ module.exports = {
     signout : require('./pages/signout'),
     signup : require('./pages/signup'),
     mypage : require('./pages/mypage'),
+    reservation : require('./pages/reservation'),
+    bookinglist : require('./pages/bookinglist'),
     
 }

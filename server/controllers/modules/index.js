@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-const {petuser, petsitter} = require('../../models')
+const {petuser, petsitter, petuser_registration, petsitter_registration} = require('../../models')
 
 module.exports = {
 
@@ -86,5 +86,13 @@ module.exports = {
         await petsitter.destroy({
             where : data
         })
+    },
+
+    reserveUserData : async (data) => {
+
+    },
+
+    reserveSitterData : async (data) => {
+        
     }
 }
