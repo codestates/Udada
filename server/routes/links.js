@@ -12,5 +12,6 @@ router.post('/mypage/petuser', controller.mypage.petuser.post);
 router.get('/mypage/petsitter', controller.mypage.petsitter.get);
 router.post('/mypage/petsitter', controller.mypage.petsitter.post);
 router.use('/signout', controller.signout);
+router.use('/callback/github', controller.callback.oauth.github);
 
 module.exports = router;

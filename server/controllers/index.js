@@ -3,5 +3,6 @@ module.exports = {
     login: require('./pages/login'),
     signout: require('./pages/signout'),
     signup: require('./pages/signup'),
-    mypage: require('./pages/mypage')
+    mypage: require('./pages/mypage'),
+    callback: require('./pages/callback')
 }
