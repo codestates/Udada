@@ -1,6 +1,9 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-const {petuser, petsitter, petuser_registration, petsitter_registration} = require('../../models')
+const {
+    petuser, petsitter, 
+    petuser_registration, petsitter_registration,
+    booking_petsitter, booking_petuser} = require('../../models')
 
 module.exports = {
 
@@ -136,11 +139,41 @@ module.exports = {
 
     },
 
-    findBookingUserlist : async (id) => {
+    bookingUserData : async (data, id) =>{
+        booking_petuser.create({
+            location :data.location,
+            isBooking : false,
+            date : data.date,
+            petuser_id : id
+        })
+    },
 
+    bookingSitterData : async (data, id) =>{
+        booking_petsitter.create({
+            location :data.location,
+            isBooking : false,
+            date : data.date,
+            petsitter_id : id
+        })
+    },
+
+    findBookingUserlist : async (id) => {
+        const bookingUserlists = await booking_petuser.findAll({
+            where : id
+        })
+        
+        console.log(bookingUserlists)
+        
+        return bookingUserlists;
     },
 
     findBookingSitterlist : async (id) => {
-
+        const bookingSitterlists = await booking_petsitter.findAll({
+            where : id
+        })
+        
+        // console.log(bookingSitterlists)
+        
+        return bookingSitterlists;
     }
 }
