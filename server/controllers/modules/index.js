@@ -35,18 +35,17 @@ module.exports = {
 
 
     checkRefreshToken: (req) => {
-        // const refreshToken = req.headers.cookie;
 
         const refreshToken = req.cookies.refreshToken;
-        //console.log(req)
-        console.log(refreshToken)
-        // const token = refreshToken.split('=')[1]
+        // console.log(req)
+        // console.log(refreshToken)
+            // const token = refreshToken.split('=')[1]
+
         try {
             return jwt.verify(refreshToken, process.env.REFRESH_SECRET)
         } catch (e) {
             return null;
         }
-
     },
 
     // TODO 아래의 petuser와 petsitter의 데이터를 찾을 때 따로 구분하여 찾지말고 join을 이용해서 가져오자.
