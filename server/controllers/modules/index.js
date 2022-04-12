@@ -17,6 +17,7 @@ module.exports = {
 
     isAuthorized: (req) => {
         const authorization = req.headers["authorization"]
+        //console.log(authorization);
 
         if (!authorization) {
             return null
@@ -34,19 +35,16 @@ module.exports = {
 
 
     checkRefreshToken: (req) => {
-        const refreshToken = req.headers.cookie;
+        // const refreshToken = req.headers.cookie;
 
-        if (!refreshToken) {
-            return null
-        } else {
-
-            const token = refreshToken.split('=')[1]
-
-            try {
-                return jwt.verify(token, process.env.REFRESH_SECRET)
-            } catch (e) {
-                return null;
-            }
+        const refreshToken = req.cookies.refreshToken;
+        //console.log(req)
+        console.log(refreshToken)
+        // const token = refreshToken.split('=')[1]
+        try {
+            return jwt.verify(refreshToken, process.env.REFRESH_SECRET)
+        } catch (e) {
+            return null;
         }
 
     },

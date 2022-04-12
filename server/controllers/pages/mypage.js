@@ -7,16 +7,16 @@ module.exports = {
             // console.log(req.cookies.refreshToken)
             // console.log(req.headers)
             const accessTokenData = isAuthorized(req)
-            // console.log(accessTokenData)
+            //console.log(accessTokenData)
             const refreshTokenData = checkRefreshToken(req)
-            // console.log(refreshTokenData)
+            //console.log(refreshTokenData)
 
             // accessToken도 있고 Refresh도 있는 경우
             if (accessTokenData && refreshTokenData) {
                 const { email } = accessTokenData
 
                 const petuserData = await findUserData({ email })
-                // console.log(petuserData)
+                console.log(petuserData)
                 if (petuserData) {
                     delete petuserData.password
                     return res.status(200).json({ data: { petuserData }, messages: "ok" })
@@ -42,7 +42,7 @@ module.exports = {
             }
 
             if (accessTokenData && !refreshTokenData) {
-                return res.json({ data: null, message: 'invalid access token' })
+                return res.json({ data: null, message: 'whyyyyy' })
             }
 
             if (!accessTokenData && !refreshTokenData) {
@@ -126,7 +126,7 @@ module.exports = {
             }
 
             if (accessTokenData && !refreshTokenData) {
-                return res.json({ data: null, message: 'invalid access token' })
+                return res.json({ data: null, message: 'Noooo refresh token' })
             }
 
             if (!accessTokenData && !refreshTokenData) {
