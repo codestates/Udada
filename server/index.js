@@ -7,6 +7,7 @@ const bookingRouter = require('./routes/bookings')
 const https = require('https');
 const fs = require('fs');
 
+
 // const router = express.Router();
 const app = express();
 
@@ -25,12 +26,10 @@ app.use('/bookings', bookingRouter)
 
 const HTTPS_PORT =process.env.HTPPS_PORT || 4000;
 
-let server = https
-  .createServer(
-    {
-      key: fs.readFileSync(__dirname + '/key.pem', 'utf-8'),
-      cert: fs.readFileSync(__dirname + '/cert.pem', 'utf-8'),
-    },app)
+let server = http
+  .createServer(app.use('/', (req, res) => {
+    res.send('Congrats! You made http server now :)');
+  }))
   .listen(HTTPS_PORT,() => {
     console.log(`      🚀 Server is starting on ${HTTPS_PORT}`);
   })
