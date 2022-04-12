@@ -18,7 +18,9 @@ app.use(cors({
   credentials: true,
   method : ['get', 'post', 'options', 'delete']
 }));
-// https 설정 변경
+
+console.log("안뇽")
+
 app.use('/', indexRouter); // req, res를 여기서 가져오네 indexRouter가 아니라 함수가 들어가야하는거네.
 app.use('/links', linksRouter);
 app.use('/bookings', bookingRouter)
