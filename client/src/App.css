@@ -103,6 +103,13 @@ body {
   display: inline-block;
 }
 
+#main-container{
+  display: flex; /*table*/
+  margin: 0 auto;
+  width: 100%;
+  height: calc(100vh - 4rem);
+}
+
 #main-body {
   background-color: #bc9eff0e;
   padding: 5rem;
@@ -148,6 +155,7 @@ body {
 
 #name {
   /* vertical-align: middle; */
+  font-weight: 700;
   font-size: 35px;
   padding-left: 15px;
   color: #F9F9F9;
@@ -160,6 +168,9 @@ body {
 }
 
 #menu {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   margin: 0rem;
   right: 0;
   font-weight: 300;
@@ -179,8 +190,13 @@ a:hover {
   color: #4000c7
 }
 
+#nav-btn-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #nav-btn {
-  width: 17%;
   padding: 0.5rem 1rem;
   margin-left: 0;
   border: none;
@@ -1116,4 +1132,175 @@ input[type="checkbox"]:checked + label {
   font-size: 25px;
   font-weight: 800;
   cursor:pointer;
+}
+
+
+/* Login.js, Signup.js */
+
+.login-body,
+.signup-body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin: 200px;
+  height: 45vh;
+}
+
+.login-box,
+.signup-box{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 50%;
+  height: 280px;
+  margin-bottom: 10px;
+  border-radius: 10px;    
+  background-color:#6e19bd2a; 
+  box-shadow: 5px 10px 10px 1px rgba(0,0,0,.3); 
+}
+
+#login-user-img,
+#signup-user-img{
+width: 100px;
+height: 105px;
+}
+
+#login-sitter-img,
+#signup-sitter-img{
+  width: 90px;
+  height: 89px;
+  }
+
+#login-show-text,
+#signup-show-text{
+ font-size: 20px;
+ font-weight: bold;
+}
+
+
+#login-button,
+#signup-button,
+#signup-next-button{
+  width: 130px;
+  padding: 0.7rem 1rem;
+  margin-left: 0;
+  border: none;
+  border-radius: 22px;
+  font-size: 0.9rem;
+  font-weight: 450;
+  text-align: center;
+  background-color: #8f4bd4e6;
+  color: #F9F9F9;
+}
+
+#login-button:hover, 
+#signup-button:hover{
+  color: white;
+  background-color: #4000c7;
+}
+
+/* PetSitterLogin.js, PerUserLogin.js */
+
+.login-social-here-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 50%;
+  height: 280px;
+  margin-bottom: 10px;
+  border-radius: 10px;    
+  background-color:#6e19bd2a; 
+  box-shadow: 5px 10px 10px 1px rgba(0,0,0,.3); 
+}
+
+.login-here-box{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#login-social-kakao-logo,
+#login-social-naver-logo{
+  width: 20px;
+  height: 20px;
+}
+
+#login-social-button{
+  padding: 0.7rem 1rem;
+  margin-left: 0;
+  border: none;
+  border-radius: 22px;
+  font-size: 0.9rem;
+  font-weight: 450;
+  text-align: center;
+  background-color: #8f4bd4e6;
+  color: #F9F9F9;
+}
+
+#login-social-button:hover {
+  color: white;
+  background-color: #4000c7;
+}
+
+/* petUserSignup.js, petSitterSignup.js */
+#first-signup-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  list-style: none;
+  width: 200%;
+  height: 150%;
+  margin-bottom: 10px;
+  padding: 30px;
+  border-radius: 10px;    
+  background-color:#6e19bd2a; 
+  box-shadow: 5px 10px 10px 1px rgba(0,0,0,.3); 
+}
+#second-signup-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 200%;
+  height: 150%;
+  margin-bottom: 10px;
+  padding: 30px;
+  border-radius: 10px;    
+  background-color:#6e19bd2a; 
+  box-shadow: 5px 10px 10px 1px rgba(0,0,0,.3); 
+}
+.signup-form-box{
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  justify-content: space-around;
+  align-items: center;
+}
+
+.signup-box-text{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 4px;
+  margin-bottom: 3px;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.sigup-box-textfield{
+  flex-grow: 1;
+  margin-top: 5px; 
+  border-radius: 10px; 
+  border-width: 0.1rem;  
+  background-color:#ffffff; 
 }
