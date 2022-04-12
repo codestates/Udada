@@ -63,10 +63,11 @@ export default function PetUserSignup({ petUserInfo, setPetUserInfo }) {
                     },
                     { 'Content-Type': 'application/json', withCredentials: true }
                 ).then((res) => {
-                    navigate.push('/');
+                    navigate('/login/petuser');
                     alert('회원가입 완료');
                 })
         } else {
+            alert('모든 항목은 필수입니다.')
             setErrorMessage('모든 항목은 필수입니다');
         }
 
@@ -81,29 +82,30 @@ export default function PetUserSignup({ petUserInfo, setPetUserInfo }) {
                         isClicked ?
                             <div id="second-signup-body">
                                 <div>모든 항목은 필수입니다</div>
-                                <div>
-                                    <span>이메일</span>
-                                    <input type='email' onChange={handleInputValue('email')} />
+                                <div className="signup-box-text">
+                                    <span >이메일</span>
+                                    <input type='email' className="sigup-box-textfield" onChange={handleInputValue('email')} />
                                 </div>
-                                <div>
-                                    <span>비밀번호</span>
+                                <div className="signup-box-text">
+                                    <span >비밀번호</span>
                                     <input
                                         type='password'
+                                        className="sigup-box-textfield"
                                         onChange={handleInputValue('password')}
                                     />
                                 </div>
-                                <div>
-                                    <span>이름</span>
-                                    <input type='text' onChange={handleInputValue('name')} />
+                                <div className="signup-box-text">
+                                    <span >이름</span>
+                                    <input type='text' className="sigup-box-textfield" onChange={handleInputValue('name')} />
                                 </div>
-                                <div>
-                                    <span>나이</span>
-                                    <input type='number' onChange={handleInputValue('age')} />
+                                <div className="signup-box-text">
+                                    <span >나이</span>
+                                    <input type='number' className="sigup-box-textfield" onChange={handleInputValue('age')} />
                                 </div>
-                                <div>
+                                <div className="signup-box-text">
                                     {' '}
-                                    <span>전화번호</span>{' '}
-                                    <input type='tel' onChange={handleInputValue('phoneNumber')} />
+                                    <span >전화번호</span>{' '}
+                                    <input type='tel' className="sigup-box-textfield" onChange={handleInputValue('phoneNumber')} />
                                 </div>
                                 <div>
                                     <Link to='/login'>이미 아이디가 있으신가요?</Link>
@@ -121,28 +123,29 @@ export default function PetUserSignup({ petUserInfo, setPetUserInfo }) {
                             <></>
                     }
                     <div id="first-signup-body">
-                        <div>
-                            <span>반려동물의 나이는 어떻게 되나요?</span>
-                            <input type='number' onChange={handleInputValue('petAge')} />
+                        <div className="signup-box-text">
+                            <span >반려동물의 나이는 어떻게 되나요?</span>
+                            <input type='number' className="sigup-box-textfield" onChange={handleInputValue('petAge')} />
                         </div>
-                        <div>
-                            <span>반려동물의 크기는 어떻게 되나요?</span>
+                        <div className="signup-box-text">
+                            <span >반려동물의 크기는 어떻게 되나요?</span>
                             <input
                                 type='text'
+                                className="sigup-box-textfield"
                                 onChange={handleInputValue('howBig')}
                             />
                         </div>
-                        <div>
-                            <span>어디서 돌봐드릴까요?</span>
-                            <input type='text' onChange={handleInputValue('location')} />
+                        <div className="signup-box-text">
+                            <span >어디서 돌봐드릴까요?</span>
+                            <input type='text' className="sigup-box-textfield" onChange={handleInputValue('location')} />
                         </div>
-                        <div>
-                            <span>펫시터가 알아야할 내용이 있을까요?</span>
-                            <input type='text' onChange={handleInputValue('content')} />
+                        <div className="signup-box-text">
+                            <span >펫시터가 알아야할 내용이 있을까요?</span>
+                            <input type='text' className="sigup-box-textfield" onChange={handleInputValue('content')} />
                         </div>
-                        <div>
-                            <span>프로필 사진 등록</span>
-                            <input type='text' onChange={handleInputValue('photo')} />
+                        <div className="signup-box-text">
+                            <span >프로필 사진 등록</span>
+                            <input type='text' className="sigup-box-textfield" onChange={handleInputValue('photo')} />
                         </div>
                         <button
                             id='signup-next-button'

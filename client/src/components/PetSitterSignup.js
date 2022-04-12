@@ -12,7 +12,7 @@ export default function PetSitterSignup({ petSitterInfo, setPetSitterInfo }) {
         age: '',
         phoneNumber: '',
         location: '',
-        license: '', // boolean 값으로 변경 필요 -> 지금은 'on'
+        license: false, // boolean 값으로 변경 필요 -> 지금은 'on'
         content: '',
         photo: '',
 
@@ -25,6 +25,15 @@ export default function PetSitterSignup({ petSitterInfo, setPetSitterInfo }) {
     const handleInputValue = (key) => (e) => {
         setuserinfo({ ...userinfo, [key]: e.target.value });
     };
+    //license만 따로 입력값넣는 함수 (string -> boolean)
+    const handleCheckbox = (key) => (e) => {
+        if (e.target.value === 'on') {
+            console.log('checkbox checked!');
+            setuserinfo({ ...userinfo, [key]: true });
+        } else {
+            setuserinfo({ ...userinfo, [key]: false });
+        }
+    }
 
     //첫번째 가입창, 두번째 가입창을 순서대로 보여주기 위함
     function showSecondBody() {
@@ -67,11 +76,12 @@ export default function PetSitterSignup({ petSitterInfo, setPetSitterInfo }) {
                     { 'Content-Type': 'application/json', withCredentials: true }
                 ).then((res) => {
                     console.log(userinfo);
-                    navigate.push('/');
+                    navigate('/login/petsitter');
                     alert('회원가입 완료');
 
                 })
         } else {
+            alert('모든 항목은 필수입니다.')
             setErrorMessage('모든 항목은 필수입니다');
         }
 
@@ -86,29 +96,30 @@ export default function PetSitterSignup({ petSitterInfo, setPetSitterInfo }) {
                         isClicked ?
                             <div id="second-signup-body">
                                 <div>모든 항목은 필수입니다</div>
-                                <div>
-                                    <span>이메일</span>
-                                    <input type='email' onChange={handleInputValue('email')} />
+                                <div className="signup-box-text">
+                                    <span >이메일</span>
+                                    <input type='email' className="sigup-box-textfield" onChange={handleInputValue('email')} />
                                 </div>
-                                <div>
-                                    <span>비밀번호</span>
+                                <div className="signup-box-text">
+                                    <span >비밀번호</span>
                                     <input
                                         type='password'
+                                        className="sigup-box-textfield"
                                         onChange={handleInputValue('password')}
                                     />
                                 </div>
-                                <div>
-                                    <span>이름</span>
-                                    <input type='text' onChange={handleInputValue('name')} />
+                                <div className="signup-box-text">
+                                    <span >이름</span>
+                                    <input type='text' className="sigup-box-textfield" onChange={handleInputValue('name')} />
                                 </div>
-                                <div>
-                                    <span>나이</span>
-                                    <input type='number' onChange={handleInputValue('age')} />
+                                <div className="signup-box-text">
+                                    <span >나이</span>
+                                    <input type='number' className="sigup-box-textfield" onChange={handleInputValue('age')} />
                                 </div>
-                                <div>
+                                <div className="signup-box-text">
                                     {' '}
-                                    <span>전화번호</span>{' '}
-                                    <input type='tel' onChange={handleInputValue('phoneNumber')} />
+                                    <span >전화번호</span>{' '}
+                                    <input type='tel' className="sigup-box-textfield" onChange={handleInputValue('phoneNumber')} />
                                 </div>
                                 <div>
                                     <Link to='/login'>이미 아이디가 있으신가요?</Link>
@@ -126,21 +137,21 @@ export default function PetSitterSignup({ petSitterInfo, setPetSitterInfo }) {
                             <></>
                     }
                     <div id="first-signup-body">
-                        <div>
-                            <span>반려동물 관련 자격증이 있으신가요?</span>
-                            <input type='checkbox' onChange={handleInputValue('license')} />
+                        <div className="signup-box-text">
+                            <span >반려동물 관련 자격증이 있으신가요? 있다면 체크해주세요</span>
+                            <input type='checkbox' className="sigup-box-textfield" onChange={handleCheckbox('license')} />
                         </div>
-                        <div>
-                            <span>어디서 활동하길 원하세요?</span>
-                            <input type='text' onChange={handleInputValue('location')} />
+                        <div className="signup-box-text">
+                            <span >어디서 활동하길 원하세요?</span>
+                            <input type='text' className="sigup-box-textfield" onChange={handleInputValue('location')} />
                         </div>
-                        <div>
-                            <span>만나게 될 반려동물에게 본인을 소개해주세요</span>
-                            <input type='text' onChange={handleInputValue('content')} />
+                        <div className="signup-box-text">
+                            <span >만나게 될 반려동물에게 본인을 소개해주세요</span>
+                            <input type='text' className="sigup-box-textfield" onChange={handleInputValue('content')} />
                         </div>
-                        <div>
-                            <span>프로필 사진 등록</span>
-                            <input type='text' onChange={handleInputValue('photo')} />
+                        <div className="signup-box-text">
+                            <span >프로필 사진 등록</span>
+                            <input type='text' className="sigup-box-textfield" onChange={handleInputValue('photo')} />
                         </div>
                         <button
                             id='signup-next-button'
