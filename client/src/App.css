@@ -112,16 +112,17 @@ body {
 
 #main-body {
   background-color: #bc9eff0e;
-  padding: 5rem;
+  /* padding: 5rem; */
   display: table-cell;
   width: 100%;
 }
 
 #main-container{
   display: table;
-  margin: 60px auto;
+  margin: 60px auto 0;
   width: 100%;
-  height: calc(100vh - 4rem);
+  height: calc(120vh - 4rem);
+  background-color: #904BD4;
 }
 
 
@@ -262,7 +263,7 @@ a:hover {
   
   margin: 140px;
   padding-top: 50px;
-  height: 60vh;
+  height: 70vh;
 }
 
 #petSitterInfo-btn-div {
@@ -1304,3 +1305,48 @@ height: 105px;
   border-width: 0.1rem;  
   background-color:#ffffff; 
 }
+
+/* HomeContainer */
+*{margin:0;padding:0;}
+ul,li{list-style:none;
+  display: flex;
+  justify-content: center;}
+.slide{height:700px;overflow:hidden;}
+.slide ul{position:relative;height:100%;}
+.slide li{position:absolute;left:0;right:0;top:0;bottom:0;opacity:0;animation:fade 8s infinite;}
+/* .slide li img{
+  width: 1;
+} */
+.slide li:nth-child(1){background:#122103;animation-delay:0s}
+.slide li:nth-child(2){background:#a8babf;animation-delay:2s}
+.slide li:nth-child(3){background:#d98495;animation-delay:4s}
+.slide li:nth-child(4){background:#73685c;animation-delay:6s}
+ /* 100 / 8 = 12.5 */
+@keyframes fade {
+  0% {opacity:0;}
+  5% {opacity:1;}
+  25% {opacity:1;}
+  30% {opacity:0;}
+  100% {opacity:0;}
+}
+#main-greetings{
+  margin: 55px auto;
+  width: 1150px;
+}
+#main-greetings img{
+  width: 100%;
+}
+@media screen and (max-width: 1250px) { 
+  .slide {
+    height: 500px;
+  }
+  #main-greetings{
+  margin: 115px auto;
+  width: 700px;
+
+  }
+  #main-greetings img{
+    width: 100%;
+  }
+}
+
