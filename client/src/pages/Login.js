@@ -13,15 +13,19 @@ export default function Login({ handleResponseSuccess }) {
         <div>
             <div class="login-body">
                 <div class="login-box">
-                    <img id="login-user-img" src={Img[0]} alt="dogface-emoji" />
-                    <span id="login-show-text">펫시터가 필요합니다</span>
+                    <div class="signup-box-write">
+                        <img id="login-user-img" src={Img[0]} alt="dogface-emoji" />
+                        <span id="login-show-text">펫시터가 필요합니다</span>
+                    </div>
                     <Link to="/login/petuser">
                         <button id="login-button">유저 로그인</button>
                     </Link>
                 </div>
                 <div class="login-box">
-                    <img id="login-sitter-img" src={Img[1]} alt="starface-emoji" />
-                    <span id="login-show-text">펫시터로 활동합니다</span>
+                    <div class="signup-box-write">
+                        <img id="login-sitter-img" src={Img[1]} alt="starface-emoji" />
+                        <span id="login-show-text">펫시터로 활동합니다</span>
+                    </div>    
                     <Link to="/login/petsitter">
                         <button id="login-button">펫시터 로그인</button>
                     </Link>

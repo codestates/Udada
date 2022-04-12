@@ -1144,41 +1144,51 @@ input[type="checkbox"]:checked + label {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  margin: 200px;
-  height: 45vh;
+  margin: 345px 0;
+  height: 620px;
 }
 
 .login-box,
 .signup-box{
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: center;
   flex-wrap: wrap;
   align-items: center;
-  width: 50%;
+  width: 580px;
   height: 280px;
   margin-bottom: 10px;
   border-radius: 10px;    
   background-color:#6e19bd2a; 
   box-shadow: 5px 10px 10px 1px rgba(0,0,0,.3); 
 }
+.signup-box-write{
+  display: flex;
+  align-items: center;
+
+}
+
 
 #login-user-img,
 #signup-user-img{
-width: 100px;
-height: 105px;
+width: 60px;
+height: 60px;
+margin: 15px;
 }
 
 #login-sitter-img,
 #signup-sitter-img{
-  width: 90px;
-  height: 89px;
+  width: 50px;
+  height: 50px;
+  margin: 15px;
+
   }
 
 #login-show-text,
 #signup-show-text{
- font-size: 20px;
- font-weight: bold;
+  font-size: 18px;
+  font-weight: 500;
+  color: #564e4ed1;
 }
 
 
@@ -1195,6 +1205,7 @@ height: 105px;
   text-align: center;
   background-color: #8f4bd4e6;
   color: #F9F9F9;
+  cursor: pointer;
 }
 
 #login-button:hover, 
