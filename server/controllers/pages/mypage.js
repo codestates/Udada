@@ -94,7 +94,11 @@ module.exports = {
         get: async (req, res) => {
             // console.log(req.headers)
             const accessTokenData = isAuthorized(req)
+            // console.log(accessTokenData)
+
             const refreshTokenData = checkRefreshToken(req)
+            // console.log(refreshTokenData)
+            
 
             // accessToken도 있고 Refresh도 있는 경우
             if (accessTokenData && refreshTokenData) {
@@ -126,6 +130,7 @@ module.exports = {
             }
 
             if (accessTokenData && !refreshTokenData) {
+                // accessTokeng
                 return res.json({ data: null, message: 'invalid access token' })
             }
 
@@ -136,7 +141,7 @@ module.exports = {
 
         post: async (req, res) => {
             const accessTokenData = isAuthorized(req)
-            // console.log(accessTokenData)
+            // console.log(req)
             const refreshTokenData = checkRefreshToken(req)
             // console.log(refreshTokenData)
 
