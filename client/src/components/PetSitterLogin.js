@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect  } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { logo } from '../assets/images'
 import axios from 'axios';
 
 axios.defaults.withCredentials = true;
 
 export default function PetSitterLogin({ handleResponseSuccess, setAccessToken}) {
+
+    const navigate = useNavigate();
+
     const [loginInfo, setLoginInfo] = useState({
         email: '',
         password: ''
@@ -26,12 +29,21 @@ export default function PetSitterLogin({ handleResponseSuccess, setAccessToken})
                     email: loginInfo.email,
                     password: loginInfo.password
                 },
+
                 { headers: { "Content-Type": "application/json" }}
+
             ).then((res) => {
+                console.log(res);
                 setAccessToken(res.data.data.accessToken);
                 console.log(res.data.data.accessToken)
+
                 handleResponseSuccess();
                 //console.log(res.cookies);
+
+                //setRefreshToken(res.cookies);
+                //navigate('/petsitterlist');
+
+
             })
         } else {
             setErrorMessage('이메일과 비밀번호를 입력하세요');

@@ -117,7 +117,12 @@ body {
   width: 100%;
 }
 
-
+#main-container{
+  display: table;
+  margin: 60px auto;
+  width: 100%;
+  height: calc(100vh - 4rem);
+}
 
 
 .main-content {
@@ -133,7 +138,8 @@ body {
   background-color: #904BD4;
   width: 100%;
   height: 4rem;
-  position: sticky; 
+  position: fixed; 
+  z-index: 1;
   top: 0;
   border-bottom: solid 1px rgb(212, 212, 212);
   display: grid;
@@ -162,6 +168,9 @@ body {
 }
 
 #menu {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   margin: 0rem;
   right: 0;
   font-weight: 300;
@@ -181,8 +190,13 @@ a:hover {
   color: #4000c7
 }
 
+#nav-btn-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #nav-btn {
-  width: 17%;
   padding: 0.5rem 1rem;
   margin-left: 0;
   border: none;
@@ -247,6 +261,7 @@ a:hover {
   align-items: center;
   
   margin: 140px;
+  padding-top: 50px;
   height: 60vh;
 }
 
@@ -496,6 +511,7 @@ input[type="checkbox"]:checked + label {
   align-items: center;
   
   margin: 140px;
+  padding-top: 50px;
   height: 80vh;
 }
 
@@ -570,6 +586,29 @@ input[type="checkbox"]:checked + label {
   width: 430px;
   font-size: 14px;
 }
+#pet-registration-careType-container{
+  display: flex;
+  flex-direction: row;
+}
+#pet-registration-careType-container div{
+  padding: 0 5px;
+}
+#pet-registration-careType{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#careType{
+  width:80px;
+  padding:3px;
+  margin: 0 61px;
+  border:1px solid #999;
+  font-family:'Nanumgothic';
+  border-radius:3px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance : none;
+}
 
 /* Profile.js */
 
@@ -579,7 +618,7 @@ input[type="checkbox"]:checked + label {
   align-items: center;
 
   background-color: rgb(255, 249, 186);
-  margin: 160px auto 350px;
+  margin: 215px auto 350px;
 
   width: 1000px;
   height: 700px;
@@ -591,7 +630,7 @@ input[type="checkbox"]:checked + label {
 #profile-title {
   position: absolute;
   top: 42px;
-  left: 30%;
+  /* left: 33%; */
 
   font-size: 40px;
   font-weight: 800;
@@ -696,16 +735,18 @@ input[type="checkbox"]:checked + label {
   top: 46px;
   right: 52px;
   font-size: 25px;
+  font-weight: 800;
   cursor:pointer;
 }
 
 #profile-modal-text {
   background-color: #F9F9F9;
   position: absolute;
-  top: 132px;
+  top: 128px;
   left: 33%;
 
-  font-size: 22px;
+  font-size: 21px;
+  text-align: center;
 }
 
 #profile-modal-btn-container {
@@ -717,6 +758,7 @@ input[type="checkbox"]:checked + label {
   margin: 35px 33px;
   padding-top: 149px;
   padding-left: 126px;
+  
 }
 
 #profile-modal-btn-container button {
@@ -733,11 +775,370 @@ input[type="checkbox"]:checked + label {
 #profile-modal-btn-container button:hover {
   color: white;
   background-color: #9749df;
+  cursor: pointer;
 }
 
-/* Login.js */
+/* Mypage */
+.mypage-container{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
 
-.login-body{
+  background-color: #9749df;
+  margin: 215px auto 350px;
+
+  width: 1000px;
+  height: 720px;
+  border-radius: 20px;
+
+  position: relative;
+}
+.mypage-header h1{
+  font-size: 40px;
+  font-weight: 800;
+  margin: 0;
+  color: #7326bb;
+  font-style: inherit;
+  text-shadow: -4px 0 #fffde7, 0 4px #fffde7, 4px 0 #fffde7, 0 -4px #fffde7;
+}
+.mypage-body{
+  display: flex;
+}
+
+.mypage-sidebar{
+  background-color: #9749df;
+  width: 46px;
+  height: 580px;
+  border-radius: 15px;
+  padding-top: 30px;
+
+}
+.mypage-sidebar button{
+  display: block;
+  width: 55px;
+  padding: 16px;
+  margin: 5px auto;
+
+  font-size: 15px;
+
+  border: #9749df solid 1px;
+  /* border-radius: 18px; */
+  border-top-left-radius: 18px;
+  border-bottom-left-radius: 18px;
+  outline: 1;
+  background-color: rgb(244, 236, 251);
+}
+.mypage-sidebar a:nth-child(2)>button{
+  background-color: #ffffff;
+}
+.mypage-sidebar button:hover{
+  cursor: pointer;
+}
+.mypage-sidebar a{
+  font-weight: 0;
+  margin: 0;
+}
+#mypage-sidebar-userInfo{
+  background-color: #ffffff;
+
+}
+#mypage-sidebar-booking, #mypage-sidebar-registration{
+  background-color: rgb(244, 236, 251);
+  
+}
+
+.mypage-section{
+  background-color: rgb(244, 236, 251);
+  width: 880px;
+  height: 580px;
+  border-radius: 15px;
+  position: relative;
+  overflow-y: scroll
+}
+.mypage-section-btn{
+  position: absolute;
+  right: 20px;
+  width: 250px;
+
+}
+.mypage-section button{
+  width: 46%;
+  padding: 0.9rem 0.9rem;
+  margin: 35px 10px 35px 0px;
+  border: none;
+  border-radius: 40px;
+  font-size: 0.9rem;
+  font-weight: 390;
+  text-align: center;
+  background-color: #9a53dcf4;
+  color: rgb(244, 236, 251);
+  font-weight: 550;
+}
+.mypage-section button:hover{
+  background-color: #fffffff4;
+  color: #9a53dcf4;
+  cursor: pointer;
+}
+.mypage-section-profile{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  margin-top: 135px;
+  height: 445px;
+}
+.mypage-section-nameAge{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.mypage-section-nameAge div{
+  width: 45%;
+}
+.mypage-section-nameAge div:first-child{
+  border-right : 2px solid #d8d8d8;
+  height : 20px;
+  
+}
+.mypage-section-profile>div{
+  background-color: #ffffff;
+  width: 60%;
+  margin: 11px;
+  padding: 15px;
+  border-radius: 20px;
+  
+}
+.mypage-section-profile>div:not(:last-of-type){
+  height: 45px;
+  text-align: center;
+}
+
+.mypage-content{
+  height: 130px;
+  text-align: center;
+  line-height: 100px;
+}
+#mypage-modal-container, #mypage-secession-container{
+  display: none;
+}
+
+
+
+/* PwChange.js */
+
+
+.mypage-pwchange-section{
+  background-color: rgb(244, 236, 251);
+  
+  width: 880px;
+  height: 580px;
+  border-radius: 15px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.mypage-pwchange-box {
+  width: 340px;
+  height: 400px;
+  background-color: rgb(244, 236, 251);
+  margin-bottom: 60px;
+}
+.mypage-pwchange-title{
+  width: 100%;
+  line-height: 5rem;
+  margin: 45px 0;
+  /* padding: 0 auto; */
+  font-size: 2rem;
+  font-style: inherit;
+  font-weight: 730;
+}
+.mypage-pwchange-input{
+  display: flex;
+  flex-direction: column;
+}
+.mypage-pwchange-input input{
+  display: block;
+
+  width: 100%;
+  height: 50px;
+  margin: 18px 0;
+
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid black;
+  background-color: rgb(244, 236, 251);
+
+  text-align: center;
+} 
+.mypage-pwchange-input input:focus{
+  outline: none;
+}
+#mypage-pwchange-btn{
+  margin-top: 20px;
+  border-bottom: none;
+  background-color: #9a53dcf4;
+  color: hsl(0, 7%, 94%);
+  font-weight: 600;
+  cursor: pointer;
+}
+#mypage-pwchange-btn:hover{
+  background-color: hsl(0, 7%, 94%);
+  color: #9a53dcf4;
+}
+#mypage-pwchange-modal-text {
+  background-color: #F9F9F9;
+  position: absolute;
+  top: 115px;
+  left: 33%;
+  font-size: 21px;
+  text-align: center;
+}
+#mypage-pwchange-container{
+  display: none;
+}
+#mypage-pwchange-container button{
+  margin-left: 20%;
+}
+
+/* Booking.js */
+
+.mypage-section{
+  height: 578px;
+}
+.mypage-section::-webkit-scrollbar {
+  width: 7px;
+}
+.mypage-section::-webkit-scrollbar-thumb {
+  background-color: rgba(244, 236, 251, 0);
+  border-radius: 10px;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+.mypage-section::-webkit-scrollbar-track {
+  background-color: hsl(0, 0%, 50%);
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px white;
+  display: none;
+}
+
+/* .booking-item-samll-container{
+  margin-top: 100px;
+  margin-bottom: 200px;
+} */
+.booking-number{
+  position: absolute;
+  top: -17px;
+  left: 7px;
+  color: rgba(142, 137, 137, 0.873);
+  font-size: 13px;
+}
+.booking-item{
+  display: flex;
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
+  width: 80%;
+  margin: 50px 86px 0px 86px;
+  /* justify-content: space-evenly; */
+  padding: 6px 10px;
+  cursor: pointer;
+
+  position: relative;
+
+
+}
+.booking-item:hover{
+  background-color: rgb(237, 237, 237);
+}
+
+.booking-item-img{
+  width: 90px;
+  height: 90px;
+}
+.booking-item-line {
+  width: 184px;
+  height: 90px;
+  border-right: 2px solid rgba(183, 183, 183, 0.64);
+  padding: 0 40px;
+  
+}
+.booking-item-img img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.booking-item-write{
+  width: 500px;
+  /* margin-right: 100px; */
+  padding: 25px 0 0 180px;
+}
+.booking-item-time{
+  padding-left: 20px;
+}
+
+
+#booking-information{
+  position: absolute;
+  top: 0px;
+  left: 35px;
+
+  background-color: rgb(244, 236, 251);
+  width: 800px;
+  height: 605px;
+
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+}
+.booking-information-img{
+  width: 200px;
+  height: 200px;
+}
+.booking-information-img img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 5px solid #fffff5;
+}
+
+.booking-information-write>div{
+  background-color: #fffff5;
+  width: 335px;
+  height: 33px;
+  margin: 8px 0;
+  padding: 9px 13px;
+  border-radius: 20px;
+}
+.booking-information-communication{
+  background-color: #fffff5;
+  width: 335px;
+  margin: 8px 0;
+  padding: 10px 13px;
+  border-radius: 15px;
+  border:3px solid #9a53dcf4;
+  height: 53px;
+
+}
+#booking-information-close {
+  position: absolute;
+  top: 26px;
+  right: 12px;
+  font-size: 25px;
+  font-weight: 800;
+  cursor:pointer;
+}
+
+
+/* Login.js, Signup.js */
+
+.login-body,
+.signup-body{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -746,7 +1147,8 @@ input[type="checkbox"]:checked + label {
   height: 45vh;
 }
 
-.login-box{
+.login-box,
+.signup-box{
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -760,23 +1162,28 @@ input[type="checkbox"]:checked + label {
   box-shadow: 5px 10px 10px 1px rgba(0,0,0,.3); 
 }
 
-#login-user-img{
+#login-user-img,
+#signup-user-img{
 width: 100px;
 height: 105px;
 }
 
-#login-sitter-img{
+#login-sitter-img,
+#signup-sitter-img{
   width: 90px;
   height: 89px;
   }
 
-#login-show-text{
+#login-show-text,
+#signup-show-text{
  font-size: 20px;
  font-weight: bold;
 }
 
 
-#login-button{
+#login-button,
+#signup-button,
+#signup-next-button{
   width: 130px;
   padding: 0.7rem 1rem;
   margin-left: 0;
@@ -789,7 +1196,8 @@ height: 105px;
   color: #F9F9F9;
 }
 
-#login-button:hover {
+#login-button:hover, 
+#signup-button:hover{
   color: white;
   background-color: #4000c7;
 }
@@ -838,4 +1246,61 @@ height: 105px;
 #login-social-button:hover {
   color: white;
   background-color: #4000c7;
+}
+
+/* petUserSignup.js, petSitterSignup.js */
+#first-signup-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  list-style: none;
+  width: 200%;
+  height: 150%;
+  margin-bottom: 10px;
+  padding: 30px;
+  border-radius: 10px;    
+  background-color:#6e19bd2a; 
+  box-shadow: 5px 10px 10px 1px rgba(0,0,0,.3); 
+}
+#second-signup-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 200%;
+  height: 150%;
+  margin-bottom: 10px;
+  padding: 30px;
+  border-radius: 10px;    
+  background-color:#6e19bd2a; 
+  box-shadow: 5px 10px 10px 1px rgba(0,0,0,.3); 
+}
+.signup-form-box{
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  justify-content: space-around;
+  align-items: center;
+}
+
+.signup-box-text{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 4px;
+  margin-bottom: 3px;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.sigup-box-textfield{
+  flex-grow: 1;
+  margin-top: 5px; 
+  border-radius: 10px; 
+  border-width: 0.1rem;  
+  background-color:#ffffff; 
 }

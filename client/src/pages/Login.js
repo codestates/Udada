@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Img } from '../assets/images'
 
-
-
 axios.defaults.withCredentials = true;
+
 
 export default function Login({ handleResponseSuccess }) {
     // TODO : 펫시터, 펫유저 로그인 분류 후 각각의 로그인 창으로 넘어간다
+    // TODO : 로그인 성공시 accessToken을 받아와서 mypage로 넘겨줄 수 있어야 한다
     return (
         <div>
             <div class="login-body">
