@@ -6,14 +6,16 @@ export const dummyData = {
             "name": "초롱이",
             "img": "../images/cat_linux.png",
             "email": "hello@gmail.com",
-            "phoneNumber": 1234,
+            "phoneNumber": 1234-8888,
             "photo": "",
             "location": "강남구",
             "careType": "산책",
             "howMany": "2",
             "content": "잘부탁드립니다.",
             "howBig": "중형",
-            "petage":5,
+            "petAge": 5,
+            "days": '월화수',
+
         
 
         },
@@ -23,16 +25,15 @@ export const dummyData = {
             "name": "초코",
             "img": "../images/cat_mac.jpeg",
             "email": "world@gmail.com",
-            "phoneNumber": 4567,
+            "phoneNumber": 1234-8888,
             "photo": "",
             "location": "서초구",
             "careType": "산책",
             "howMany": "1",
             "content": "잘 짖어요 왕왕 주의부탁.",
             "howBig": "중형",
-            "petage":2,
-    
-
+            "petAge": 2,
+            "days": '월화수',
         },
         {
             "id": 3,
@@ -40,14 +41,16 @@ export const dummyData = {
             "name": "pinkblood",
             "img": "../images/anti-gravity-2.png",
             "email": "butter@gmail.com",
-            "phoneNumber": 8902,
+            "phoneNumber": 1234-8888,
             "photo": "",
             "location": "양천구",
             "careType": "집돌봄",
             "howMany": "4",
             "content": "많이 먹어대서 다이어트 필요, 간식조절 주의요망.",
             "howBig": "대형",
-            "petage":1,
+            "petAge": 1,
+            "days": '월화수',
+
            
 
         }
@@ -70,7 +73,8 @@ export const dummyData = {
             "startTime": 10,
             "lastTime": 12,
             "days": '월화수',
-            "payment" : 10000
+            "payment" : 10000,
+
 
         },
         {
@@ -88,7 +92,8 @@ export const dummyData = {
             "startTime": 10,
             "lastTime": 12,
             "days": '월화수',
-            "payment" : 10000
+            "payment" : 10000,
+
         },
         {
             "id": 2,
@@ -105,7 +110,8 @@ export const dummyData = {
             "startTime": 10,
             "lastTime": 12,
             "days": '월화수',
-            "payment" : 10000
+            "payment" : 10000,
+
         },
         {
             "id": 3,
@@ -122,7 +128,8 @@ export const dummyData = {
             "startTime": 10,
             "lastTime": 12,
             "days": '월화수',
-            "payment" : 10000
+            "payment" : 10000,
+
         }
     ]
 }

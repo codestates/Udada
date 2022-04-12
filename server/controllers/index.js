@@ -1,4 +1,5 @@
 module.exports = {
+
     auth : require('./pages/auth'),
     login : require('./pages/login'),
     logout : require('./pages/logout'),
@@ -7,5 +8,6 @@ module.exports = {
     mypage : require('./pages/mypage'),
     reservation : require('./pages/reservation'),
     bookinglist : require('./pages/bookinglist'),
-    
+    callback: require('./pages/callback')
+
 }

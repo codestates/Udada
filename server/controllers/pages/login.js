@@ -1,44 +1,46 @@
-const {createAccessToken, createRefreshToken, findUserData, findSitterData} = require('../modules')
+const { createAccessToken, createRefreshToken, findUserData, findSitterData } = require('../modules')
 
-module.exports ={
+module.exports = {
     // console.log(req.body)
 
-    petsitter : async (req, res) => {
-        const {email, password} = req.body
-        const petsitterInfo = await findSitterData({email, password})
+    petsitter: async (req, res) => {
+        const { email, password } = req.body
+        const petsitterInfo = await findSitterData({ email, password })
 
-        if(!petsitterInfo){
+        if (!petsitterInfo) {
             return res.status(404).send("invalid user")
-        }else{
+        } else {
             delete petsitterInfo.password
-            const {name, age, email, phoneNumber} = petsitterInfo
+            const { name, age, email, phoneNumber } = petsitterInfo
 
-            
-            const accessToken = createAccessToken({name, age, email, phoneNumber})
-            const refreshToken = createRefreshToken({name, age, email, phoneNumber})
 
-            return res.status(200).cookie("refreshToken" , refreshToken, {httpOnly: true}).json({data:{accessToken},message : "ok"})
+            const accessToken = createAccessToken({ name, age, email, phoneNumber })
+            const refreshToken = createRefreshToken({ name, age, email, phoneNumber })
+            console.log('-------petsitter login(refreshtoken)----------')
+            console.log(refreshToken);
+            return res.status(200).cookie("refreshToken", refreshToken, { httpOnly: true }).json({ data: { accessToken }, message: "ok" })
         }
 
 
     },
 
-    petuser : async (req, res) => {
-        const {email, password} = req.body
-        const petuserInfo = await findUserData({email, password})
+    petuser: async (req, res) => {
+        const { email, password } = req.body
+        const petuserInfo = await findUserData({ email, password })
 
-        if(!petuserInfo){
+        if (!petuserInfo) {
             return res.status(404).send("invalid user")
-        }else{
+        } else {
             delete petuserInfo.password
-            const {name, age, email, phoneNumber} = petuserInfo
+            const { name, age, email, phoneNumber } = petuserInfo
 
-            
-            const accessToken = createAccessToken({name, age, email, phoneNumber})
-            const refreshToken = createRefreshToken({name, age, email, phoneNumber})
 
-            return res.status(200).cookie("refreshToken" , refreshToken, {httpOnly: true}).json({data : {accessToken}, message : "ok"})
-    
+            const accessToken = createAccessToken({ name, age, email, phoneNumber })
+            const refreshToken = createRefreshToken({ name, age, email, phoneNumber })
+            console.log("------serverlogin------")
+            console.log(refreshToken)
+            return res.status(200).cookie("refreshToken", refreshToken, { httpOnly: true }).json({ data: { accessToken }, message: "ok" })
+
         }
     }
 
