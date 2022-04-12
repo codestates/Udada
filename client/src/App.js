@@ -12,6 +12,8 @@ import PetSitterLogin from './components/PetSitterLogin';
 import PetUserSignup from './components/PetUserSignup';
 import PetSitterSignup from './components/PetSitterSignup';
 import Mypage from './pages/Mypage';
+import Reservation from './pages/Reservation';
+import Application from './pages/Application';
 import axios from 'axios';
 
 import './App.css';
@@ -138,6 +140,8 @@ function App() {
             // handleResponseSuccess={handleResponseSuccess} 
             setAccessToken={setAccessToken} />} />
         <Route path="/mypage" element={<Mypage />} />
+        <Route path="/reservation" element={<Reservation />} />
+        <Route path="/application" element={<Application />} />
       </Routes>
       {/*<NotificationCenter />*/}
       <Footer />
