@@ -26,7 +26,7 @@ app.use('/bookings', bookingRouter)
 
 const HTTPS_PORT =process.env.HTPPS_PORT || 4000;
 
-let server = http
+let server = https
   .createServer(app.use('/', (req, res) => {
     res.send('Congrats! You made http server now :)');
   }))
