@@ -1206,11 +1206,16 @@ margin: 15px;
   background-color: #8f4bd4e6;
   color: #F9F9F9;
   cursor: pointer;
+  margin-top: 30px;
+
 }
 #login-button{
   width: 246px;
   border-radius: 9px;
 }
+/* #signup-next-button{
+  margin-top: 30px;
+} */
 
 #login-button:hover, 
 #signup-button:hover{
@@ -1327,8 +1332,8 @@ margin: 15px;
   flex-wrap: wrap;
   align-items: center;
   list-style: none;
-  width: 200%;
-  height: 150%;
+  width: 600px;
+  height: 600px;
   margin-bottom: 10px;
   padding: 30px;
   border-radius: 10px;    
@@ -1337,6 +1342,7 @@ margin: 15px;
 }
 #second-signup-body{
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: space-evenly;
   flex-wrap: wrap;
@@ -1344,10 +1350,17 @@ margin: 15px;
   width: 200%;
   height: 150%;
   margin-bottom: 10px;
-  padding: 30px;
+  padding: 108px 9px 80px;
   border-radius: 10px;    
   background-color:#6e19bd2a; 
   box-shadow: 5px 10px 10px 1px rgba(0,0,0,.3); 
+}
+.second-signup-body{
+  position: absolute;
+  font-size: 14px;
+  color: #b24a4a;
+  top: 15px;
+  right: 14px;
 }
 .signup-form-box{
   display: flex;
@@ -1367,13 +1380,33 @@ margin: 15px;
   font-size: 1.3rem;
   font-weight: 500;
 }
+.certificate{
+  flex-direction: row;
+}
+.certificate input{
+  width: 21px;
+  margin-right: 11px;
+  margin-bottom: 16px;
+}
+.signup-box-text span{
+  font-size: 16px;
+  font-weight: 500;
+  margin: 9px 0 1px;
+  color: #7a7878;
+}
 
 .sigup-box-textfield{
   flex-grow: 1;
-  margin-top: 5px; 
-  border-radius: 10px; 
-  border-width: 0.1rem;  
-  background-color:#ffffff; 
+  width: 275px;
+  height: 33px;
+  border: none;
+  margin-top: 5px;
+  border-radius: 6px;
+  background-color: #ffffff;
+}
+.sigup-box-textfield:hover{
+  border: 1px solid rgb(170, 83, 223);
+
 }
 
 /* HomeContainer */

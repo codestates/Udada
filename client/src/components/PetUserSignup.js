@@ -76,12 +76,11 @@ export default function PetUserSignup({ petUserInfo, setPetUserInfo }) {
     return (
         <div>
             <center className="signup-body">
-                <h1>유저로 가입하기</h1>
                 <form className="signup-form-box" onSubmit={(e) => e.preventDefault()}>
                     {
                         isClicked ?
                             <div id="second-signup-body">
-                                <div>모든 항목은 필수입니다</div>
+                                <div className="second-signup-body">* 모든 항목은 필수입니다</div>
                                 <div className="signup-box-text">
                                     <span >이메일</span>
                                     <input type='email' className="sigup-box-textfield" onChange={handleInputValue('email')} />
@@ -107,7 +106,7 @@ export default function PetUserSignup({ petUserInfo, setPetUserInfo }) {
                                     <span >전화번호</span>{' '}
                                     <input type='tel' className="sigup-box-textfield" onChange={handleInputValue('phoneNumber')} />
                                 </div>
-                                <div>
+                                <div className="login-not-exist">
                                     <Link to='/login'>이미 아이디가 있으신가요?</Link>
                                 </div>
                                 <button
