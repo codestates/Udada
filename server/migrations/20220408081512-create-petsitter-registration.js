@@ -9,10 +9,10 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       location: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       date: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       payment: {
         type: Sequelize.INTEGER

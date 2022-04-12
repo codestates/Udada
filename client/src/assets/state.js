@@ -65,7 +65,12 @@ export const dummyData = {
             "location": "용산구",
             "age": 22,
             "license": true,
+            "date": 12,
             "content": "성실, 사랑, 강아지러버",
+            "startTime": 10,
+            "lastTime": 12,
+            "days": '월화수',
+            "payment" : 10000
 
         },
         {
@@ -80,7 +85,10 @@ export const dummyData = {
             "age":28,
             "license": true,
             "content": "온세상을 밝히는 밝은 성격의 동물친구",
-
+            "startTime": 10,
+            "lastTime": 12,
+            "days": '월화수',
+            "payment" : 10000
         },
         {
             "id": 2,
@@ -94,7 +102,10 @@ export const dummyData = {
             "age":25,
             "license": true,
             "content": "온세상을 밝히는 밝은 성격의 동물친구",
-
+            "startTime": 10,
+            "lastTime": 12,
+            "days": '월화수',
+            "payment" : 10000
         },
         {
             "id": 3,
@@ -108,7 +119,10 @@ export const dummyData = {
             "age":26,
             "license": true,
             "content": "동물들의 이야기를 잘 들어드립니다.",
-
+            "startTime": 10,
+            "lastTime": 12,
+            "days": '월화수',
+            "payment" : 10000
         }
     ]
 }
