@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 
 
-export default function Booking({info, nameWrite}) {
+export default function Booking({info, nameWrite, num, handleInfo}) {
 
     return(
-
-            <div className="booking-item">
+        <>
+            <div className="booking-item" onClick={() => handleInfo(info)}>
+            <div className="booking-number">no.{num+1}</div>
                 <div className="booking-item-line">
                     <div className="booking-item-img">
                         <img src={info.img} alt={info.name} />
@@ -20,6 +21,6 @@ export default function Booking({info, nameWrite}) {
                     </div>
                 </div>
             </div>
-
+    </>
     );
 }

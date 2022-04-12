@@ -719,6 +719,7 @@ input[type="checkbox"]:checked + label {
   top: 46px;
   right: 52px;
   font-size: 25px;
+  font-weight: 800;
   cursor:pointer;
 }
 
@@ -997,6 +998,13 @@ input[type="checkbox"]:checked + label {
   margin-top: 100px;
   margin-bottom: 200px;
 } */
+.booking-number{
+  position: absolute;
+  top: -17px;
+  left: 7px;
+  color: rgba(142, 137, 137, 0.873);
+  font-size: 13px;
+}
 .booking-item{
   display: flex;
   background-color: rgb(255, 255, 255);
@@ -1006,6 +1014,8 @@ input[type="checkbox"]:checked + label {
   /* justify-content: space-evenly; */
   padding: 6px 10px;
   cursor: pointer;
+
+  position: relative;
 
 
 }
@@ -1036,4 +1046,59 @@ input[type="checkbox"]:checked + label {
 }
 .booking-item-time{
   padding-left: 20px;
+}
+
+
+#booking-information{
+  position: absolute;
+  top: 0px;
+  left: 35px;
+
+  background-color: rgb(244, 236, 251);
+  width: 800px;
+  height: 605px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+}
+.booking-information-img{
+  width: 200px;
+  height: 200px;
+}
+.booking-information-img img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 5px solid #fffff5;
+}
+
+.booking-information-write>div{
+  background-color: #fffff5;
+  width: 335px;
+  height: 33px;
+  margin: 8px 0;
+  padding: 9px 13px;
+  border-radius: 20px;
+}
+.booking-information-communication{
+  background-color: #fffff5;
+  width: 335px;
+  margin: 8px 0;
+  padding: 10px 13px;
+  border-radius: 15px;
+  border:3px solid #9a53dcf4;
+  height: 53px;
+
+}
+#booking-information-close {
+  position: absolute;
+  top: 26px;
+  right: 12px;
+  font-size: 25px;
+  font-weight: 800;
+  cursor:pointer;
 }
