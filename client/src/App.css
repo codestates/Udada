@@ -1207,6 +1207,10 @@ margin: 15px;
   color: #F9F9F9;
   cursor: pointer;
 }
+#login-button{
+  width: 246px;
+  border-radius: 9px;
+}
 
 #login-button:hover, 
 #signup-button:hover{
@@ -1223,11 +1227,30 @@ margin: 15px;
   flex-wrap: wrap;
   align-items: center;
   width: 50%;
-  height: 280px;
+  padding: 80px 0 134px;
   margin-bottom: 10px;
   border-radius: 10px;    
   background-color:#6e19bd2a; 
   box-shadow: 5px 10px 10px 1px rgba(0,0,0,.3); 
+}
+#loginH2{
+  margin-bottom: 50px;
+  color: #6b696e
+}
+.login-social-here-btn{
+  display: flex;
+  flex-direction: column;
+  width: 246px;
+  margin-bottom: 11px;
+}
+.login-text{
+  font-size: 11px;
+  padding-left: 185px;
+  margin-bottom: 3px;
+  color: #968d96;
+}
+.login-social-here-btn button{
+  margin-bottom: 3px;
 }
 
 .login-here-box{
@@ -1235,6 +1258,29 @@ margin: 15px;
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
+  padding-top: 5px;
+  border-top: 1px solid #c3c3c3;
+}
+.login-here-input{
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+}
+.login-here-input input{
+  height: 45px;
+  text-align: center;
+  border: none;
+  border-radius: 9px;
+  margin-bottom: 4px;
+}
+.login-not-exist{
+  width: 100%;
+  margin: 2px 0 5px;
+}
+.login-not-exist a{ 
+  font-size: 50px;
+  font-size: 14px;
+  color: #888886;
 }
 
 #login-social-kakao-logo,
@@ -1243,21 +1289,34 @@ margin: 15px;
   height: 20px;
 }
 
-#login-social-button{
+#login-social-button1,#login-social-button2{
   padding: 0.7rem 1rem;
-  margin-left: 0;
+  margin-left: 3px;
   border: none;
-  border-radius: 22px;
+  border-radius: 9px;
   font-size: 0.9rem;
   font-weight: 450;
   text-align: center;
-  background-color: #8f4bd4e6;
   color: #F9F9F9;
+  cursor: pointer;
+}
+#login-social-button1{
+  background-color: #f4eb31;
+  color: #61615f;
+}
+#login-social-button2{
+  background-color: #00c73d;
 }
 
 #login-social-button:hover {
   color: white;
   background-color: #4000c7;
+}
+.alert-box{
+  font-size: 14px;
+  font-weight: 700;
+  color: #ed7878;
+  margin-top: 5px;
 }
 
 /* petUserSignup.js, petSitterSignup.js */
