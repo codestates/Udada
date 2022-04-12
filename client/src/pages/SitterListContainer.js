@@ -28,14 +28,15 @@ const handlePetSitter = (item) => {
   setSitterInfo(item)
 }
 
-const handlePetSitterLogin = () => {
+const handleLogin = () => {
   setIsPetSitter(false);
 }
 console.log(isPetSitter)
   return (
     <div>
-      {isPetSitter ?  <Profile petSitterInfo={sitterInfo} 
-                               handlePetSitterLogin={handlePetSitterLogin}/> : 
+      {isPetSitter ?  <Profile Information={sitterInfo} 
+                               handleLogin={handleLogin}
+                               title="pet sitter application"/> : 
 
       <div id="petSitterInfo-container">
         <div id="petSitterInfo-header">
