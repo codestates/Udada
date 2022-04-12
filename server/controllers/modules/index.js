@@ -88,11 +88,59 @@ module.exports = {
         })
     },
 
-    reserveUserData : async (data) => {
+    reserveUserData : async (data, id) => {
+        
+        petuser_registration.create({
+            location : data.location,
+            payment : data.payment,
+            content : data.content,
+            date : data.date,
+            petuser_id : id
+        })
+        
+         
 
     },
 
-    reserveSitterData : async (data) => {
+    reserveSitterData : async (data, id) => {
         
+        petsitter_registration.create({
+            location : data.location,
+            payment : data.payment,
+            content : data.content,
+            date : data.date,
+            petsitter_id : id
+        })
+        
+    },
+
+    findreserveUserlist : async (location) =>{
+        
+        const userlists = await petuser_registration.findAll({
+            where : location
+        })
+        
+        console.log(userlists)
+        
+        return userlists;
+    },
+    
+    findreserveSitterlist : async (location) =>{
+        
+        const sitterlists = await petsitter_registration.findAll({
+            where : location
+        })
+
+        // console.log(sitterlists)
+        return sitterlists;
+
+    },
+
+    findBookingUserlist : async (id) => {
+
+    },
+
+    findBookingSitterlist : async (id) => {
+
     }
 }

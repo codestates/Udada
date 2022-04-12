@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.petsitter.hasMany(models.booking_petsitter)
-      models.petsitter.hasMany(models.petsitter_registration)
+      models.petsitter.hasMany(models.booking_petsitter, {foreignKey: "petsitter_id"})
+      models.petsitter.hasMany(models.petsitter_registration,{foreignKey: "petsitter_id"})
     }
   }
   petsitter.init({

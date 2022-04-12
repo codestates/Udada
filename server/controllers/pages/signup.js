@@ -1,5 +1,5 @@
-const {petuser, petsitter} = require('../../models')
-const {createAccessToken, createRefreshToken, findSitterData, findUserData} = require('../modules')
+const {petuser, petsitter, petuser_registration, petsitter_registration} = require('../../models')
+const {createAccessToken, createRefreshToken} = require('../modules')
 module.exports = {
 
     petsitter : async (req, res) => {
@@ -34,7 +34,7 @@ module.exports = {
         // ? 회원가입에 들어오는 내용
         // location caretype, howmany, age, howbig, content, email, name, date, password, phoneNumber, photo
         
-        console.log(req.body)
+        // console.log(req.body)
         const {name, age, password, email, phoneNumber, photo, location, careType, content, howBig, petAge } = req.body
         
         if(!name || !email || !password || !phoneNumber || !age){
