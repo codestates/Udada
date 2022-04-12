@@ -1,5 +1,7 @@
-const { petuser, petsitter } = require('../../models')
-const { createAccessToken, createRefreshToken, findSitterData, findUserData } = require('../modules')
+
+const {petuser, petsitter, petuser_registration, petsitter_registration} = require('../../models')
+const {createAccessToken, createRefreshToken} = require('../modules')
+
 module.exports = {
 
     petsitter: async (req, res) => {
@@ -33,11 +35,12 @@ module.exports = {
         // TODO 토큰에 담아 client에 넘겨줄 값(이름/나이/이메일/폰번호)
         // ? 회원가입에 들어오는 내용
         // location caretype, howmany, age, howbig, content, email, name, date, password, phoneNumber, photo
+        
+        // console.log(req.body)
+        const {name, age, password, email, phoneNumber, photo, location, careType, content, howBig, petAge } = req.body
+        
+        if(!name || !email || !password || !phoneNumber || !age){
 
-        console.log(req.body)
-        const { name, age, password, email, phoneNumber, photo, location, careType, content, howBig, petAge } = req.body
-
-        if (!name || !email || !password || !phoneNumber || !age) {
             return res.status(422).send("insufficient parameters supplied")
         }
 
