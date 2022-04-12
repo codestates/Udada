@@ -838,6 +838,7 @@ input[type="checkbox"]:checked + label {
   height: 580px;
   border-radius: 15px;
   position: relative;
+  overflow-y: scroll
 }
 .mypage-section-btn{
   position: absolute;
@@ -869,6 +870,7 @@ input[type="checkbox"]:checked + label {
   /* justify-content: center; */
   align-items: center;
   margin-top: 135px;
+  height: 445px;
 }
 .mypage-section-nameAge{
   display: flex;
@@ -989,9 +991,22 @@ input[type="checkbox"]:checked + label {
 /* Booking.js */
 
 .mypage-section{
-  /* width: 900px; */
   height: 578px;
-  overflow-y: scroll
+}
+.mypage-section::-webkit-scrollbar {
+  width: 7px;
+}
+.mypage-section::-webkit-scrollbar-thumb {
+  background-color: rgba(244, 236, 251, 0);
+  border-radius: 10px;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+.mypage-section::-webkit-scrollbar-track {
+  background-color: hsl(0, 0%, 50%);
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px white;
+  display: none;
 }
 
 /* .booking-item-samll-container{
@@ -1058,7 +1073,7 @@ input[type="checkbox"]:checked + label {
   width: 800px;
   height: 605px;
 
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;

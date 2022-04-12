@@ -9,7 +9,6 @@ export default function Reservation() {
     //임시 데이터
  const info = dummyData.petSitter;
 
- const [isReser, setIsReser] = useState(false);
  const [isInfo, setIsInfo] = useState("");
 
  function show() {
@@ -39,15 +38,9 @@ export default function Reservation() {
                 <Link to="/mypage">
                     <button id="mypage-sidebar-userInfo">내<br/><br/>정<br/>보</button>
                 </Link>
-                {info[1].petAge ? 
-                <Link to="/application">
-                    <button id="mypage-sidebar-registration">신<br/>청<br/><br/> 현<br/>황</button>
-                </Link> :
                 <Link to="/reservation">
                     <button id="mypage-sidebar-booking">예<br/>약<br/><br/> 현<br/>황</button> 
                 </Link>
-                
-                }
             </div>
             <div className="mypage-section">
                 {info.map((petUser, index) => {

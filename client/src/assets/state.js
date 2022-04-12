@@ -34,9 +34,6 @@ export const dummyData = {
             "howBig": "중형",
             "petAge": 2,
             "days": '월화수',
-
-    
-
         },
         {
             "id": 3,
