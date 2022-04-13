@@ -1451,5 +1451,65 @@ ul,li{list-style:none;
   #main-greetings img{
     width: 100%;
   }
-}
 
+  .login-box, .signup-box {
+    width: 380px;
+    height: 230px;
+  }
+  .login-body, .signup-body {
+    margin: 220px 0 290px;
+    height: 520px;
+  }
+  #profile-container {
+    width: 90%;
+  }
+  #profile-date {
+    width: 20%;
+  }
+  .mypage-container {
+   width: 760px
+  }
+  .mypage-section {
+    width: 650px;
+  }
+  .booking-item-write {
+    padding: 25px 0 0 70px;
+  }
+  #booking-information {
+
+    width: 600px;
+    height: 610px;
+  }
+  .mypage-pwchange-section {
+    width: 640px;
+  }
+  #footer{
+    width: 100%;
+    position: fixed;
+  }
+  .popup-body {
+    padding: 0 50px;
+    height: 78%;
+  }
+  .body-infobox {
+    margin: 2px 37px 5px;
+  }
+  .body-infobox-input {
+    padding-bottom: 10px;
+  }
+  .pet-item {
+    padding: 0 35px;
+  }
+  #petUserInfo-select {
+    width: 755px;
+  }
+  #petSitterInfo-select{
+    width: 800px;
+  }
+  #petSitterInfo-btn {
+    width: 17%;
+  }
+  .login-social-here-container {
+    padding: 50px 0 104px;
+  }
+}
