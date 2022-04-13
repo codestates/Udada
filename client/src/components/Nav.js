@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Nav({ isAuthenticated, isLogin }) {
+function Nav({ isAuthenticated, isLogin, handleLogout }) {
+
+
 
     return (
         <div id="nav-body">
@@ -20,9 +22,15 @@ function Nav({ isAuthenticated, isLogin }) {
                 </Link>
                 {
                     isLogin ?
-                        <Link to="/mypage">
-                            <button id='nav-btn' onClick={isAuthenticated()}>MyPage</button>
-                        </Link> : <div id="nav-btn-box">
+                        <div id="nav-btn-box">
+                            <Link to="/mypage">
+                                <button id='nav-btn' onClick={isAuthenticated}>MyPage</button>
+                            </Link>
+                            <Link to="/">
+                                <button id='nav-btn' onClick={handleLogout}>Logout</button>
+                            </Link>
+                        </div>
+                        : <div id="nav-btn-box">
                             <Link to="/signup">
                                 <button id='nav-btn'>회원가입</button>
                             </Link>
