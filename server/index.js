@@ -3,10 +3,10 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser')
 const indexRouter = require('./routes')
 const linksRouter = require('./routes/links') 
-// const https = require('https')
-const http = require('http')
+const https = require('https')
+// const http = require('http')
 
-// const fs = require('fs')
+const fs = require('fs')
 // const cookieParser = require('cookie-parser');
 // const indexRouter = require('./routes');
 // const linksRouter = require('./routes/links');
@@ -37,27 +37,11 @@ const HTTPS_PORT = process.env.HTPPS_PORT || 4000;
 
 let server = https
 
-<<<<<<< HEAD
-// let server = https
-//   .createServer(
-//     {
-//       key: fs.readFileSync(__dirname + '/key.pem', 'utf-8'),
-//       cert: fs.readFileSync(__dirname + '/cert.pem', 'utf-8'),
-//     },app)
-//   .listen(HTTPS_PORT,() => {
-//     console.log(`      🚀 Server is starting on ${HTTPS_PORT}`);
-//   })
-let server = http
-  .createServer(app.use('/', (req, res) => {
-    res.send('Congrats! You made https server now :)');
-  }))
-=======
   .createServer(
     {
       key: fs.readFileSync(__dirname + '/key.pem', 'utf-8'),
       cert: fs.readFileSync(__dirname + '/cert.pem', 'utf-8'),
     },app)
->>>>>>> 7d9575d93d22d87466f24b83f3a6b7629a6bac9e
   .listen(HTTPS_PORT,() => {
 
     console.log(`      🚀 Server is starting on ${HTTPS_PORT}`);
