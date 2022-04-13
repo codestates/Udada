@@ -1,19 +1,25 @@
 import React from 'react';
 import { homeImages } from "../assets/images"
-import { Carousel } from 'react-responsive-carousel';
+import { mainImages } from "../assets/images"
+
+// import { Carousel } from 'react-responsive-carousel';
+
 
 
 function HomeContainer() {
 
-    return (
-        <div id="main-container">
-            <div id="main-body">
-                <div id="main-carousel">
-                    <Carousel infiniteLoop useKeyboardArrows autoPlay>
-                        {homeImages.map((src, idx) => <img key={idx} src={src} alt={idx} />)}
 
-                    </Carousel>
-                </div>
+    
+    return (
+
+        <div id="main-container">
+            <div className="slide">
+            <ul>
+            {homeImages.map((src, idx) => <li key={idx}><img src={src} alt={idx} /></li>)}
+            </ul>
+            </div>
+            <div id="main-greetings">
+                <img src={mainImages[0]} alt="" />
             </div>
         </div>
     );

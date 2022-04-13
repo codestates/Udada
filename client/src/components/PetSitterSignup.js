@@ -92,12 +92,11 @@ export default function PetSitterSignup({ petSitterInfo, setIsLogin, isLogin,  s
     return (
         <div>
             <center className="signup-body">
-                <h1>펫시터로 가입하기</h1>
                 <form className="signup-form-box" onSubmit={(e) => e.preventDefault()}>
                     {
                         isClicked ?
                             <div id="second-signup-body">
-                                <div>모든 항목은 필수입니다</div>
+                                <div className="second-signup-body">* 모든 항목은 필수입니다</div>
                                 <div className="signup-box-text">
                                     <span >이메일</span>
                                     <input type='email' className="sigup-box-textfield" onChange={handleInputValue('email')} />
@@ -123,7 +122,7 @@ export default function PetSitterSignup({ petSitterInfo, setIsLogin, isLogin,  s
                                     <span >전화번호</span>{' '}
                                     <input type='tel' className="sigup-box-textfield" onChange={handleInputValue('phoneNumber')} />
                                 </div>
-                                <div>
+                                <div className="login-not-exist">
                                     <Link to='/login'>이미 아이디가 있으신가요?</Link>
                                 </div>
                                 <button
@@ -139,9 +138,11 @@ export default function PetSitterSignup({ petSitterInfo, setIsLogin, isLogin,  s
                             <></>
                     }
                     <div id="first-signup-body">
-                        <div className="signup-box-text">
-                            <span >반려동물 관련 자격증이 있으신가요? 있다면 체크해주세요</span>
-                            <input type='checkbox' className="sigup-box-textfield" onChange={handleCheckbox('license')} />
+                        <div className="signup-box-text certificate" >
+                        <input type='checkbox' className="sigup-box-textfield" onChange={handleCheckbox('license')} />
+                            <span >반려동물 관련 자격증이 있으신가요? <br/>있다면 체크해주세요</span>
+                            
+                            
                         </div>
                         <div className="signup-box-text">
                             <span >어디서 활동하길 원하세요?</span>

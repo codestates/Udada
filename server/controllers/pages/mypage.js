@@ -98,7 +98,7 @@ module.exports = {
 
             const refreshTokenData = checkRefreshToken(req)
             // console.log(refreshTokenData)
-            
+
 
             // accessToken도 있고 Refresh도 있는 경우
             if (accessTokenData && refreshTokenData) {
@@ -131,7 +131,7 @@ module.exports = {
 
             if (accessTokenData && !refreshTokenData) {
                 // accessTokeng
-                return res.json({ data: null, message: 'invalid access token' })
+                return res.json({ data: null, message: 'refresh 없어서 안됨' })
 
             }
 
