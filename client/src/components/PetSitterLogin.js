@@ -1,11 +1,11 @@
-import React, { useState, useEffect  } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { logo } from '../assets/images'
 import axios from 'axios';
 
 axios.defaults.withCredentials = true;
 
-export default function PetSitterLogin({ handleResponseSuccess, setAccessToken}) {
+export default function PetSitterLogin({ handleResponseSuccess, setAccessToken, userType, setUserType, setIsLogin }) {
 
     const navigate = useNavigate();
 
@@ -14,34 +14,40 @@ export default function PetSitterLogin({ handleResponseSuccess, setAccessToken})
         password: ''
     });
 
-    const [url, setUrl] = useState('https://github.com/login/oauth/authorize?client_id=ec1357998ab3f7ed0e27')
+
+
+    //client_id 환경변수 클라이언트로
+    const [url, setUrl] = useState('https://github.com/login/oauth/authorize?client_id=e4bdb55f0a9d1117cd1e')
     const [errorMessage, setErrorMessage] = useState('');
     const handleInputValue = (key) => (e) => {
         setLoginInfo({ ...loginInfo, [key]: e.target.value });
     };
+
+
+
     const handleLogin = () => {
-        // TODO : 서버에 로그인을 요청하고, props로 전달된 callback을 호출합니다.
+        // TODO : 서버에 로그인을 요청하고, 인증 토큰을 받아옵니다.
         // TODO : 이메일 및 비밀번호를 입력하지 않았을 경우 에러를 표시해야 합니다.
         if (loginInfo.email && loginInfo.password) {
             axios.post(
-                "http://localhost:4000/links/login/petsitter",
+                "https://localhost:4000/links/login/petsitter",
                 {
                     email: loginInfo.email,
                     password: loginInfo.password
                 },
 
-                { headers: { "Content-Type": "application/json" }}
+                { headers: { "Content-Type": "application/json" } }
 
             ).then((res) => {
-                console.log(res);
+                // console.log(res);
                 setAccessToken(res.data.data.accessToken);
-                console.log(res.data.data.accessToken)
-
-                handleResponseSuccess();
+                // console.log(res.data.data.accessToken)
                 //console.log(res.cookies);
-
                 //setRefreshToken(res.cookies);
-                //navigate('/petsitterlist');
+                setIsLogin(true);
+                setUserType('sitter');
+                handleResponseSuccess(userType);
+                navigate('/');
 
 
             })
@@ -54,25 +60,25 @@ export default function PetSitterLogin({ handleResponseSuccess, setAccessToken})
         window.location.assign(url)
     }
 
- const Login = () => {
-  Naver();
-//   UserProfile();
- }
- 
- useEffect(Login, []);
- 
- const Naver = () => {
-    const { naver } = window;
+    const Login = () => {
+        Naver();
+        //   UserProfile();
+    }
 
-    const naverLogin = new naver.LoginWithNaverId({
-      clientId: "jVEcRaxQuctuGDwOLYRW",
-      callbackUrl: "http://localhost:3000/",
-      isPopup: false,
-      loginButton: {color: "green", type: 1, height: 30} ,
-      callbackHandle: true
-    });
-    naverLogin.init();
-  }
+    useEffect(Login, []);
+
+    const Naver = () => {
+        const { naver } = window;
+
+        const naverLogin = new naver.LoginWithNaverId({
+            clientId: "jVEcRaxQuctuGDwOLYRW",
+            callbackUrl: "http://localhost:3000/",
+            isPopup: false,
+            loginButton: { color: "green", type: 1, height: 30 },
+            callbackHandle: true
+        });
+        naverLogin.init();
+    }
 
     return (
         <div>

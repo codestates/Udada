@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import "react-responsive-carousel/lib/styles/carousel.css";
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App />,
   </React.StrictMode>,
   document.getElementById('root')
 );

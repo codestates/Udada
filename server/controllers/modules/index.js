@@ -1,9 +1,9 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const {
-    petuser, petsitter, 
+    petuser, petsitter,
     petuser_registration, petsitter_registration,
-    booking_petsitter, booking_petuser} = require('../../models')
+    booking_petsitter, booking_petuser } = require('../../models')
 
 
 module.exports = {
@@ -43,7 +43,7 @@ module.exports = {
         const refreshToken = req.cookies.refreshToken;
         // console.log(req)
         // console.log(refreshToken)
-            // const token = refreshToken.split('=')[1]
+        // const token = refreshToken.split('=')[1]
 
         try {
             return jwt.verify(refreshToken, process.env.REFRESH_SECRET)
@@ -77,63 +77,63 @@ module.exports = {
             // console.log(petsitterData)
             return petsitterData
         }
-        
-        return null;     
+
+        return null;
     },
 
-    deleteUserData : async (data) => {
+    deleteUserData: async (data) => {
         await petuser.destroy({
-            where : data
+            where: data
         })
     },
 
-    deleteSitterData : async (data) => {
+    deleteSitterData: async (data) => {
         await petsitter.destroy({
-            where : data
+            where: data
         })
     },
 
-    reserveUserData : async (data, id) => {
-        
+    reserveUserData: async (data, id) => {
+
         petuser_registration.create({
-            location : data.location,
-            payment : data.payment,
-            content : data.content,
-            date : data.date,
-            petuser_id : id
+            location: data.location,
+            payment: data.payment,
+            content: data.content,
+            date: data.date,
+            petuser_id: id
         })
-        
-         
+
+
 
     },
 
-    reserveSitterData : async (data, id) => {
-        
+    reserveSitterData: async (data, id) => {
+
         petsitter_registration.create({
-            location : data.location,
-            payment : data.payment,
-            content : data.content,
-            date : data.date,
-            petsitter_id : id
+            location: data.location,
+            payment: data.payment,
+            content: data.content,
+            date: data.date,
+            petsitter_id: id
         })
-        
+
     },
 
-    findreserveUserlist : async (location) =>{
-        
+    findreserveUserlist: async (location) => {
+
         const userlists = await petuser_registration.findAll({
-            where : location
+            where: location
         })
-        
-        console.log(userlists)
-        
+
+        // console.log(userlists)
+
         return userlists;
     },
-    
-    findreserveSitterlist : async (location) =>{
-        
+
+    findreserveSitterlist: async (location) => {
+
         const sitterlists = await petsitter_registration.findAll({
-            where : location
+            where: location
         })
 
         // console.log(sitterlists)
@@ -141,41 +141,41 @@ module.exports = {
 
     },
 
-    bookingUserData : async (data, id) =>{
+    bookingUserData: async (data, id) => {
         booking_petuser.create({
-            location :data.location,
-            isBooking : false,
-            date : data.date,
-            petuser_id : id
+            location: data.location,
+            isBooking: false,
+            date: data.date,
+            petuser_id: id
         })
     },
 
-    bookingSitterData : async (data, id) =>{
+    bookingSitterData: async (data, id) => {
         booking_petsitter.create({
-            location :data.location,
-            isBooking : false,
-            date : data.date,
-            petsitter_id : id
+            location: data.location,
+            isBooking: false,
+            date: data.date,
+            petsitter_id: id
         })
     },
 
-    findBookingUserlist : async (id) => {
+    findBookingUserlist: async (id) => {
         const bookingUserlists = await booking_petuser.findAll({
-            where : id
+            where: id
         })
-        
-        console.log(bookingUserlists)
-        
+
+        //console.log(bookingUserlists)
+
         return bookingUserlists;
     },
 
-    findBookingSitterlist : async (id) => {
+    findBookingSitterlist: async (id) => {
         const bookingSitterlists = await booking_petsitter.findAll({
-            where : id
+            where: id
         })
-        
+
         // console.log(bookingSitterlists)
-        
+
         return bookingSitterlists;
 
     }

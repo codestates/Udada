@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { logo } from '../assets/images'
 import axios from 'axios';
 
 axios.defaults.withCredentials = true;
 
-export default function PetUserLogin({ accessToken, setAccessToken }) {
+export default function PetUserLogin({ handleResponseSuccess, setAccessToken, userType, setUserType, onChange }) {
     const [loginInfo, setLoginInfo] = useState({
         email: '',
         password: ''
     });
     const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate();
     const handleInputValue = (key) => (e) => {
         setLoginInfo({ ...loginInfo, [key]: e.target.value });
     };
+
+
     const handleLogin = () => {
         // TODO : 서버에 로그인을 요청하고, props로 전달된 callback을 호출합니다.
         // TODO : 이메일 및 비밀번호를 입력하지 않았을 경우 에러를 표시해야 합니다.
@@ -26,10 +29,12 @@ export default function PetUserLogin({ accessToken, setAccessToken }) {
                 },
                 { headers: { "Content-Type": "application/json" }, withCredentials: true }
             ).then((res) => {
-                // accessToken 변화가 생길때마다 state 끌어올려주기
-                console.log(res.data.data.accessToken);
-                console.log(res.cookie);
+                // console.log(res.data.data.accessToken);
                 setAccessToken(res.data.data.accessToken);
+                //onChange('user');
+                setUserType(() => 'user')
+                handleResponseSuccess(userType);
+                navigate('/');
             })
         } else {
             setErrorMessage('이메일과 비밀번호를 입력하세요');
