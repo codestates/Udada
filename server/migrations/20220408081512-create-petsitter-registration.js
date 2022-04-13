@@ -11,7 +11,13 @@ module.exports = {
       location: {
         type: Sequelize.STRING
       },
-      date: {
+      startdate: {
+        type: Sequelize.STRING
+      },
+      enddate: {
+        type: Sequelize.STRING
+      },
+      days: {
         type: Sequelize.STRING
       },
       payment: {
