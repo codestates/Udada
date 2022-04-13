@@ -124,10 +124,9 @@ module.exports = {
         const userlists = await petuser_registration.findAll({
             where: location
         })
-
-        // console.log(userlists)
-
-        return userlists;
+            
+        return userlists
+  
     },
 
     findreserveSitterlist: async (location) => {
