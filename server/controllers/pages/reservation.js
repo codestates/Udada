@@ -30,25 +30,20 @@ module.exports = {
 
         get : async (req, res) =>{
             
-            const accessTokenData = isAuthorized(req)
-            const refreshTokenData = checkRefreshToken(req)
-            const {location} = req.body
-
-            if(accessTokenData && refreshTokenData || !accessTokenData && refreshTokenData){
-                if(location){
-                    const reserveUserlist = await findreserveUserlist({location : location})
-                
-                    if(reserveUserlist.length !== 0){
-                        res.status(200).json({data : reserveUserlist, message : "ok"})
-                    }else{
-                        res.json({message : "not registered yet"})
-                    }
+            const {location} = req.query
+            // console.log(req.query)
+            if(location){
+                const reserveUserlist = await findreserveUserlist({location : location})
+                // console.log(reserveUserlist)
+                if(reserveUserlist.length !== 0){
+                    res.status(200).json({data : reserveUserlist, message : "ok"})
                 }else{
-                    res.status(403).json({data : null, message: 'no data came in'})
+                    res.json({message : "not registered yet"})
                 }
             }else{
-                res.status(404).json({data : null, message : "invalid token"})
+                res.status(403).json({data : null, message: 'no data came in'})
             }
+           
         }
     },
 
@@ -76,29 +71,24 @@ module.exports = {
         },
 
         get : async (req, res) => {
-            
-            const accessTokenData = isAuthorized(req)
-            const refreshTokenData = checkRefreshToken(req)
-            const {location} = req.body
-
-            if(accessTokenData && refreshTokenData || !accessTokenData && refreshTokenData){
-                if(location){
-                    const reserveSitterlist = await findreserveSitterlist({location : location})
-                    
-                    // console.log(reserveSitterlist)
-                    
-                    if(reserveSitterlist.length !== 0){
-                      res.status(200).json({data : reserveSitterlist, message : "ok"})  
-                    }else{
-                        res.json({message : "not registered yet"})
-                    }
-                    
+   
+            const {location} = req.query
+ 
+            if(location){
+                const reserveSitterlist = await findreserveSitterlist({location : location})
+                
+                // console.log(reserveSitterlist)
+                
+                if(reserveSitterlist.length !== 0){
+                    res.status(200).json({data : reserveSitterlist, message : "ok"})  
                 }else{
-                    res.status(403).json({data : null, message: 'no data came in'})
+                    res.json({message : "not registered yet"})
                 }
+                
             }else{
-                res.status(404).json({data : null, message : "invalid token"})
+                res.status(403).json({data : null, message: 'no data came in'})
             }
+            
         }
     }
 }
