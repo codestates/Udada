@@ -16,9 +16,9 @@ module.exports = {
 
             const accessToken = createAccessToken({ name, age, email, phoneNumber })
             const refreshToken = createRefreshToken({ name, age, email, phoneNumber })
-            console.log('-------petsitter login(refreshtoken)----------')
-            console.log(refreshToken);
-            return res.status(200).cookie("refreshToken", refreshToken, { httpOnly: true }).json({ data: { accessToken }, message: "ok" })
+            // console.log('-------petsitter login(refreshtoken)----------')
+            // console.log(refreshToken);
+            return res.status(200).cookie("refreshToken", refreshToken, { httpOnly: true, sameSite: 'none', secure: true }).json({ data: { accessToken }, message: "ok" })
         }
 
 
@@ -37,8 +37,8 @@ module.exports = {
 
             const accessToken = createAccessToken({ name, age, email, phoneNumber })
             const refreshToken = createRefreshToken({ name, age, email, phoneNumber })
-            console.log("------serverlogin------")
-            console.log(refreshToken)
+            // console.log("------serverlogin------")
+            // console.log(refreshToken)
             return res.status(200).cookie("refreshToken", refreshToken, { httpOnly: true }).json({ data: { accessToken }, message: "ok" })
 
         }

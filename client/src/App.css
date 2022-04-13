@@ -112,16 +112,17 @@ body {
 
 #main-body {
   background-color: #bc9eff0e;
-  padding: 5rem;
+  /* padding: 5rem; */
   display: table-cell;
   width: 100%;
 }
 
 #main-container{
   display: table;
-  margin: 60px auto;
+  margin: 60px auto 0;
   width: 100%;
-  height: calc(100vh - 4rem);
+  height: calc(120vh - 4rem);
+  background-color: #904BD4;
 }
 
 
@@ -262,7 +263,7 @@ a:hover {
   
   margin: 140px;
   padding-top: 50px;
-  height: 60vh;
+  height: 70vh;
 }
 
 #petSitterInfo-btn-div {
@@ -1143,41 +1144,51 @@ input[type="checkbox"]:checked + label {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  margin: 200px;
-  height: 45vh;
+  margin: 345px 0;
+  height: 620px;
 }
 
 .login-box,
 .signup-box{
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: center;
   flex-wrap: wrap;
   align-items: center;
-  width: 50%;
+  width: 580px;
   height: 280px;
   margin-bottom: 10px;
   border-radius: 10px;    
   background-color:#6e19bd2a; 
   box-shadow: 5px 10px 10px 1px rgba(0,0,0,.3); 
 }
+.signup-box-write{
+  display: flex;
+  align-items: center;
+
+}
+
 
 #login-user-img,
 #signup-user-img{
-width: 100px;
-height: 105px;
+width: 60px;
+height: 60px;
+margin: 15px;
 }
 
 #login-sitter-img,
 #signup-sitter-img{
-  width: 90px;
-  height: 89px;
+  width: 50px;
+  height: 50px;
+  margin: 15px;
+
   }
 
 #login-show-text,
 #signup-show-text{
- font-size: 20px;
- font-weight: bold;
+  font-size: 18px;
+  font-weight: 500;
+  color: #564e4ed1;
 }
 
 
@@ -1194,7 +1205,17 @@ height: 105px;
   text-align: center;
   background-color: #8f4bd4e6;
   color: #F9F9F9;
+  cursor: pointer;
+  margin-top: 30px;
+
 }
+#login-button{
+  width: 246px;
+  border-radius: 9px;
+}
+/* #signup-next-button{
+  margin-top: 30px;
+} */
 
 #login-button:hover, 
 #signup-button:hover{
@@ -1211,11 +1232,30 @@ height: 105px;
   flex-wrap: wrap;
   align-items: center;
   width: 50%;
-  height: 280px;
+  padding: 80px 0 134px;
   margin-bottom: 10px;
   border-radius: 10px;    
   background-color:#6e19bd2a; 
   box-shadow: 5px 10px 10px 1px rgba(0,0,0,.3); 
+}
+#loginH2{
+  margin-bottom: 50px;
+  color: #6b696e
+}
+.login-social-here-btn{
+  display: flex;
+  flex-direction: column;
+  width: 246px;
+  margin-bottom: 11px;
+}
+.login-text{
+  font-size: 11px;
+  padding-left: 185px;
+  margin-bottom: 3px;
+  color: #968d96;
+}
+.login-social-here-btn button{
+  margin-bottom: 3px;
 }
 
 .login-here-box{
@@ -1223,6 +1263,29 @@ height: 105px;
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
+  padding-top: 5px;
+  border-top: 1px solid #c3c3c3;
+}
+.login-here-input{
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+}
+.login-here-input input{
+  height: 45px;
+  text-align: center;
+  border: none;
+  border-radius: 9px;
+  margin-bottom: 4px;
+}
+.login-not-exist{
+  width: 100%;
+  margin: 2px 0 5px;
+}
+.login-not-exist a{ 
+  font-size: 50px;
+  font-size: 14px;
+  color: #888886;
 }
 
 #login-social-kakao-logo,
@@ -1231,21 +1294,34 @@ height: 105px;
   height: 20px;
 }
 
-#login-social-button{
+#login-social-button1,#login-social-button2{
   padding: 0.7rem 1rem;
-  margin-left: 0;
+  margin-left: 3px;
   border: none;
-  border-radius: 22px;
+  border-radius: 9px;
   font-size: 0.9rem;
   font-weight: 450;
   text-align: center;
-  background-color: #8f4bd4e6;
   color: #F9F9F9;
+  cursor: pointer;
+}
+#login-social-button1{
+  background-color: #f4eb31;
+  color: #61615f;
+}
+#login-social-button2{
+  background-color: #00c73d;
 }
 
 #login-social-button:hover {
   color: white;
   background-color: #4000c7;
+}
+.alert-box{
+  font-size: 14px;
+  font-weight: 700;
+  color: #ed7878;
+  margin-top: 5px;
 }
 
 /* petUserSignup.js, petSitterSignup.js */
@@ -1256,8 +1332,8 @@ height: 105px;
   flex-wrap: wrap;
   align-items: center;
   list-style: none;
-  width: 200%;
-  height: 150%;
+  width: 600px;
+  height: 600px;
   margin-bottom: 10px;
   padding: 30px;
   border-radius: 10px;    
@@ -1266,6 +1342,7 @@ height: 105px;
 }
 #second-signup-body{
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: space-evenly;
   flex-wrap: wrap;
@@ -1273,10 +1350,17 @@ height: 105px;
   width: 200%;
   height: 150%;
   margin-bottom: 10px;
-  padding: 30px;
+  padding: 108px 9px 80px;
   border-radius: 10px;    
   background-color:#6e19bd2a; 
   box-shadow: 5px 10px 10px 1px rgba(0,0,0,.3); 
+}
+.second-signup-body{
+  position: absolute;
+  font-size: 14px;
+  color: #b24a4a;
+  top: 15px;
+  right: 14px;
 }
 .signup-form-box{
   display: flex;
@@ -1296,11 +1380,136 @@ height: 105px;
   font-size: 1.3rem;
   font-weight: 500;
 }
+.certificate{
+  flex-direction: row;
+}
+.certificate input{
+  width: 21px;
+  margin-right: 11px;
+  margin-bottom: 16px;
+}
+.signup-box-text span{
+  font-size: 16px;
+  font-weight: 500;
+  margin: 9px 0 1px;
+  color: #7a7878;
+}
 
 .sigup-box-textfield{
   flex-grow: 1;
-  margin-top: 5px; 
-  border-radius: 10px; 
-  border-width: 0.1rem;  
-  background-color:#ffffff; 
+  width: 275px;
+  height: 33px;
+  border: none;
+  margin-top: 5px;
+  border-radius: 6px;
+  background-color: #ffffff;
+}
+.sigup-box-textfield:hover{
+  border: 1px solid rgb(170, 83, 223);
+
+}
+
+/* HomeContainer */
+*{margin:0;padding:0;}
+ul,li{list-style:none;
+  display: flex;
+  justify-content: center;}
+.slide{height:700px;overflow:hidden;}
+.slide ul{position:relative;height:100%;}
+.slide li{position:absolute;left:0;right:0;top:0;bottom:0;opacity:0;animation:fade 8s infinite;}
+/* .slide li img{
+  width: 1;
+} */
+.slide li:nth-child(1){background:#122103;animation-delay:0s}
+.slide li:nth-child(2){background:#a8babf;animation-delay:2s}
+.slide li:nth-child(3){background:#d98495;animation-delay:4s}
+.slide li:nth-child(4){background:#73685c;animation-delay:6s}
+ /* 100 / 8 = 12.5 */
+@keyframes fade {
+  0% {opacity:0;}
+  5% {opacity:1;}
+  25% {opacity:1;}
+  30% {opacity:0;}
+  100% {opacity:0;}
+}
+#main-greetings{
+  margin: 55px auto;
+  width: 1150px;
+}
+#main-greetings img{
+  width: 100%;
+}
+@media screen and (max-width: 1250px) { 
+  .slide {
+    height: 500px;
+  }
+  #main-greetings{
+  margin: 115px auto;
+  width: 700px;
+
+  }
+  #main-greetings img{
+    width: 100%;
+  }
+
+  .login-box, .signup-box {
+    width: 380px;
+    height: 230px;
+  }
+  .login-body, .signup-body {
+    margin: 220px 0 290px;
+    height: 520px;
+  }
+  #profile-container {
+    width: 90%;
+  }
+  #profile-date {
+    width: 20%;
+  }
+  .mypage-container {
+   width: 760px
+  }
+  .mypage-section {
+    width: 650px;
+  }
+  .booking-item-write {
+    padding: 25px 0 0 70px;
+  }
+  #booking-information {
+
+    width: 600px;
+    height: 610px;
+  }
+  .mypage-pwchange-section {
+    width: 640px;
+  }
+  #footer{
+    width: 100%;
+    position: fixed;
+  }
+  .popup-body {
+    padding: 0 50px;
+    height: 78%;
+  }
+  .body-infobox {
+    margin: 2px 37px 5px;
+  }
+  .body-infobox-input {
+    padding-bottom: 10px;
+  }
+  .pet-item {
+    padding: 0 35px;
+  }
+  #petUserInfo-select {
+    width: 755px;
+  }
+  #petSitterInfo-select{
+    width: 800px;
+  }
+  #petSitterInfo-btn {
+    width: 17%;
+  }
+  .login-social-here-container {
+    padding: 50px 0 104px;
+  }
 }
