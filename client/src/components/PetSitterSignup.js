@@ -4,7 +4,7 @@ import axios from 'axios';
 
 axios.defaults.withCredentials = true;
 
-export default function PetSitterSignup({ petSitterInfo, setPetSitterInfo }) {
+export default function PetSitterSignup({ petSitterInfo, setIsLogin, isLogin,  setPetSitterInfo }) {
     const [userinfo, setuserinfo] = useState({
         email: '',
         password: '',
@@ -56,7 +56,8 @@ export default function PetSitterSignup({ petSitterInfo, setPetSitterInfo }) {
         // if (userinfo.license === 'on') {
         //     setuserinfo()
         // }
-
+        
+        
         if (userinfo.email && userinfo.password && userinfo.name && userinfo.phoneNumber && userinfo.age) {
 
             axios
@@ -76,7 +77,8 @@ export default function PetSitterSignup({ petSitterInfo, setPetSitterInfo }) {
                     { 'Content-Type': 'application/json', withCredentials: true }
                 ).then((res) => {
                     console.log(userinfo);
-                    navigate('/login/petsitter');
+                    setIsLogin(false);
+                    navigate('/');
                     alert('회원가입 완료');
 
                 })
@@ -84,7 +86,7 @@ export default function PetSitterSignup({ petSitterInfo, setPetSitterInfo }) {
             alert('모든 항목은 필수입니다.')
             setErrorMessage('모든 항목은 필수입니다');
         }
-
+        
     };
 
     return (

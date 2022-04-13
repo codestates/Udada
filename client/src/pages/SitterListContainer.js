@@ -2,18 +2,47 @@ import React, { useState, useEffect } from 'react';
 import SitterItem from '../components/SitterItem';
 import Profile from '../components/Profile';
 import { Link } from 'react-router-dom';
+import axios from "axios";
 
 import '../App.css';
 
+// 서버 registration
 
-
-function SitterListContainer({petSitterInfo}) {
+function SitterListContainer({petSitterInfo, accessToken}) {
 
 const [isPetSitter, setIsPetSitter] = useState(false);
 const [sitterInfo, setSitterInfo] = useState(petSitterInfo);
 
 //내정보 데이터 불러와야함 => 펫시터 지원하기 모달창에 프롭스로 내려주기위함 
-//아래는 임시로 더미데이터 사용 
+//아래는 임시로 더미데이터 사용
+
+// const sitterInfoFunc = () => {
+//   // TODO : 서버에 로그인을 요청하고, props로 전달된 callback을 호출합니다.
+//   // TODO : 이메일 및 비밀번호를 입력하지 않았을 경우 에러를 표시해야 합니다.
+  
+//   axios.get(
+//       "http://localhost:4000/links/reservation/persitter",
+//       {headers: { authorization: `Bearer ${accessToken}`}})
+//       .then((res) => {
+//       console.log(res);
+
+//       console.log(res);
+//       // setAccessToken(res.data.data.accessToken);
+//       // console.log(res.data.data.accessToken)
+
+//       // handleResponseSuccess();
+//       //console.log(res.cookies);
+
+//       //setRefreshToken(res.cookies);
+//       //navigate('/petsitterlist');
+
+//       // navigate('/');
+//   })
+//   }
+  // } else {
+  //     setErrorMessage('이메일과 비밀번호를 입력하세요');
+  // }
+
 function show() {
   const box = document.getElementById("petSitterInfo-apply")
   box.style.display = "block"
@@ -32,6 +61,7 @@ const handleLogin = () => {
   setIsPetSitter(false);
 }
 console.log(isPetSitter)
+console.log(petSitterInfo)
   return (
     <div>
       {isPetSitter ?  <Profile Information={sitterInfo} 
@@ -41,7 +71,10 @@ console.log(isPetSitter)
       <div id="petSitterInfo-container">
         <div id="petSitterInfo-header">
             <div id='petSitterInfo-btn-div'>
-                <button id='petSitterInfo-btn' onClick={()=>show()}>펫시터 지원하기</button>
+                <button id='petSitterInfo-btn' 
+                // onClick={sitterInfoFunc
+                onClick={()=>show()
+                }>펫시터 지원하기</button>
             </div>
             <select name="" id="petSitterInfo-select">
                 <option value="">돌봄 지역을 선택해주세요</option>
