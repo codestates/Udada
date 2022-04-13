@@ -15,7 +15,7 @@ router.post('/mypage/petsitter', controller.mypage.petsitter.post);
 router.get('/signout/petuser', controller.signout.petuser);
 router.get('/signout/petsitter', controller.signout.petsitter);
 router.use('/callback/github', controller.callback.oauth.github);
-router.use('/reservation/persitter', controller.reservation.petsitter.get);
+
 
 
 module.exports = router;

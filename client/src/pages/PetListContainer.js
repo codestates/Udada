@@ -9,7 +9,7 @@ import '../App.css';
 import axios from 'axios';
 
 
-function PetListContainer({ petUserInfo }) {
+function PetListContainer({ accessToken, petUserInfo, petUserAll, setPetUserAll }) {
 
   const [isPetUser, setIsPetUser] = useState(false);
   const [userInfo, setUserInfo] = useState(petUserInfo);
@@ -54,8 +54,11 @@ function PetListContainer({ petUserInfo }) {
         date: userInfo.date,
         payment: userInfo.payment,
         content: userInfo.content,
-      }
-    )
+      },
+      { headers: { Authorization: `Bearer ${accessToken}` } }
+    ).then((result) => {
+      console.log(result.data);
+    })
 
   }
 
@@ -82,7 +85,7 @@ function PetListContainer({ petUserInfo }) {
           </div>
           {/* petUserAll -> 유저 전체 정보 */}
           <div id="petUserInfo-body">
-            {petUserInfo.map((item, idx) => <PetItem item={item} key={idx}
+            {petUserAll.map((item, idx) => <PetItem item={item} key={idx}
               handleUser={() => handleUser(item)} />)}
           </div>
 
@@ -97,17 +100,17 @@ function PetListContainer({ petUserInfo }) {
                     <div className="body-titlebox">
                       <h1>registration💕</h1>
                     </div>
+                    {/* 개인 유저 정보 -> petUserInfo */}
                     <div className="body-infobox">
                       <div className="body-infobox-img">
-                        <img src={petUserInfo[1].img} alt={petUserInfo[1].name} />
+                        <img src={petUserInfo.img} alt={petUserInfo.name} />
                       </div>
 
-                      {/* 개인 유저 정보 -> petUserInfo */}
                       <div className="body-infobox-info">
-                        <div className="body-infobox-name">{petUserInfo[1].name} {petUserInfo[1].petAge}살</div>
-                        <div className="body-infobox-howBig">{petUserInfo[1].howBig}</div>
-                        <div className="body-infobox-location">{petUserInfo[1].location}</div>
-                        <div className="body-infobox-content">{petUserInfo[1].content}</div>
+                        <div className="body-infobox-name">{petUserInfo.name} ({petUserInfo.petAge}살)</div>
+                        <div className="body-infobox-howBig">{petUserInfo.howBig}</div>
+                        <div className="body-infobox-location">{petUserInfo.location}</div>
+                        <div className="body-infobox-content">{petUserInfo.content}</div>
 
                       </div>
                     </div>
@@ -196,7 +199,7 @@ function PetListContainer({ petUserInfo }) {
                   </div>
                 </div>
                 <div className="popup-foot">
-                  <span className="pop-btn confirm" id="confirm" onClick={() => hide()}>등록하기</span>
+                  <span className="pop-btn confirm" id="confirm" onClick={() => { hide(); handleUserRegister(); }}>등록하기</span>
                   {/* <span class="pop-btn close" id="close">창 닫기</span> */}
                 </div>
               </div>
