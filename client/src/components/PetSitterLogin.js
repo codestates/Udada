@@ -84,6 +84,7 @@ export default function PetSitterLogin({ handleResponseSuccess, setAccessToken, 
         <div>
             <center className="login-body">
                 <div className='login-social-here-container'>
+
                 <h2 id="loginH2">pet sitter Login</h2>
                 <div className='login-social-here-btn'>
                     <span className='login-text'>간편 로그인</span>
@@ -102,14 +103,15 @@ export default function PetSitterLogin({ handleResponseSuccess, setAccessToken, 
                         <span>네이버 로그인</span> 
                     </button>
                 </div>
+
                     <form className="login-here-box" onSubmit={(e) => e.preventDefault()}>
                         <div className="login-here-input">
                             <span className='login-text'>일반 로그인</span>
-                            <input type='email' onChange={handleInputValue('email')} placeholder="E-mail을 입력해주세요"/>
+                            <input type='email' onChange={handleInputValue('email')} placeholder="E-mail을 입력해주세요" />
                             <input
                                 type='password'
                                 onChange={handleInputValue('password')}
-                                placeholder="비밀번호를 입력해주세요"/>
+                                placeholder="비밀번호를 입력해주세요" />
                         </div>
                         <div className="login-not-exist">
                             <Link to='/signup'>아직 아이디가 없으신가요?</Link>
