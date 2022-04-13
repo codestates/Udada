@@ -80,7 +80,7 @@ function PetListContainer({ petUserInfo }) {
               )}
             </select>
           </div>
-
+          {/* petUserAll -> 유저 전체 정보 */}
           <div id="petUserInfo-body">
             {petUserInfo.map((item, idx) => <PetItem item={item} key={idx}
               handleUser={() => handleUser(item)} />)}
@@ -101,6 +101,8 @@ function PetListContainer({ petUserInfo }) {
                       <div className="body-infobox-img">
                         <img src={petUserInfo[1].img} alt={petUserInfo[1].name} />
                       </div>
+
+                      {/* 개인 유저 정보 -> petUserInfo */}
                       <div className="body-infobox-info">
                         <div className="body-infobox-name">{petUserInfo[1].name} {petUserInfo[1].petAge}살</div>
                         <div className="body-infobox-howBig">{petUserInfo[1].howBig}</div>

@@ -173,7 +173,7 @@ function App() {
       <Nav isLogin={isLogin} handleResponseSuccess={handleResponseSuccess} handleLogout={handleLogout} />
       <Routes>
         <Route exact={true} path="/" element={<HomeContainer />} />
-        <Route path="/petsitterlist" element={<SitterListContainer petSitterInfo={petSitterInfo} setPetSitterInfo={setPetSitterInfo} accessToken={accessToken} />} />
+        <Route path="/petsitterlist" element={<SitterListContainer petSitterInfo={petSitterAll} setPetSitterInfo={setPetSitterInfo} accessToken={accessToken} />} />
         <Route path="/petlist" element={<PetListContainer petUserInfo={petUserAll} setPetUserInfo={setPetUserAll} accessToken={accessToken} />} />
         {/* Signup page */}
         <Route path="/signup" element={<Signup />} />
