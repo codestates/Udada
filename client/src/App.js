@@ -176,7 +176,7 @@ function App() {
       <Routes>
         <Route exact={true} path="/" element={<HomeContainer />} />
         <Route path="/petsitterlist" element={<SitterListContainer petSitterInfo={petSitterInfo} setPetSitterInfo={setPetSitterInfo} accessToken={accessToken} />} />
-        <Route path="/petlist" element={<PetListContainer petUserInfo={petUserAll} setPetUserInfo={setPetUserAll} accessToken={accessToken} />} />
+        <Route path="/petlist" element={<PetListContainer petUserAll ={petUserAll} setPetUserAll ={setPetUserAll} petUserInfo={petUserInfo} setPetUserInfo={setPetUserInfo} accessToken={accessToken} />} />
         {/* Signup page */}
         <Route path="/signup" element={<Signup />} />
         <Route path="/signup/petuser" element={<PetUserSignup petUserInfo={petUserInfo} setPetUserInfo={setPetUserInfo} />} />

@@ -16,7 +16,9 @@ module.exports = (sequelize, DataTypes) => {
   }
   petuser_registration.init({
     location: DataTypes.STRING,
-    date: DataTypes.STRING,
+    startdate: DataTypes.STRING,
+    enddate : DataTypes.STRING,
+    days : DataTypes.STRING,
     payment: DataTypes.INTEGER,
     content: DataTypes.STRING,
     petuser_id:DataTypes.INTEGER

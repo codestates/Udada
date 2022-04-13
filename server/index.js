@@ -2,20 +2,13 @@ const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser')
 const indexRouter = require('./routes')
-const linksRouter = require('./routes/links') 
+const linksRouter = require('./routes/links')
+const bookingRouter = require('./routes/bookings') 
 const https = require('https')
+const fs = require('fs')
+
 // const http = require('http')
 
-const fs = require('fs')
-// const cookieParser = require('cookie-parser');
-// const indexRouter = require('./routes');
-// const linksRouter = require('./routes/links');
-const bookingRouter = require('./routes/bookings')
-// const https = require('https');
-// const fs = require('fs');
-
-
-// const router = express.Router();
 const app = express();
 
 app.use(express.json());
