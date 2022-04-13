@@ -34,8 +34,9 @@ let server = https
     {
       key: fs.readFileSync(__dirname + '/key.pem', 'utf-8'),
       cert: fs.readFileSync(__dirname + '/cert.pem', 'utf-8'),
-    }, app)
-  .listen(HTTPS_PORT, () => {
+    },app)
+  .listen(HTTPS_PORT,() => {
+
     console.log(`      🚀 Server is starting on ${HTTPS_PORT}`);
   })
 module.exports = server;
