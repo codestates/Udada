@@ -99,12 +99,11 @@ module.exports = {
             location: data.location,
             payment: data.payment,
             content: data.content,
-            date: data.date,
+            startdate: data.startdate,
+            enddate: data.enddate,
+            days: data.days,
             petuser_id: id
         })
-
-
-
     },
 
     reserveSitterData: async (data, id) => {
@@ -112,11 +111,13 @@ module.exports = {
         petsitter_registration.create({
             location: data.location,
             payment: data.payment,
+            startdate: data.startdate,
+            enddate: data.enddate,
+            days: data.days,
             content: data.content,
             date: data.date,
             petsitter_id: id
         })
-
     },
 
     findreserveUserlist: async (location) => {
@@ -124,9 +125,9 @@ module.exports = {
         const userlists = await petuser_registration.findAll({
             where: location
         })
-            
+
         return userlists
-  
+
     },
 
     findreserveSitterlist: async (location) => {
