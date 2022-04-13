@@ -205,6 +205,7 @@ a:hover {
   font-size: 0.9rem;
   font-weight: 390;
   text-align: center;
+  width: 90px;
 }
 
 #nav-btn:hover {
@@ -360,7 +361,7 @@ a:hover {
 .popup{
   width:100%;              
   max-width:800px;  
-  height:700px;          
+  /* height:700px; */
 
   border-radius:10px;       
   overflow:hidden;       
@@ -619,13 +620,21 @@ input[type="checkbox"]:checked + label {
   align-items: center;
 
   background-color: rgb(255, 249, 186);
-  margin: 215px auto 350px;
+  margin: 225px auto 385px;
 
   width: 1000px;
   height: 700px;
   border-radius: 20px;
 
   position: relative;
+}
+.profile-container-back{
+  position: absolute;
+  /* width: 50px; */
+  top: 20px;
+  right: 30px;
+  font-size: 40px;
+
 }
 
 #profile-title {
@@ -692,7 +701,7 @@ input[type="checkbox"]:checked + label {
 
 #profile-btn {
   position: absolute;
-  bottom: 70px;
+  bottom: 56px;
   right: 45px;
 
   width: 130px;
@@ -787,7 +796,7 @@ input[type="checkbox"]:checked + label {
   justify-content: space-evenly;
 
   background-color: #9749df;
-  margin: 215px auto 350px;
+  margin: 230px auto 350px;
 
   width: 1000px;
   height: 720px;
@@ -1457,7 +1466,7 @@ ul,li{list-style:none;
     height: 230px;
   }
   .login-body, .signup-body {
-    margin: 220px 0 290px;
+    margin: 300px 0 490px;
     height: 520px;
   }
   #profile-container {
@@ -1485,7 +1494,7 @@ ul,li{list-style:none;
   }
   #footer{
     width: 100%;
-    position: fixed;
+    
   }
   .popup-body {
     padding: 0 50px;

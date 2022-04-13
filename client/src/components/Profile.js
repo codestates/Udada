@@ -9,10 +9,11 @@ function Profile({Information, handleLogin, title}) {
         box.style.display = "flex"
     }
     //Information.petAge키가 있냐 없냐로 조건문을 줘야하는데 키가 먹히지않아서 일단 임시방편으로 license로 구분하였음
-
+    
 
     return (
         <div id="profile-container">
+            <div className="profile-container-back" onClick={handleLogin}>🔙</div>
             <div id="profile-title">{title}</div>
             <div id="profile-info">
                 <div id="profile-info-img">
