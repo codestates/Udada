@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PetItem from '../components/PetItem';
 import Profile from '../components/Profile';
-import { locations } from '../assets/state'
+import { locations, time } from '../assets/state'
 
 // 내정보 불러와서 프롭스로 내려줘야함
 
@@ -47,13 +47,15 @@ function PetListContainer({ accessToken, petUserInfo, petUserAll, setPetUserAll 
   }
 
   const handleUserRegister = () => {
+    console.log(userInfo);
     axios.post(
       'https://localhost:4000/bookings/petuser',
       {
         location: userInfo.location,
-        date: userInfo.date,
+        startdate: userInfo.startdate,
+        enddate: userInfo.enddate,
         payment: userInfo.payment,
-        content: userInfo.content,
+        //content: userInfo.content,
       },
       { headers: { Authorization: `Bearer ${accessToken}` } }
     ).then((result) => {
@@ -61,6 +63,15 @@ function PetListContainer({ accessToken, petUserInfo, petUserAll, setPetUserAll 
     })
 
   }
+
+  const handleInputValue = (key) => (e) => {
+    setUserInfo({ ...userInfo, [key]: e.target.value });
+  };
+  const handleInputWeekdaysValue = (key) => (e) => {
+    //클릭이 될때마다 days가 "월화수목,,," string에 바로 붙이도록
+    let days = e.target.value;
+    setUserInfo({ ...userInfo, [key]: days += days });
+  };
 
 
   return (
@@ -114,65 +125,40 @@ function PetListContainer({ accessToken, petUserInfo, petUserAll, setPetUserAll 
 
                       </div>
                     </div>
+                    {/*---------------- 유저가 신청 등록하는 입력창------------ */}
                     <div className="body-infobox-input">
                       <div className="days">
                         <div className="days-title">✔︎ 가능한 요일을 체크해주세요</div>
                         <div className="all_days">
-                          <input type="checkbox" id="a1" name="월" />
+                          <input type="checkbox" id="a1" name="월" onChange={handleInputWeekdaysValue('days')} />
                           <label for="a1"><span>Mon</span></label>
-                          <input type="checkbox" id="a2" name="화" />
+                          <input type="checkbox" id="a2" name="화" onChange={handleInputWeekdaysValue('days')} />
                           <label for="a2"><span>Tue</span></label>
-                          <input type="checkbox" id="a3" name="수" />
+                          <input type="checkbox" id="a3" name="수" onChange={handleInputWeekdaysValue('days')} />
                           <label for="a3"><span>Wed</span></label>
-                          <input type="checkbox" id="a4" name="목" />
+                          <input type="checkbox" id="a4" name="목" onChange={handleInputWeekdaysValue('days')} />
                           <label for="a4"><span>Thu</span></label>
-                          <input type="checkbox" id="a5" name="금" />
+                          <input type="checkbox" id="a5" name="금" onChange={handleInputWeekdaysValue('days')} />
                           <label for="a5"><span>Fri</span></label>
-                          <input type="checkbox" id="a6" name="토" />
+                          <input type="checkbox" id="a6" name="토" onChange={handleInputWeekdaysValue('days')} />
                           <label for="a6"><span>Sat</span></label>
-                          <input type="checkbox" id="a7" name="일" />
+                          <input type="checkbox" id="a7" name="일" onChange={handleInputWeekdaysValue('days')} />
                           <label for="a7"><span>Sun</span></label>
                         </div>
                       </div>
                       <div className="days">
                         <div className="days-title">✔︎ 가능한 시간을 체크해주세요</div>
                         <div className="registrationTime-container">
-                          <select name="" id="registrationStartTime">
-                            <option value="">07</option>
-                            <option value="">08</option>
-                            <option value="">09</option>
-                            <option value="">10</option>
-                            <option value="">11</option>
-                            <option value="">12</option>
-                            <option value="">13</option>
-                            <option value="">14</option>
-                            <option value="">15</option>
-                            <option value="">16</option>
-                            <option value="">17</option>
-                            <option value="">18</option>
-                            <option value="">19</option>
-                            <option value="">20</option>
-                            <option value="">21</option>
-                            <option value="">22</option>
+                          <select name="startTime" id="registrationStartTime" onChange={handleInputValue('startdate')}>
+                            {time.map((el) =>
+                              <option value={el}>{el}</option>
+                            )}
                           </select><span>시 부터 </span>
 
-                          <select name="" id="registrationLastTime">
-                            <option value="">07</option>
-                            <option value="">08</option>
-                            <option value="">09</option>
-                            <option value="">10</option>
-                            <option value="">11</option>
-                            <option value="">12</option>
-                            <option value="">13</option>
-                            <option value="">14</option>
-                            <option value="">15</option>
-                            <option value="">16</option>
-                            <option value="">17</option>
-                            <option value="">18</option>
-                            <option value="">19</option>
-                            <option value="">20</option>
-                            <option value="">21</option>
-                            <option value="">22</option>
+                          <select name="endTime" id="registrationLastTime" onChange={handleInputValue('enddate')}>
+                            {time.map((el) =>
+                              <option value={el}>{el}</option>
+                            )}
                           </select><span>시까지 가능해요</span>
                         </div>
 
@@ -180,15 +166,15 @@ function PetListContainer({ accessToken, petUserInfo, petUserAll, setPetUserAll 
                           <div>
                             <div className="days-title">✔︎ 희망시급을 입력해주세요</div>
                             <div>
-                              <input type="text" id="registrationPay" />
+                              <input type="text" id="registrationPay" onChange={handleInputValue('payment')} />
                               <span>(원)</span>
                             </div>
                           </div>
                           <div id="pet-registration-careType">
                             <div className="days-title">✔︎ 돌봄 유형을 선택해주세요</div>
                             <select name="" id="careType">
-                              <option value="">산책</option>
-                              <option value="">집돌봄</option>
+                              <option value="산책">산책</option>
+                              <option value="집돌봄">집돌봄</option>
                             </select>
                           </div>
                         </div>
