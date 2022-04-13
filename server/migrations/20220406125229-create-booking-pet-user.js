@@ -17,7 +17,13 @@ module.exports = {
       payment :{
         type: Sequelize.INTEGER
       },
-      date: {
+      startdate: {
+        type: Sequelize.STRING
+      },
+      enddate: {
+        type: Sequelize.STRING
+      },
+      days: {
         type: Sequelize.STRING
       },
       createdAt: {

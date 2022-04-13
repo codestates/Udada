@@ -175,6 +175,7 @@ function App() {
       <Nav isLogin={isLogin} handleResponseSuccess={handleResponseSuccess} handleLogout={handleLogout} />
       <Routes>
         <Route exact={true} path="/" element={<HomeContainer />} />
+
         <Route path="/petsitterlist" element={<SitterListContainer petSitterInfo={petSitterAll} setPetSitterInfo={setPetSitterInfo} accessToken={accessToken} />} />
         <Route path="/petlist" element={
           <PetListContainer
@@ -183,6 +184,7 @@ function App() {
             setPetUserAll={setPetUserAll}
             setPetUserInfo={setPetUserInfo}
             accessToken={accessToken} />} />
+
         {/* Signup page */}
         <Route path="/signup" element={<Signup />} />
         <Route path="/signup/petuser" element={<PetUserSignup petUserInfo={petUserInfo} setPetUserInfo={setPetUserInfo} />} />

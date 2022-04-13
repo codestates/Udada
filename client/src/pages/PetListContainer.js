@@ -9,11 +9,15 @@ import '../App.css';
 import axios from 'axios';
 
 
+
 function PetListContainer({ accessToken, petUserInfo, petUserAll, setPetUserAll }) {
+
 
   const [isPetUser, setIsPetUser] = useState(false);
   const [userInfo, setUserInfo] = useState(petUserInfo);
+  
   //const [location, setLocation] = useState('');
+
 
   function show() {
     const box = document.getElementById("petSitterInfo-apply")
@@ -46,6 +50,7 @@ function PetListContainer({ accessToken, petUserInfo, petUserAll, setPetUserAll 
       })
   }
 
+
   const handleUserRegister = () => {
     console.log(userInfo);
     axios.post(
@@ -61,6 +66,11 @@ function PetListContainer({ accessToken, petUserInfo, petUserAll, setPetUserAll 
     ).then((result) => {
       console.log(result.data);
     })
+
+
+    console.log(userlist)
+
+
 
   }
 
@@ -118,7 +128,10 @@ function PetListContainer({ accessToken, petUserInfo, petUserAll, setPetUserAll 
                       </div>
 
                       <div className="body-infobox-info">
+
                         <div className="body-infobox-name">{petUserInfo.name} ({petUserInfo.petAge}살)</div>
+
+
                         <div className="body-infobox-howBig">{petUserInfo.howBig}</div>
                         <div className="body-infobox-location">{petUserInfo.location}</div>
                         <div className="body-infobox-content">{petUserInfo.content}</div>
@@ -185,7 +198,9 @@ function PetListContainer({ accessToken, petUserInfo, petUserAll, setPetUserAll 
                   </div>
                 </div>
                 <div className="popup-foot">
+
                   <span className="pop-btn confirm" id="confirm" onClick={() => { hide(); handleUserRegister(); }}>등록하기</span>
+
                   {/* <span class="pop-btn close" id="close">창 닫기</span> */}
                 </div>
               </div>
