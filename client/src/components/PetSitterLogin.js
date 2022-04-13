@@ -43,7 +43,7 @@ export default function PetSitterLogin({ handleResponseSuccess, setAccessToken})
                 //setRefreshToken(res.cookies);
                 //navigate('/petsitterlist');
 
-
+                navigate('/');
             })
         } else {
             setErrorMessage('이메일과 비밀번호를 입력하세요');
@@ -54,25 +54,25 @@ export default function PetSitterLogin({ handleResponseSuccess, setAccessToken})
         window.location.assign(url)
     }
 
- const Login = () => {
-  Naver();
-//   UserProfile();
- }
+//  const Login = () => {
+//   Naver();
+// //   UserProfile();
+//  }
  
- useEffect(Login, []);
+//  useEffect(Login, []);
  
- const Naver = () => {
-    const { naver } = window;
+//  const Naver = () => {
+//     const { naver } = window;
 
-    const naverLogin = new naver.LoginWithNaverId({
-      clientId: "jVEcRaxQuctuGDwOLYRW",
-      callbackUrl: "http://localhost:3000/",
-      isPopup: false,
-      loginButton: {color: "green", type: 1, height: 30} ,
-      callbackHandle: true
-    });
-    naverLogin.init();
-  }
+//     const naverLogin = new naver.LoginWithNaverId({
+//       clientId: "jVEcRaxQuctuGDwOLYRW",
+//       callbackUrl: "http://localhost:3000/",
+//       isPopup: false,
+//       loginButton: {color: "green", type: 1, height: 30} ,
+//       callbackHandle: true
+//     });
+//     naverLogin.init();
+//   }
 
     return (
         <div>
@@ -89,7 +89,7 @@ export default function PetSitterLogin({ handleResponseSuccess, setAccessToken})
                     </button>
                     {/* <a href={"https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=cffd0f88a990b18a92bbcbe2002f7e1e&redirect_uri=http://localhost:3000"}>카카오 로그인</a> */}
                     <button
-                        onClick={Login}
+                        // onClick={Login}
                         id='login-social-button'
                     >
                         {/* <img id="login-social-naver-logo" alt="naver-login-logo" src={logo[1]} /> */}

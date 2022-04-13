@@ -10,7 +10,7 @@ function HomeContainer() {
             <div id="main-body">
                 <div id="main-carousel">
                     <Carousel infiniteLoop useKeyboardArrows autoPlay>
-                        {homeImages.map((src, idx) => <img src={src} alt={idx} />)}
+                        {homeImages.map((src, idx) => <img key={idx} src={src} alt={idx} />)}
 
                     </Carousel>
                 </div>

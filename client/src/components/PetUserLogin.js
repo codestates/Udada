@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useNavigate } from 'react';
 import { Link } from 'react-router-dom';
 import { logo } from '../assets/images'
 import axios from 'axios';
@@ -6,10 +6,15 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 
 export default function PetUserLogin({ accessToken, setAccessToken }) {
+
+    const navigate = useNavigate();
+
     const [loginInfo, setLoginInfo] = useState({
         email: '',
         password: ''
     });
+
+    const [url, setUrl] = useState('https://github.com/login/oauth/authorize?client_id=ec1357998ab3f7ed0e27')
     const [errorMessage, setErrorMessage] = useState('');
     const handleInputValue = (key) => (e) => {
         setLoginInfo({ ...loginInfo, [key]: e.target.value });
@@ -19,7 +24,7 @@ export default function PetUserLogin({ accessToken, setAccessToken }) {
         // TODO : 이메일 및 비밀번호를 입력하지 않았을 경우 에러를 표시해야 합니다.
         if (loginInfo.email && loginInfo.password) {
             axios.post(
-                "https://localhost:4000/links/login/petuser",
+                "http://localhost:4000/links/login/petuser",
                 {
                     email: loginInfo.email,
                     password: loginInfo.password
@@ -30,11 +35,17 @@ export default function PetUserLogin({ accessToken, setAccessToken }) {
                 console.log(res.data.data.accessToken);
                 console.log(res.cookie);
                 setAccessToken(res.data.data.accessToken);
+
+                navigate('/');
             })
         } else {
             setErrorMessage('이메일과 비밀번호를 입력하세요');
         }
     };
+
+    function socialLoginHandler() {
+        window.location.assign(url)
+    }
     return (
         <div>
             <center className="login-body">
@@ -42,7 +53,7 @@ export default function PetUserLogin({ accessToken, setAccessToken }) {
                 <div className='login-social-here-container'>
                     소셜 로그인
                     <button
-                        // onClick={this.socialLoginHandler}
+                        onClick={socialLoginHandler}
                         id='login-social-button'
                     >
                         <img id="login-social-kakao-logo" alt="kakao-login-logo" src={logo[0]} />

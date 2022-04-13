@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Nav({ isAuthenticated, isLogin }) {
+function Nav({ isAuthenticated, handleLogout, isLogin }) {
 
     return (
         <div id="nav-body">
@@ -21,10 +21,10 @@ function Nav({ isAuthenticated, isLogin }) {
                 {isLogin ?
                         <div id="nav-btn-box">
                             <Link to="/mypage">
-                                <button id='nav-btn' onClick={isAuthenticated()}>MyPage</button>
+                                <button id='nav-btn' onClick={isLogin ? isAuthenticated : handleLogout}>MyPage</button>
                             </Link>
                             <Link to="/login">
-                                <button id='nav-btn'>logout</button>
+                                <button id='nav-btn' onClick={handleLogout}>logout</button>
                             </Link>
                     </div> : <div id="nav-btn-box">
                             <Link to="/signup">

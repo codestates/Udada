@@ -77,8 +77,8 @@ export default function PetSitterSignup({ petSitterInfo, setIsLogin, isLogin,  s
                     { 'Content-Type': 'application/json', withCredentials: true }
                 ).then((res) => {
                     console.log(userinfo);
-                    navigate('/login');
                     setIsLogin(false);
+                    navigate('/');
                     alert('회원가입 완료');
 
                 })

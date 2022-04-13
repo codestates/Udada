@@ -32,6 +32,7 @@ function App() {
   const [petSitterInfo, setPetSitterInfo] = useState(dummyData.petSitter);
   const [isLogin, setIsLogin] = useState(false);
   const [accessToken, setAccessToken] = useState('');
+  const navigate = useNavigate();
 
 
   const getAccessToken = async (authorizationCode) => {
@@ -59,6 +60,7 @@ function App() {
       setAccessToken(res.data.accessToken)
       console.log(authorizationCode)
       console.log('petsitter login 인증 성공');
+      console.log('petsitter login 인증 성공');
     })
   }
 
@@ -67,7 +69,7 @@ function App() {
     // TODO: 인증 성공한 토큰을 받아올 때는 상태 끌어올리기로 받아와야 한다.
     console.log(accessToken);
     axios.get('http://localhost:4000/links/mypage/petsitter',
-      {headers: { Authorization: `Bearer ${accessToken}`}})
+      {headers: { authorization: `Bearer ${accessToken}`}})
       .then((result) => {
         // TODO: result.data의 정보가 petUser인지 petSitter인지 구별필요
         console.log(result.data)
@@ -99,6 +101,15 @@ function App() {
     console.log(accessToken);
   };
 
+  const handleLogout = () => {
+    axios.get('http://localhost:4000/links/logout')
+      .then(() => {
+        console.log('logout성공');
+        setAccessToken('');
+        setIsLogin(false);
+        navigate('/');
+      })
+  }
 
   useEffect(() => {
     const url = new URL(window.location.href)
@@ -114,36 +125,35 @@ function App() {
   }, []);
 
 
-  return (
-    <Router>
-      <Nav isAuthenticated={isAuthenticated} isLogin={isLogin} />
+  return (<>
+        <Nav isAuthenticated={isAuthenticated} handleLogout={handleLogout} isLogin={isLogin} />
       <Routes>
-        <Route exact={true} path="/" element={<HomeContainer />} />
-        <Route path="/petsitterlist" element={<SitterListContainer petSitterInfo={petSitterInfo} setPetSitterInfo={setPetSitterInfo} />} />
-        <Route path="/petlist" element={<PetListContainer petUserInfo={petUserInfo} setPetUserInfo={setPetUserInfo} />} />
-        {/* Signup page */}
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/signup/petuser" element={<PetUserSignup petUserInfo={petUserInfo} setPetUserInfo={setPetUserInfo} />} />
-        <Route path="/signup/petsitter" element={<PetSitterSignup petSitterInfo={petSitterInfo} setIsLogin={setIsLogin} isLogin={isLogin} setPetSitterInfo={setPetSitterInfo} />} />
-        {/* Login page */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/login/petuser" element={
-          <PetUserLogin
-            // handleResponseSuccess={handleResponseSuccess}
-            setAccessToken={setAccessToken}
-          />}
-        />
-        <Route path="/login/petsitter" element={
-          <PetSitterLogin
-            handleResponseSuccess={handleResponseSuccess} 
-            setAccessToken={setAccessToken} />} />
-        <Route path="/mypage" element={<Mypage />} />
-        <Route path="/reservation" element={<Reservation />} />
-        <Route path="/application" element={<Application />} />
+          <Route exact={true} path="/" element={<HomeContainer />} />
+          <Route path="/petsitterlist" element={<SitterListContainer petSitterInfo={petSitterInfo} accessToken={accessToken} setPetSitterInfo={setPetSitterInfo} />} />
+          <Route path="/petlist" element={<PetListContainer petUserInfo={petUserInfo} setPetUserInfo={setPetUserInfo} />} />
+          {/* Signup page */}
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/signup/petuser" element={<PetUserSignup petUserInfo={petUserInfo} setPetUserInfo={setPetUserInfo} />} />
+          <Route path="/signup/petsitter" element={<PetSitterSignup petSitterInfo={petSitterInfo} setIsLogin={setIsLogin} isLogin={isLogin} setPetSitterInfo={setPetSitterInfo} />} />
+          {/* Login page */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/login/petuser" element={
+            <PetUserLogin
+              // handleResponseSuccess={handleResponseSuccess}
+              setAccessToken={setAccessToken}
+            />}
+          />
+          <Route path="/login/petsitter" element={
+            <PetSitterLogin
+              handleResponseSuccess={handleResponseSuccess} 
+              setAccessToken={setAccessToken} />} />
+          <Route path="/mypage" element={<Mypage />} />
+          <Route path="/reservation" element={<Reservation />} />
+          <Route path="/application" element={<Application />} />
+        {/*<NotificationCenter />*/}
       </Routes>
-      {/*<NotificationCenter />*/}
-      <Footer />
-    </Router>
+    <Footer />
+  </>
   );
 }
 
