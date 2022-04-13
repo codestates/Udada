@@ -60,27 +60,6 @@ export default function PetSitterLogin({ handleResponseSuccess, setAccessToken, 
         window.location.assign(url)
     }
 
-<<<<<<< HEAD
-//  const Login = () => {
-//   Naver();
-// //   UserProfile();
-//  }
- 
-//  useEffect(Login, []);
- 
-//  const Naver = () => {
-//     const { naver } = window;
-
-//     const naverLogin = new naver.LoginWithNaverId({
-//       clientId: "jVEcRaxQuctuGDwOLYRW",
-//       callbackUrl: "http://localhost:3000/",
-//       isPopup: false,
-//       loginButton: {color: "green", type: 1, height: 30} ,
-//       callbackHandle: true
-//     });
-//     naverLogin.init();
-//   }
-=======
     const Login = () => {
         Naver();
         //   UserProfile();
@@ -100,7 +79,6 @@ export default function PetSitterLogin({ handleResponseSuccess, setAccessToken, 
         });
         naverLogin.init();
     }
->>>>>>> 7d9575d93d22d87466f24b83f3a6b7629a6bac9e
 
     return (
         <div>
@@ -117,14 +95,8 @@ export default function PetSitterLogin({ handleResponseSuccess, setAccessToken, 
                     </button>
                     {/* <a href={"https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=cffd0f88a990b18a92bbcbe2002f7e1e&redirect_uri=http://localhost:3000"}>카카오 로그인</a> */}
                     <button
-<<<<<<< HEAD
-                        // onClick={Login}
-                        id='login-social-button'
-                    >
-=======
                         onClick={Login}
                         id='login-social-button2'>
->>>>>>> 7d9575d93d22d87466f24b83f3a6b7629a6bac9e
                         {/* <img id="login-social-naver-logo" alt="naver-login-logo" src={logo[1]} /> */}
                         <div id='naverIdLogin' />
                         <span>네이버 로그인</span> 

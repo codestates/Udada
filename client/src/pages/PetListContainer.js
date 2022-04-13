@@ -9,11 +9,13 @@ import '../App.css';
 import axios from 'axios';
 
 
-function PetListContainer({ petUserInfo }) {
+function PetListContainer({ petUserInfo, accessToken, petUserAll, setPetUserAll }) {
 
   const [isPetUser, setIsPetUser] = useState(false);
   const [userInfo, setUserInfo] = useState(petUserInfo);
+  
   //const [location, setLocation] = useState('');
+
 
   function show() {
     const box = document.getElementById("petSitterInfo-apply")
@@ -46,16 +48,21 @@ function PetListContainer({ petUserInfo }) {
       })
   }
 
-  const handleUserRegister = () => {
-    axios.post(
+  const handleUserRegister = async () => {
+    const userlist = await axios.post(
       'https://localhost:4000/bookings/petuser',
       {
         location: userInfo.location,
-        date: userInfo.date,
+        // date: userInfo.date,
         payment: userInfo.payment,
         content: userInfo.content,
-      }
+      },
+      {headers: { Authorization: `Bearer ${accessToken}`}}
     )
+
+    console.log(userlist)
+
+
 
   }
 
@@ -82,7 +89,7 @@ function PetListContainer({ petUserInfo }) {
           </div>
 
           <div id="petUserInfo-body">
-            {petUserInfo.map((item, idx) => <PetItem item={item} key={idx}
+            {petUserAll.map((item, idx) => <PetItem item={item} key={idx}
               handleUser={() => handleUser(item)} />)}
           </div>
 
@@ -99,13 +106,13 @@ function PetListContainer({ petUserInfo }) {
                     </div>
                     <div className="body-infobox">
                       <div className="body-infobox-img">
-                        <img src={petUserInfo[1].img} alt={petUserInfo[1].name} />
+                        <img src={petUserInfo.img} alt={petUserInfo.name} />
                       </div>
                       <div className="body-infobox-info">
-                        <div className="body-infobox-name">{petUserInfo[1].name} {petUserInfo[1].petAge}살</div>
-                        <div className="body-infobox-howBig">{petUserInfo[1].howBig}</div>
-                        <div className="body-infobox-location">{petUserInfo[1].location}</div>
-                        <div className="body-infobox-content">{petUserInfo[1].content}</div>
+                        <div className="body-infobox-name">{petUserInfo.name} {petUserInfo.petAge}살</div>
+                        <div className="body-infobox-howBig">{petUserInfo.howBig}</div>
+                        <div className="body-infobox-location">{petUserInfo.location}</div>
+                        <div className="body-infobox-content">{petUserInfo.content}</div>
 
                       </div>
                     </div>
@@ -194,7 +201,7 @@ function PetListContainer({ petUserInfo }) {
                   </div>
                 </div>
                 <div className="popup-foot">
-                  <span className="pop-btn confirm" id="confirm" onClick={() => hide()}>등록하기</span>
+                  <span className="pop-btn confirm" id="confirm" onClick={() => { hide(); handleUserRegister();}}>등록하기</span>
                   {/* <span class="pop-btn close" id="close">창 닫기</span> */}
                 </div>
               </div>
