@@ -20,7 +20,7 @@ app.use(cors({
   method: ['get', 'post', 'options', 'delete']
 }));
 
-console.log("안뇽")
+//console.log("안뇽")
 
 app.use('/', indexRouter); // req, res를 여기서 가져오네 indexRouter가 아니라 함수가 들어가야하는거네.
 app.use('/links', linksRouter);

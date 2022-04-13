@@ -28,8 +28,13 @@ import { dummyData } from './assets/state'
 
 function App() {
 
+  //유저 한명의 정보
   const [petUserInfo, setPetUserInfo] = useState(dummyData.petUser);
   const [petSitterInfo, setPetSitterInfo] = useState(dummyData.petSitter);
+  //유저 전체의 정보
+  const [petUserAll, setPetUserAll] = useState(dummyData.petUser);
+  const [petSitterAll, setPetSitterAll] = useState(dummyData.petSitter);
+
   const [isLogin, setIsLogin] = useState(false);
   const [accessToken, setAccessToken] = useState('');
   //petSitter인지 petUser인지 결정지어주는 상태
@@ -88,7 +93,7 @@ function App() {
         // console.log(result.data.data.petsitterData);
         setPetSitterInfo(result.data.data.petsitterData);
         console.log('petsitter login 인증 성공');
-        console.log(petSitterInfo);
+        // console.log(petSitterInfo);
         setIsLogin(true);
         alert('펫시터 로그인 성공');
       })
@@ -105,7 +110,7 @@ function App() {
       .then((result) => {
         setPetUserInfo(result.data.data.petuserData);
         console.log('petuser login 인증 성공');
-        console.log(petUserInfo);
+        // console.log(petUserInfo);
         setIsLogin(true);
         alert('펫유저 로그인 성공');
       })
@@ -120,7 +125,7 @@ function App() {
     } else if (userType === 'sitter') {
       isPetSitterAuthenticated();
     } else {
-      alert('로그인/회원가입이 다시 필요합니다!')
+      //alert('로그인/회원가입이 다시 필요합니다!')
     }
   };
 
@@ -137,6 +142,13 @@ function App() {
   }
 
   useEffect(() => {
+    console.log(isLogin)
+    if (isLogin === false) {
+      handleLogout();
+    }
+  }, [])
+
+  useEffect(() => {
     const url = new URL(window.location.href)
     const authorizationCode = url.searchParams.get('code')
 
@@ -147,9 +159,10 @@ function App() {
     }
 
     // isAuthenticated();
-    handleResponseSuccess();
-    // if (isLogin === true) isPetSitterAuthenticated();
-    handleLogout();
+
+    if (userType === 'user') isPetUserAuthenticated();
+    if (userType === 'sitter') isPetSitterAuthenticated();
+
 
   }, [userType]);
 
@@ -160,8 +173,8 @@ function App() {
       <Nav isLogin={isLogin} handleResponseSuccess={handleResponseSuccess} handleLogout={handleLogout} />
       <Routes>
         <Route exact={true} path="/" element={<HomeContainer />} />
-        <Route path="/petsitterlist" element={<SitterListContainer petSitterInfo={petSitterInfo} setPetSitterInfo={setPetSitterInfo} />} />
-        <Route path="/petlist" element={<PetListContainer petUserInfo={petUserInfo} setPetUserInfo={setPetUserInfo} />} />
+        <Route path="/petsitterlist" element={<SitterListContainer petSitterInfo={petSitterInfo} setPetSitterInfo={setPetSitterInfo} accessToken={accessToken} />} />
+        <Route path="/petlist" element={<PetListContainer petUserInfo={petUserAll} setPetUserInfo={setPetUserAll} accessToken={accessToken} />} />
         {/* Signup page */}
         <Route path="/signup" element={<Signup />} />
         <Route path="/signup/petuser" element={<PetUserSignup petUserInfo={petUserInfo} setPetUserInfo={setPetUserInfo} />} />

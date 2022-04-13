@@ -32,7 +32,7 @@ export default function PetUserLogin({ handleResponseSuccess, setAccessToken, us
                 // console.log(res.data.data.accessToken);
                 setAccessToken(res.data.data.accessToken);
                 //onChange('user');
-                setUserType(() => 'user')
+                setUserType('user')
                 handleResponseSuccess(userType);
                 navigate('/');
             })
@@ -51,18 +51,18 @@ export default function PetUserLogin({ handleResponseSuccess, setAccessToken, us
                             // onClick={this.socialLoginHandler}
                             id='login-social-button1'>
                             <img id="login-social-kakao-logo" alt="kakao-login-logo" src={logo[0]} />
-                            <span>카카오 로그인</span> 
+                            <span>카카오 로그인</span>
                         </button>
                         <button
                             // onClick={this.socialLoginHandler}
                             id='login-social-button2'>
                             <img id="login-social-naver-logo" alt="naver-login-logo" src={logo[1]} />
-                            <span>네이버 로그인</span> 
+                            <span>네이버 로그인</span>
                         </button>
                     </div>
                     <form className="login-here-box" onSubmit={(e) => e.preventDefault()}>
-                        <div className="login-here-input"> 
-                        <span className='login-text'>일반 로그인</span>
+                        <div className="login-here-input">
+                            <span className='login-text'>일반 로그인</span>
                             <input type='email' onChange={handleInputValue('email')} placeholder="E-mail을 입력해주세요" />
                             <input
                                 type='password'
