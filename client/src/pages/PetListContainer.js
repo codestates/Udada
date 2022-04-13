@@ -15,7 +15,8 @@ function PetListContainer({ accessToken, petUserInfo, petUserAll, setPetUserAll 
 
   const [isPetUser, setIsPetUser] = useState(false);
   const [userInfo, setUserInfo] = useState(petUserInfo);
-  
+  // const [days, setDays] = useState('');
+
   //const [location, setLocation] = useState('');
 
 
@@ -60,6 +61,7 @@ function PetListContainer({ accessToken, petUserInfo, petUserAll, setPetUserAll 
         startdate: userInfo.startdate,
         enddate: userInfo.enddate,
         payment: userInfo.payment,
+        days: userInfo.days
         //content: userInfo.content,
       },
       { headers: { Authorization: `Bearer ${accessToken}` } }
@@ -68,7 +70,7 @@ function PetListContainer({ accessToken, petUserInfo, petUserAll, setPetUserAll 
     })
 
 
-    console.log(userlist)
+    // console.log(userlist)
 
 
 
@@ -77,11 +79,24 @@ function PetListContainer({ accessToken, petUserInfo, petUserAll, setPetUserAll 
   const handleInputValue = (key) => (e) => {
     setUserInfo({ ...userInfo, [key]: e.target.value });
   };
+
+  let days = '';
   const handleInputWeekdaysValue = (key) => (e) => {
     //클릭이 될때마다 days가 "월화수목,,," string에 바로 붙이도록
-    let days = e.target.value;
-    setUserInfo({ ...userInfo, [key]: days += days });
+    let day = e.target.name;
+    // setDays(...days, day);
+    days += day
+      ; setUserInfo({ ...userInfo, [key]: days });
   };
+
+  // const handleCheckbox = (key) => (e) => {
+  //   if (e.target.value === 'on') {
+  //     console.log('checkbox checked!');
+  //     setuserinfo({ ...userinfo, [key]: true });
+  //   } else {
+  //     setuserinfo({ ...userinfo, [key]: false });
+  //   }
+  // }
 
 
   return (
