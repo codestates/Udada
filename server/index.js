@@ -29,6 +29,7 @@ app.use('/bookings', bookingRouter)
 const HTTPS_PORT = process.env.HTPPS_PORT || 4000;
 
 let server = https
+
   .createServer(
     {
       key: fs.readFileSync(__dirname + '/key.pem', 'utf-8'),

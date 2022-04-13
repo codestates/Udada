@@ -43,37 +43,34 @@ export default function PetUserLogin({ handleResponseSuccess, setAccessToken, us
     return (
         <div>
             <center className="login-body">
-                <h1>유저 로그인</h1>
                 <div className='login-social-here-container'>
-                    소셜 로그인
-                    <button
-                        // onClick={this.socialLoginHandler}
-                        id='login-social-button'
-                    >
-                        <img id="login-social-kakao-logo" alt="kakao-login-logo" src={logo[0]} />
-                        카카오 로그인
-                    </button>
-
-                    <button
-                        // onClick={this.socialLoginHandler}
-                        id='login-social-button'
-                    >
-                        <img id="login-social-naver-logo" alt="naver-login-logo" src={logo[1]} />
-                        네이버 로그인
-                    </button>
+                    <h2 id="loginH2">Login</h2>
+                    <div className='login-social-here-btn'>
+                        <span className='login-text'>간편 로그인</span>
+                        <button
+                            // onClick={this.socialLoginHandler}
+                            id='login-social-button1'>
+                            <img id="login-social-kakao-logo" alt="kakao-login-logo" src={logo[0]} />
+                            <span>카카오 로그인</span> 
+                        </button>
+                        <button
+                            // onClick={this.socialLoginHandler}
+                            id='login-social-button2'>
+                            <img id="login-social-naver-logo" alt="naver-login-logo" src={logo[1]} />
+                            <span>네이버 로그인</span> 
+                        </button>
+                    </div>
                     <form className="login-here-box" onSubmit={(e) => e.preventDefault()}>
-                        <div>
-                            <span>이메일</span>
-                            <input type='email' onChange={handleInputValue('email')} />
-                        </div>
-                        <div>
-                            <span>비밀번호</span>
+                        <div className="login-here-input"> 
+                        <span className='login-text'>일반 로그인</span>
+                            <input type='email' onChange={handleInputValue('email')} placeholder="E-mail을 입력해주세요" />
                             <input
                                 type='password'
                                 onChange={handleInputValue('password')}
+                                placeholder="비밀번호를 입력해주세요"
                             />
                         </div>
-                        <div>
+                        <div className="login-not-exist">
                             <Link to='/signup'>아직 아이디가 없으신가요?</Link>
                         </div>
                         <button id='login-button' type='submit' onClick={handleLogin}>
