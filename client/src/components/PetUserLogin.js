@@ -1,23 +1,11 @@
-<<<<<<< HEAD
-import React, { useState, useNavigate } from 'react';
-import { Link } from 'react-router-dom';
-=======
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
->>>>>>> 7d9575d93d22d87466f24b83f3a6b7629a6bac9e
 import { logo } from '../assets/images'
 import axios from 'axios';
 
 axios.defaults.withCredentials = true;
 
-<<<<<<< HEAD
-export default function PetUserLogin({ accessToken, setAccessToken }) {
-
-    const navigate = useNavigate();
-
-=======
 export default function PetUserLogin({ handleResponseSuccess, setAccessToken, userType, setUserType, onChange }) {
->>>>>>> 7d9575d93d22d87466f24b83f3a6b7629a6bac9e
     const [loginInfo, setLoginInfo] = useState({
         email: '',
         password: ''
@@ -45,13 +33,9 @@ export default function PetUserLogin({ handleResponseSuccess, setAccessToken, us
             ).then((res) => {
                 // console.log(res.data.data.accessToken);
                 setAccessToken(res.data.data.accessToken);
-<<<<<<< HEAD
-
-=======
                 //onChange('user');
                 setUserType('user')
                 handleResponseSuccess(userType);
->>>>>>> 7d9575d93d22d87466f24b83f3a6b7629a6bac9e
                 navigate('/');
             })
         } else {
@@ -66,24 +50,6 @@ export default function PetUserLogin({ handleResponseSuccess, setAccessToken, us
         <div>
             <center className="login-body">
                 <div className='login-social-here-container'>
-<<<<<<< HEAD
-                    소셜 로그인
-                    <button
-                        onClick={socialLoginHandler}
-                        id='login-social-button'
-                    >
-                        <img id="login-social-kakao-logo" alt="kakao-login-logo" src={logo[0]} />
-                        카카오 로그인
-                    </button>
-
-                    <button
-                        // onClick={this.socialLoginHandler}
-                        id='login-social-button'
-                    >
-                        <img id="login-social-naver-logo" alt="naver-login-logo" src={logo[1]} />
-                        네이버 로그인
-                    </button>
-=======
                     <h2 id="loginH2">Login</h2>
                     <div className='login-social-here-btn'>
                         <span className='login-text'>간편 로그인</span>
@@ -100,7 +66,6 @@ export default function PetUserLogin({ handleResponseSuccess, setAccessToken, us
                             <span>네이버 로그인</span>
                         </button>
                     </div>
->>>>>>> 7d9575d93d22d87466f24b83f3a6b7629a6bac9e
                     <form className="login-here-box" onSubmit={(e) => e.preventDefault()}>
                         <div className="login-here-input">
                             <span className='login-text'>일반 로그인</span>

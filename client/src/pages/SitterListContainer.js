@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import SitterItem from '../components/SitterItem';
 import Profile from '../components/Profile';
-import { Link } from 'react-router-dom';
 import axios from "axios";
+import { locations } from '../assets/state'
 
 import '../App.css';
 
@@ -12,42 +12,26 @@ function SitterListContainer({petSitterInfo, accessToken}) {
 
 const [isPetSitter, setIsPetSitter] = useState(false);
 const [sitterInfo, setSitterInfo] = useState(petSitterInfo);
-
-//내정보 데이터 불러와야함 => 펫시터 지원하기 모달창에 프롭스로 내려주기위함 
-//아래는 임시로 더미데이터 사용
-
-// const sitterInfoFunc = () => {
-//   // TODO : 서버에 로그인을 요청하고, props로 전달된 callback을 호출합니다.
-//   // TODO : 이메일 및 비밀번호를 입력하지 않았을 경우 에러를 표시해야 합니다.
-  
-//   axios.get(
-//       "http://localhost:4000/links/reservation/persitter",
-//       {headers: { authorization: `Bearer ${accessToken}`}})
-//       .then((res) => {
-//       console.log(res);
-
-//       console.log(res);
-//       // setAccessToken(res.data.data.accessToken);
-//       // console.log(res.data.data.accessToken)
-
-//       // handleResponseSuccess();
-//       //console.log(res.cookies);
-
-//       //setRefreshToken(res.cookies);
-//       //navigate('/petsitterlist');
-
-//       // navigate('/');
-//   })
-//   }
-  // } else {
-  //     setErrorMessage('이메일과 비밀번호를 입력하세요');
-  // }
+console.log(sitterInfo)
 
 function show() {
   const box = document.getElementById("petSitterInfo-apply")
   box.style.display = "block"
 }
-function hide() {
+
+async function hide() {
+  await axios.post(
+    'http://localhost:4000/bookings/petsitter',
+    {
+      location: sitterInfo[0].location,
+      date: sitterInfo[0].date,
+      payment: sitterInfo[0].payment,
+      content: sitterInfo[0].content,
+    },
+    {
+      headers: {autorization: accessToken}
+    }
+  )
   const box = document.getElementById("petSitterInfo-apply")
   box.style.display = "none"
 }
@@ -60,6 +44,19 @@ const handlePetSitter = (item) => {
 const handleLogin = () => {
   setIsPetSitter(false);
 }
+
+const handleSitterInfo = (e) => {
+  axios.get(`https://localhost:4000/bookings/petsitter/?location=${e.target.value}`)
+    .then((result) => {
+      //받아온 data로 유저 정보 update
+      // setUserInfo(result.data.data);
+    })
+}
+
+const handleSitterRegister = () => {
+ 
+}
+
 console.log(isPetSitter)
 console.log(petSitterInfo)
   return (
@@ -78,31 +75,9 @@ console.log(petSitterInfo)
             </div>
             <select name="" id="petSitterInfo-select">
                 <option value="">돌봄 지역을 선택해주세요</option>
-                <option value="">강남구</option>
-                <option value="">강동구</option>
-                <option value="">강북구</option>
-                <option value="">강서구</option>
-                <option value="">관악구</option>
-                <option value="">광진구</option>
-                <option value="">구로구</option>
-                <option value="">금천구</option>
-                <option value="">노원구</option>
-                <option value="">도봉구</option>
-                <option value="">동대문구</option>
-                <option value="">동작구</option>
-                <option value="">마포구</option>
-                <option value="">서대문구</option>
-                <option value="">서초구</option>
-                <option value="">성동구</option>
-                <option value="">성북구</option>
-                <option value="">송파구</option>
-                <option value="">양천구</option>
-                <option value="">영등포구</option>
-                <option value="">용산구</option>
-                <option value="">은평구</option>
-                <option value="">종로구</option>
-                <option value="">중구</option>
-                <option value="">중랑구</option>
+                {locations.map((el) =>
+                <option value={el}>{el}</option>
+              )}
             </select>
         </div>
     

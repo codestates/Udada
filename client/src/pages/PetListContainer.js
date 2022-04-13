@@ -39,7 +39,7 @@ function PetListContainer({ petUserInfo }) {
 
   // 사용자가 선택한 지역에 따라 등록된 펫시터들의 모든 정보를 받아오는 함수
   const handleUserInfo = (e) => {
-    axios.get(`https://localhost:4000/bookings/petuser/?location=${e.target.value}`)
+    axios.get(`http://localhost:4000/bookings/petuser/?location=${e.target.value}`)
       .then((result) => {
         //받아온 data로 유저 정보 update
         setUserInfo(result.data.data);

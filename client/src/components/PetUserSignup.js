@@ -48,7 +48,7 @@ export default function PetUserSignup({ petUserInfo, setPetUserInfo }) {
 
             axios
                 .post(
-                    'https://localhost:4000/links/signup/petuser',
+                    'http://localhost:4000/links/signup/petuser',
                     {
                         email: userinfo.email,
                         password: userinfo.password,
