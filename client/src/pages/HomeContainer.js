@@ -13,9 +13,9 @@ function HomeContainer() {
     return (
 
         <div id="main-container">
-            <div class="slide">
+            <div className="slide">
             <ul>
-            {homeImages.map((src, idx) => <li><img src={src} alt={idx} /></li>)}
+            {homeImages.map((src, idx) => <li key={idx}><img src={src} alt={idx} /></li>)}
             </ul>
             </div>
             <div id="main-greetings">

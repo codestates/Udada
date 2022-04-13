@@ -72,6 +72,28 @@ module.exports = {
             }
         },
 
+<<<<<<< HEAD
+        get : async (req, res) => {
+            console.log(req.headers)
+            const accessTokenData = isAuthorized(req)
+            // accesssToken은 하나의 유저에 대한 것.
+            const refreshTokenData = checkRefreshToken(req)
+            const {location} = req.body
+
+            // 데이터 베이스에 등록된 펫시터 전체를 가져와야 함.
+            if(accessTokenData && refreshTokenData || !accessTokenData && refreshTokenData){
+                if(location){
+                    const reserveSitterlist = await findreserveSitterlist({location : location})
+                    
+                    // console.log(reserveSitterlist)
+                    
+                    if(reserveSitterlist.length !== 0){
+                      res.status(200).json({data : reserveSitterlist, message : "ok"})  
+                    }else{
+                        res.json({message : "not registered yet"})
+                    }
+                    
+=======
 
         get : async (req, res) => {
    
@@ -84,6 +106,7 @@ module.exports = {
                 
                 if(reserveSitterlist.length !== 0){
                     res.status(200).json({data : reserveSitterlist, message : "ok"})  
+>>>>>>> 7d9575d93d22d87466f24b83f3a6b7629a6bac9e
                 }else{
                     res.json({message : "not registered yet"})
                 }

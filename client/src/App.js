@@ -66,6 +66,7 @@ function App() {
       setAccessToken(res.data.accessToken)
       console.log(authorizationCode)
       console.log('petsitter login 인증 성공');
+      console.log('petsitter login 인증 성공');
     })
   }
 
@@ -115,6 +116,7 @@ function App() {
         alert('펫유저 로그인 성공');
       })
   };
+  
 
   //user인지 sitter인지에 따라 다른 요청을 보낸다
   const handleResponseSuccess = (userType) => {
@@ -169,7 +171,7 @@ function App() {
 
 
   return (
-    <Router>
+    <>
       <Nav isLogin={isLogin} handleResponseSuccess={handleResponseSuccess} handleLogout={handleLogout} />
       <Routes>
         <Route exact={true} path="/" element={<HomeContainer />} />
@@ -210,9 +212,8 @@ function App() {
         <Route path="/reservation" element={<Reservation />} />
         <Route path="/application" element={<Application />} />
       </Routes>
-      {/*<NotificationCenter />*/}
       <Footer />
-    </Router>
+    </>
   );
 }
 
