@@ -11,15 +11,18 @@ import '../App.css';
 
 // 서버 registration
 
-function SitterListContainer({petSitterAllInfo, dummypetSitterInfo ,accessToken}) {
+function SitterListContainer({petSitterAllInfo ,accessToken}) {
   // if (accessToken !== '') {
   //   accessToken = accessToken;
   // } else {
   //   accessToken = window.sessionStorage.getItem("accessToken")
   // }
 
-const petSitterInfo = window.JSON.parse(sessionStorage.getItem("petSitterInfo")) 
+const petSitterInfo = window.JSON.parse(sessionStorage.getItem("petSitterInfo"))
+const dummypetSitterInfo = window.JSON.parse(sessionStorage.getItem("dummypetSitterInfo"))
 
+const body = document.querySelector("body");
+body.addEventListener('click', clickBodyEvent);
 
 const [isPetSitter, setIsPetSitter] = useState(false);
 const [clickedSitterInfo, setClickedSitterInfo] = useState([]);
@@ -47,7 +50,7 @@ async function hide() {
       ...otherComponent
     },
     {
-      headers: {autorization: accessToken}
+      headers: {authorization: `Bearer ${accessToken}`}
     }
   )
   const box = document.getElementById("petSitterInfo-apply")
@@ -59,8 +62,6 @@ const handleClickedPetSitter = (item) => {
   setClickedSitterInfo(item);
   setIsPetSitter(true)
 }
-
-// console.log(clickedSitterInfo)
 
 const handleLogin = () => {
   setIsPetSitter(false);
@@ -76,7 +77,7 @@ const handleSitterInfo = (e) => {
     .then((result) => {
       //받아온 data로 유저 정보 update
       // setUserInfo(result.data.data);
-      console.log(result);
+      // console.log(result);
       setFilteredSitter(result.data.data);
     })
 }
@@ -95,13 +96,11 @@ const handleInputWeekdaysValue = (key) => (e) => {
   });
   // console.log(sitterInfo)
   setOtherComponent({ ...otherComponent, [key]: result })
-  const body = document.querySelector("body");
-  body.addEventListener('click', clickBodyEvent);
   }
   
   function clickBodyEvent(event) {
     const target = event.target;
-    console.log(target)
+    // console.log(target)
 
     if ($(event.target).hasClass("popup-wrap")) {
       const box = document.getElementById("petSitterInfo-apply")
@@ -127,8 +126,8 @@ const handleInputWeekdaysValue = (key) => (e) => {
             </div>
             <select onChange={handleSitterInfo} name="" id="petSitterInfo-select">
               <option value="">돌봄 지역을 선택해주세요</option>
-              {locations.map((el) =>
-                <option value={el}>{el}</option>
+              {locations.map((el, idx) =>
+                <option key={idx} value={el}>{el}</option>
               )}
             </select>
           </div>
@@ -164,13 +163,13 @@ const handleInputWeekdaysValue = (key) => (e) => {
                    </div> : 
                       <div className="body-infobox">
                       <div className="body-infobox-img">
-                          <img src={dummypetSitterInfo[0].img} alt={"펫시터로 로그인 하세요"} />
+                          <img src={dummypetSitterInfo[0].petsitter.img} alt={"펫시터로 로그인 하세요"} />
                       </div> 
                       <div className="body-infobox-info">
-                        <div className="body-infobox-name">{dummypetSitterInfo[0].name}</div>
-                        <div className="body-infobox-age">{dummypetSitterInfo[0].age}살</div>
-                        <div className="body-infobox-location">{dummypetSitterInfo[0].location}</div>
-                        <div className="body-infobox-content">{dummypetSitterInfo[0].content}</div>
+                        <div className="body-infobox-name">{dummypetSitterInfo[0].petsitter.name}</div>
+                        <div className="body-infobox-age">{dummypetSitterInfo[0].petsitter.age}살</div>
+                        <div className="body-infobox-location">{dummypetSitterInfo[0].petsitter.location}</div>
+                        <div className="body-infobox-content">{dummypetSitterInfo[0].petsitter.content}</div>
                       </div>
                   </div>}
                   
@@ -179,19 +178,19 @@ const handleInputWeekdaysValue = (key) => (e) => {
                       <div className="days-title">✔︎ 가능한 요일을 체크해주세요</div>
                       <div className="all_days">
                       <input type="checkbox" id="a1" name="days" value='월' onClick={handleInputWeekdaysValue('days')} />
-                          <label for="a1"><span>Mon</span></label>
+                          <label htmlFor="a1"><span>Mon</span></label>
                           <input type="checkbox" id="a2" name="days" value='화' onClick={handleInputWeekdaysValue('days')} />
-                          <label for="a2"><span>Tue</span></label>
+                          <label htmlFor="a2"><span>Tue</span></label>
                           <input type="checkbox" id="a3" name="days" value='수' onClick={handleInputWeekdaysValue('days')} />
-                          <label for="a3"><span>Wed</span></label>
+                          <label htmlFor="a3"><span>Wed</span></label>
                           <input type="checkbox" id="a4" name="days" value='목' onClick={handleInputWeekdaysValue('days')} />
-                          <label for="a4"><span>Thu</span></label>
+                          <label htmlFor="a4"><span>Thu</span></label>
                           <input type="checkbox" id="a5" name="days" value='금' onClick={handleInputWeekdaysValue('days')} />
-                          <label for="a5"><span>Fri</span></label>
+                          <label htmlFor="a5"><span>Fri</span></label>
                           <input type="checkbox" id="a6" name="days" value='토' onClick={handleInputWeekdaysValue('days')} />
-                          <label for="a6"><span>Sat</span></label>
+                          <label htmlFor="a6"><span>Sat</span></label>
                           <input type="checkbox" id="a7" name="days" value='일' onClick={handleInputWeekdaysValue('days')} />
-                          <label for="a7"><span>Sun</span></label>
+                          <label htmlFor="a7"><span>Sun</span></label>
                         </div>
                       </div>
                       <div className="days">

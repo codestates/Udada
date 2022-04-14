@@ -2,7 +2,7 @@ import React from 'react'
 import { Img } from '../assets/images'
 
 export default function PetItem({ item, handleUser }) {
-  console.log(item)
+  // console.log(item)
 
   return (
     <div key={item.id} className="pet-item">

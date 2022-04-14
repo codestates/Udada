@@ -14,7 +14,7 @@ import axios from 'axios';
 
 
 function PetListContainer({ accessToken, petUserInfo}) {
-  console.log(petUserInfo)
+  // console.log(petUserInfo)
 
   const [isPetUser, setIsPetUser] = useState(false);
   //선택된 유저 정보를 상세 Profile.js 페이지로 넘어갈때 값을 넘겨줌
@@ -39,7 +39,7 @@ function PetListContainer({ accessToken, petUserInfo}) {
 
   function clickBodyEvent(event){
     const target = event.target;
-    console.log(target)
+    // console.log(target)
 
     if($(event.target).hasClass("popup-wrap") ){
           const box = document.getElementById("petSitterInfo-apply")
@@ -56,7 +56,7 @@ function PetListContainer({ accessToken, petUserInfo}) {
   }
   const handleUser = (item) => {
     setIsPetUser(true)
-    console.log(item);
+    // console.log(item);
     setClickedUserInfo(item);
   }
   const handleLogin = () => {
@@ -73,7 +73,7 @@ function PetListContainer({ accessToken, petUserInfo}) {
     axios.get(`${process.env.REACT_APP_API_URL}/bookings/petuser/?location=${e.target.value}`)
       .then((result) => {
         //받아온 data로 유저 정보 update
-        console.log(result.data.data);
+        // console.log(result.data.data);
         setPetUserAll(result.data.data);
       })
   }
@@ -82,7 +82,7 @@ function PetListContainer({ accessToken, petUserInfo}) {
   const handleUserRegister = () => {
     // console.log(userInfo);
     axios.post(
-      'http://localhost:4000/bookings/petuser',
+      `${process.env.REACT_APP_API_URL}/bookings/petuser`,
       {
         location: petUserInfo.location,
         content: petUserInfo.content,
@@ -116,7 +116,6 @@ function PetListContainer({ accessToken, petUserInfo}) {
     // 출력
     //console.log(result);
     setOtherComponent({ ...otherComponent, [key]: result })
-
   };
 
   return (
@@ -138,8 +137,8 @@ function PetListContainer({ accessToken, petUserInfo}) {
             </div>
             <select name="" id="petUserInfo-select" onChange={handleUserInfoByLocation}>
               <option value="">돌봄 지역을 선택해주세요</option>
-              {locations.map((el) =>
-                <option value={el}>{el}</option>
+              {locations.map((el, idx) =>
+                <option key={idx} value={el}>{el}</option>
               )}
             </select>
           </div>
@@ -183,33 +182,33 @@ function PetListContainer({ accessToken, petUserInfo}) {
                         <div className="days-title">✔︎ 가능한 요일을 체크해주세요</div>
                         <div className="all_days">
                           <input type="checkbox" id="a1" name="days" value="월" onClick={handleInputWeekdaysValue('days')} />
-                          <label for="a1"><span>Mon</span></label>
+                          <label htmlFor="a1"><span>Mon</span></label>
                           <input type="checkbox" id="a2" name="days" value="화" onClick={handleInputWeekdaysValue('days')} />
-                          <label for="a2"><span>Tue</span></label>
+                          <label htmlFor="a2"><span>Tue</span></label>
                           <input type="checkbox" id="a3" name="days" value="수" onClick={handleInputWeekdaysValue('days')} />
-                          <label for="a3"><span>Wed</span></label>
+                          <label htmlFor="a3"><span>Wed</span></label>
                           <input type="checkbox" id="a4" name="days" value="목" onClick={handleInputWeekdaysValue('days')} />
-                          <label for="a4"><span>Thu</span></label>
+                          <label htmlFor="a4"><span>Thu</span></label>
                           <input type="checkbox" id="a5" name="days" value="금" onClick={handleInputWeekdaysValue('days')} />
-                          <label for="a5"><span>Fri</span></label>
+                          <label htmlFor="a5"><span>Fri</span></label>
                           <input type="checkbox" id="a6" name="days" value="토" onClick={handleInputWeekdaysValue('days')} />
-                          <label for="a6"><span>Sat</span></label>
+                          <label htmlFor="a6"><span>Sat</span></label>
                           <input type="checkbox" id="a7" name="days" value="일" onClick={handleInputWeekdaysValue('days')} />
-                          <label for="a7"><span>Sun</span></label>
+                          <label htmlFor="a7"><span>Sun</span></label>
                         </div>
                       </div>
                       <div className="days">
                         <div className="days-title">✔︎ 가능한 시간을 체크해주세요</div>
                         <div className="registrationTime-container">
                           <select name="startTime" id="registrationStartTime" onClick={handleInputValue('startdate')}>
-                            {time.map((el) =>
-                              <option value={el}>{el}</option>
+                            {time.map((el, idx) =>
+                              <option key={idx} value={el}>{el}</option>
                             )}
                           </select><span>시 부터 </span>
 
                           <select name="endTime" id="registrationLastTime" onClick={handleInputValue('enddate')}>
-                            {time.map((el) =>
-                              <option value={el}>{el}</option>
+                            {time.map((el, idx) =>
+                              <option key={idx} value={el}>{el}</option>
                             )}
                           </select><span>시까지 가능해요</span>
                         </div>

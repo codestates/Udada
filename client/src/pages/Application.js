@@ -26,12 +26,12 @@ export default function Application({ petSitterInfo, accessToken }) {
         //여러 예약 리스트 중 선태된 값을 관리하는 함수
         setIsInfo(item)
         show()
-        console.log(item)
+        // console.log(item)
     }
 
     const handleReservation = () => {
         console.log(petSitterInfo)
-        axios.get(`https://localhost:4000/bookings/list/petsitter/?location=${petSitterInfo.location}`,
+        axios.get(`${process.env.REACT_APP_API_URL}/bookings/list/petsitter/?location=${petSitterInfo.location}`,
             { headers: { Authorization: `Bearer ${accessToken}` } }
         )
             .then((result) => {

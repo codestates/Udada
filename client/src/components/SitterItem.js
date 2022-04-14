@@ -2,7 +2,7 @@ import React from 'react'
 import { Img } from "../assets/images"
 
 export default function SitterItem({ item , handlePetSitter}) {
-  console.log(item)
+  // console.log(item)
   if (item.petsitter) {
     return (
       <div key={item.id} className="item" onClick={() => handlePetSitter(item)}>

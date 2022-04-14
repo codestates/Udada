@@ -35,7 +35,7 @@ export default function Reservation({ petUserInfo, setPetUserInfo, accessToken }
     const handleReservation = () => {
         console.log(petUserInfo.location);
         console.log(accessToken);
-        axios.get(`https://localhost:4000/bookings/list/petuser/?location=${petUserInfo.location}`,
+        axios.get(`${process.env.REACT_APP_API_URL}/bookings/list/petuser/?location=${petUserInfo.location}`,
             { headers: { authorization: `Bearer ${accessToken}` } }
         )
             .then((result) => {

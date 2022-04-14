@@ -27,7 +27,7 @@ import { dummyData } from './assets/state'
 //import ShoppingCart from './pages/ShoppingCart';
 
 function App() {
-  console.log(process.env)
+  // console.log(process.env)
   //유저 한명의 정보
   const [petUserInfo, setPetUserInfo] = useState(dummyData.petUser);
   const [petSitterInfo, setPetSitterInfo] = useState(dummyData.petSitter);
@@ -38,6 +38,8 @@ function App() {
   //petSitter인지 petUser인지 결정지어주는 상태
   const [userType, setUserType] = useState('');
 
+  // console.log(petSitterInfo)
+  window.sessionStorage.setItem("dummypetSitterInfo", JSON.stringify(dummyData.petSitter))
 
   const onLogin = () => {
     setIsLogin(true);
@@ -58,8 +60,8 @@ function App() {
     }
   }, [])
 
-  console.log(accessToken)
-  console.log(window.sessionStorage);
+  // console.log(accessToken)
+  // console.log(window.sessionStorage);
 
   const petSitterGetAccessToken = async (authorizationCode) => {
     // 받아온 authorization code로 다시 OAuth App에 요청해서 access token을 받을 수 있습니다.
@@ -144,7 +146,7 @@ function App() {
         - 자신이 petUser인데 petSitter에서 로그인할 경우 경고 필요
         - 비밀번호가 틀렸을 때 그에 맞는 에러 메세지
     */
-    console.log(accessToken);
+    // console.log(accessToken);
     axios.get(`${process.env.REACT_APP_API_URL}/links/mypage/petsitter`,
       { headers: { Authorization: `Bearer ${accessToken}` } })
       .then((result) => {
@@ -248,7 +250,7 @@ function App() {
       <Routes>
         <Route exact={true} path="/" element={<HomeContainer />} />
 
-        <Route path="/petsitterlist" element={<SitterListContainer petSitterAllInfo={petSitterAll} dummypetSitterInfo={petSitterInfo} accessToken={accessToken} />} />
+        <Route path="/petsitterlist" element={<SitterListContainer petSitterAllInfo={petSitterAll} accessToken={accessToken} />} />
         <Route path="/petlist" element={
           <PetListContainer
             petUserInfo={petUserInfo}
