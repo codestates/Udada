@@ -9,8 +9,8 @@ const http = require('http')
 // const fs = require('fs')
 const bookingRouter = require('./routes/bookings')
 
+// const http = require('http')
 
-// const router = express.Router();
 const app = express();
 
 app.use(express.json());

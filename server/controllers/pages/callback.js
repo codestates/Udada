@@ -27,12 +27,15 @@ module.exports = {
             accept : 'application/json'
           } 
         })
-        // console.log(result.data)
+        console.log(result)
         const AccessToken =result.data.access_token
         console.log(AccessToken)
         // fake_access_token
-        
-        res.status(200).json({accessToken: AccessToken})
+        if (AccessToken) {
+          res.status(200).json({data: {accessToken: AccessToken}, message: "ok"})
+        } else {
+          res.status(401).send({message: "invalid token"})
+        }
     }
   }
 }

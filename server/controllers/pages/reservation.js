@@ -59,16 +59,18 @@ const {reserveUserData, reserveSitterData,
                 }
             },
 
-            get : async (req, res) => {
-                const {location} = req.query
-                if(location){
-                    const reserveSitterlist = await findreserveSitterlist({location : location})
-                    if(reserveSitterlist.length !== 0){
-                        res.status(200).json({data : reserveSitterlist, message : "ok"})  
-                    }else{
-                        res.json({message : "not registered yet"})
-                    }
-                 
+
+        get : async (req, res) => {
+   
+            const {location} = req.query
+ 
+            if(location){
+                const reserveSitterlist = await findreserveSitterlist({location : location})
+                
+                // console.log(reserveSitterlist)
+                
+                if(reserveSitterlist.length !== 0){
+                    res.status(200).json({data : reserveSitterlist, message : "ok"})  
                 }else{
                     res.status(403).json({data : null, message: 'no data came in'})
     
@@ -76,3 +78,4 @@ const {reserveUserData, reserveSitterData,
             }
         }
     }
+}

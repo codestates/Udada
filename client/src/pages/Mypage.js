@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { dummyData } from '../assets/state'
+// import { dummyData } from '../assets/state'swdexa esw/
 import PwChange from '../components/PwChange';
 
 
 
-export default function Mypage({ petUserInfo, setPetUserInfo, petSitterInfo, setPetSitterInfo }) {
-
+export default function Mypage() {
+    const petUserInfo = window.JSON.parse(sessionStorage.getItem("petUserInfo"));
+    const petSitterInfo = window.JSON.parse(sessionStorage.getItem("petSitterInfo"));
+    
     const [pwChange, setPwChange] = useState(false)
     const handlePwChange = () => {
         setPwChange(true)
