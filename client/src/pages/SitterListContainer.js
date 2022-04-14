@@ -1,9 +1,12 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import SitterItem from '../components/SitterItem';
 import Profile from '../components/Profile';
 import axios from "axios";
 import { locations, time } from '../assets/state'
 import { Img } from "../assets/images"
+import $ from "jquery";
+
+
 import '../App.css';
 
 // 서버 registration
@@ -63,6 +66,10 @@ const handleLogin = () => {
   setIsPetSitter(false);
 }
 
+const handleInputValue = (key) => (e) =>  {
+  setOtherComponent({ ...otherComponent, [key]: e.target.value })
+}
+
 const handleSitterInfo = (e) => {
   console.log(e.target.value)
   axios.get(`${process.env.REACT_APP_API_URL}/bookings/petsitter/?location=${e.target.value}`)
@@ -86,51 +93,56 @@ const handleInputWeekdaysValue = (key) => (e) => {
   selectedEls.forEach((el) => {
     result += el.value;
   });
+  // console.log(sitterInfo)
+  setOtherComponent({ ...otherComponent, [key]: result })
+  const body = document.querySelector("body");
+  body.addEventListener('click', clickBodyEvent);
+  }
+  
+  function clickBodyEvent(event) {
+    const target = event.target;
+    console.log(target)
 
-  // 출력
-  console.log(result);
-  setOtherComponent({ ...otherComponent, [key]: result})
-};
+    if ($(event.target).hasClass("popup-wrap")) {
+      const box = document.getElementById("petSitterInfo-apply")
+      box.style.display = "none"
+    }
+  }
 
-const handleInputValue = (key) => (e) => {
-  console.log(key); // 매개변수와, 이벤트 객체가 같이 들어옴.
-  console.log(e);
-  setOtherComponent({ ...otherComponent, [key]: e.target.value });
-};
-
-console.log(sitterInfo);
-// console.log(isPetSitter)
-// console.log(petSitterInfo)
   return (
     <div>
-      {isPetSitter ?  <Profile Information={clickedSitterInfo} 
-                               handleLogin={handleLogin}
-                               title="pet sitter application"/> : 
+      {isPetSitter ? <Profile Information={clickedSitterInfo}
+        handleLogin={handleLogin}
+        title="pet sitter application"
+        accessToken={accessToken}
+        postUrl="petsitter" /> :
 
-      <div id="petSitterInfo-container">
-        <div id="petSitterInfo-header">
+        <div id="petSitterInfo-container">
+          <div id="petSitterInfo-header">
             <div id='petSitterInfo-btn-div'>
-                <button id='petSitterInfo-btn' 
+              <button id='petSitterInfo-btn'
                 // onClick={sitterInfoFunc
-                onClick={()=>show()
+                onClick={() => show()
                 }>펫시터 지원하기</button>
             </div>
             <select onChange={handleSitterInfo} name="" id="petSitterInfo-select">
-                <option value="">돌봄 지역을 선택해주세요</option>
-                {locations.map((el) =>
+              <option value="">돌봄 지역을 선택해주세요</option>
+              {locations.map((el) =>
                 <option value={el}>{el}</option>
               )}
             </select>
-        </div>
-    
-        <div id="petSitterInfo-body">
-          {filteredSitter.map((item, idx) => <SitterItem item={item} key={idx} handlePetSitter={handleClickedPetSitter}/>)}
-        </div>
+          </div>
 
-        <div id="petSitterInfo-apply"> 
-          <div className="popup-wrap" id="popup"> 
-            <div className="popup">	
-              <div className="popup-head">	
+          <div id="petSitterInfo-body">
+            {filteredSitter.map((item, idx) => <SitterItem item={item} key={idx} handlePetSitter={handleClickedPetSitter} />)}
+          </div>
+
+
+          <div id="petSitterInfo-apply">
+            <div className="popup-wrap" id="popup" >
+              <div className="popup">
+                <div className="popup-head">
+
                   <span className="head-title">UDADA</span>
               </div>
               <div className="popup-body">	
@@ -180,42 +192,42 @@ console.log(sitterInfo);
                           <label for="a6"><span>Sat</span></label>
                           <input type="checkbox" id="a7" name="days" value='일' onClick={handleInputWeekdaysValue('days')} />
                           <label for="a7"><span>Sun</span></label>
+                        </div>
                       </div>
-                    </div>
-                    <div className="days">
-                      <div className="days-title">✔︎ 가능한 시간을 체크해주세요</div>
-                      <div className="registrationTime-container">
-                        <select name="" onChange={handleInputValue("startdate")} id="registrationStartTime">
-                        {time.map((el, idx) =>
-                          <option key={idx} value={el}>{el}</option>
-                        )}
-                        </select><span>시 부터 </span>
+                      <div className="days">
+                        <div className="days-title">✔︎ 가능한 시간을 체크해주세요</div>
+                        <div className="registrationTime-container">
+                          <select name="" onChange={handleInputValue("startdate")} id="registrationStartTime">
+                            {time.map((el, idx) =>
+                              <option key={idx} value={el}>{el}</option>
+                            )}
+                          </select><span>시 부터 </span>
 
-                        <select name="" onChange={handleInputValue("enddate")} id="registrationLastTime">
-                          {time.map((el, idx) =>
-                            <option key={idx} value={el}>{el}</option>
-                          )}
-                        </select><span>시까지 가능해요</span>
-                      </div>
-                      <div className="days-title">✔︎ 희망시급을 입력해주세요</div>
-                      <div>
-                        <input type="number" onChange={handleInputValue("payment")} id="registrationPay"/>
-                        <span>(원)</span>
+                          <select name="" onChange={handleInputValue("enddate")} id="registrationLastTime">
+                            {time.map((el, idx) =>
+                              <option key={idx} value={el}>{el}</option>
+                            )}
+                          </select><span>시까지 가능해요</span>
+                        </div>
+                        <div className="days-title">✔︎ 희망시급을 입력해주세요</div>
+                        <div>
+                          <input type="number" onChange={handleInputValue("payment")} id="registrationPay" />
+                          <span>(원)</span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
+                <div className="popup-foot">
+                  <span className="pop-btn confirm" id="confirm" onClick={() => hide()}>등록하기</span>
+                  {/* <span class="pop-btn close" id="close">창 닫기</span> */}
+                </div>
               </div>
-                  <div className="popup-foot"> 
-                    <span className="pop-btn confirm" id="confirm" onClick={() => hide()}>등록하기</span>
-                {/* <span class="pop-btn close" id="close">창 닫기</span> */}
-                  </div>
             </div>
           </div>
+
+
         </div>
-
-
-      </div>
       }
     </div>
   );

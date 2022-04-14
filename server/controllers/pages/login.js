@@ -39,7 +39,9 @@ module.exports = {
             const refreshToken = createRefreshToken({ name, age, email, phoneNumber })
             // console.log("------serverlogin------")
             // console.log(refreshToken)
-            return res.status(200).cookie("refreshToken", refreshToken, { httpOnly: true }).json({ data: { accessToken }, message: "ok" })
+            
+            return res.status(200).cookie("refreshToken", refreshToken, { httpOnly: true ,sameSite: 'none', secure: true}).json({ data: { accessToken }, message: "ok" })
+
 
         }
     }

@@ -205,6 +205,7 @@ a:hover {
   font-size: 0.9rem;
   font-weight: 390;
   text-align: center;
+  width: 90px;
 }
 
 #nav-btn:hover {
@@ -355,12 +356,13 @@ a:hover {
   bottom:0;               
   display:flex; 
   padding:15px; 
+  z-index: 100;
 }
 
 .popup{
   width:100%;              
   max-width:800px;  
-  height:700px;          
+  /* height:700px; */
 
   border-radius:10px;       
   overflow:hidden;       
@@ -462,7 +464,7 @@ a:hover {
 .all_days label {
 	width: 50px;
 	height: 50px;
-  border: 5px solid rgb(206, 206, 206);
+  border: 5px solid rgb(218, 217, 217);
   border-radius: 14px;
   display: inline-block;	
   box-sizing: border-box;
@@ -474,11 +476,16 @@ a:hover {
   font-size: 15px;
 }
 input[type="checkbox"]:checked + label {
+  border-color: rgb(252, 232, 36);
+  background-color: rgb(252, 232, 36);
+  color: #F9F9F9;
+  font-weight: 450;
+}
+#popup input[type="checkbox"]:checked + label {
   border-color: #904BD4;
   background-color: #904BD4;
   color: #F9F9F9;
   font-weight: 450;
-
 }
 .all_days input[type="checkbox"] {
   display: none;
@@ -619,13 +626,21 @@ input[type="checkbox"]:checked + label {
   align-items: center;
 
   background-color: rgb(255, 249, 186);
-  margin: 215px auto 350px;
+  margin: 225px auto 385px;
 
   width: 1000px;
   height: 700px;
   border-radius: 20px;
 
   position: relative;
+}
+.profile-container-back{
+  position: absolute;
+  /* width: 50px; */
+  top: 50px;
+  left: 39px;
+  font-size: 40px;
+
 }
 
 #profile-title {
@@ -688,11 +703,25 @@ input[type="checkbox"]:checked + label {
   height: 450px;
 
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+.profile-date-guide{
+  color: #f8adad;
+    margin: 50px 0 28px;
+    font-weight: 600;
+    font-size: 13px;
+}
+#profile-date .days{
+  margin-bottom: 15px;
+
 }
 
 #profile-btn {
   position: absolute;
-  bottom: 70px;
+  bottom: 56px;
   right: 45px;
 
   width: 130px;
@@ -787,7 +816,7 @@ input[type="checkbox"]:checked + label {
   justify-content: space-evenly;
 
   background-color: #9749df;
-  margin: 215px auto 350px;
+  margin: 230px auto 350px;
 
   width: 1000px;
   height: 720px;
@@ -1457,7 +1486,7 @@ ul,li{list-style:none;
     height: 230px;
   }
   .login-body, .signup-body {
-    margin: 220px 0 290px;
+    margin: 300px 0 490px;
     height: 520px;
   }
   #profile-container {
@@ -1485,7 +1514,7 @@ ul,li{list-style:none;
   }
   #footer{
     width: 100%;
-    position: fixed;
+    
   }
   .popup-body {
     padding: 0 50px;
@@ -1511,5 +1540,9 @@ ul,li{list-style:none;
   }
   .login-social-here-container {
     padding: 50px 0 104px;
+  }
+  #profile-date {
+    width: 290px;
+    padding: 0 15px;
   }
 }

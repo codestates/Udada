@@ -48,11 +48,9 @@ export default function PetSitterLogin({ handleResponseSuccess, setAccessToken, 
                 setIsLogin(true);
                 setUserType('sitter');
                 window.sessionStorage.setItem('userType', "sitter");
-                // window.sessionStorage.setItem('accessToken', res.data.data.accessToken);
+                window.sessionStorage.setItem('accessToken', res.data.data.accessToken);
                 handleResponseSuccess(userType);
                 navigate('/');
-
-                // navigate('/');
             })
         } else {
             setErrorMessage('이메일과 비밀번호를 입력하세요');
@@ -69,21 +67,23 @@ export default function PetSitterLogin({ handleResponseSuccess, setAccessToken, 
             <center className="login-body">
                 <div className='login-social-here-container'>
 
-                <h2 id="loginH2">pet sitter Login</h2>
-                <div className='login-social-here-btn'>
-                    <span className='login-text'>간편 로그인</span>
-                    <button
-                        onClick={socialLoginHandler}
-                        id='login-social-button1'>
-                        <img id="login-social-kakao-logo" alt="kakao-login-logo" src={logo[0]} />
-                        <span>깃헙 로그인</span> 
-                    </button>
-                    <button
-                        id='login-social-button2'>
-                        <div id='naverIdLogin' />
-                        <span>네이버 로그인</span> 
-                    </button>
-                </div>
+
+                    <h2 id="loginH2">pet sitter Login</h2>
+                    <div className='login-social-here-btn'>
+                        <span className='login-text'>간편 로그인</span>
+                        <button
+                            onClick={socialLoginHandler}
+                            id='login-social-button1'>
+                            <img id="login-social-kakao-logo" alt="kakao-login-logo" src={logo[0]} />
+                            <span>깃헙 로그인</span>
+                        </button>
+                        <button
+                            id='login-social-button2'>
+                            <div id='naverIdLogin' />
+                            <span>네이버 로그인</span>
+                        </button>
+                    </div>
+
 
                     <form className="login-here-box" onSubmit={(e) => e.preventDefault()}>
                         <div className="login-here-input">
