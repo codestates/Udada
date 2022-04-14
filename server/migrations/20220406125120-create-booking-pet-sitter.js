@@ -11,10 +11,10 @@ module.exports = {
       location: {
         type: Sequelize.STRING
       },
-      isBooking:{
+      isBooking: {
         type: Sequelize.BOOLEAN
       },
-      payment :{
+      payment: {
         type: Sequelize.INTEGER
       },
       startdate: {
@@ -25,9 +25,6 @@ module.exports = {
       },
       days: {
         type: Sequelize.STRING
-      },
-      petsitter_id: {
-        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

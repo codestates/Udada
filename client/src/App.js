@@ -42,7 +42,7 @@ function App() {
   const onLogin = () => {
     setIsLogin(true);
   }
-    // Logout Func
+  // Logout Func
   const onLogout = () => {
     setIsLogin(false);
   };
@@ -50,7 +50,7 @@ function App() {
   useEffect(() => {
     const isLogin = window.sessionStorage.getItem('isLogin');
 
-    if(isLogin) {
+    if (isLogin) {
       onLogin();
     }
     else {
@@ -75,7 +75,7 @@ function App() {
     // fake_auth_code
 
     await axios({
-      url: "http://localhost:4000/links/callback/github",
+      url: "https://localhost:4000/links/callback/github",
       method: "post",
       data: {
         authorizationCode
@@ -169,6 +169,7 @@ function App() {
     axios.get('https://localhost:4000/links/mypage/petuser',
       { headers: { Authorization: `Bearer ${accessToken}` } })
       .then((result) => {
+        console.log(result);
         setPetUserInfo(result.data.data.petuserData);
         console.log('petuser login 인증 성공');
         // console.log(petUserInfo);
@@ -194,7 +195,7 @@ function App() {
   };
 
   const handleLogout = () => {
-    axios.get('http://localhost:4000/links/logout')
+    axios.get('https://localhost:4000/links/logout')
       .then(() => {
         console.log('logout성공');
         setAccessToken('');
@@ -227,7 +228,7 @@ function App() {
         // ex) http://localhost:3000/?code=5e52fb85d6a1ed46a51f
         petUserGetAccessToken(authorizationCode)
       }
-    } 
+    }
   }, [])
 
   useEffect(() => {
@@ -287,7 +288,7 @@ function App() {
             accessToken={accessToken}
           />}
         />
-        <Route path="/reservation" element={<Reservation petUserInfo={petUserInfo} accessToken={accessToken} />} />
+        <Route path="/reservation" element={<Reservation petUserInfo={petUserInfo} setPetUserInfo={setPetUserInfo} accessToken={accessToken} />} />
         <Route path="/application" element={<Application petSitterInfo={petSitterInfo} accessToken={accessToken} />} />
       </Routes>
       <Footer />

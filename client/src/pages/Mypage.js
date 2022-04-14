@@ -7,10 +7,10 @@ import axios from 'axios';
 
 
 
-export default function Mypage() {
+export default function Mypage({ accessToken }) {
     const petUserInfo = window.JSON.parse(sessionStorage.getItem("petUserInfo"));
     const petSitterInfo = window.JSON.parse(sessionStorage.getItem("petSitterInfo"));
-    
+
 
     const [pwChange, setPwChange] = useState(false)
     const handlePwChange = () => {
