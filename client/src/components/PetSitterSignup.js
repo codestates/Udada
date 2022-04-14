@@ -15,7 +15,6 @@ export default function PetSitterSignup({ petSitterInfo, setIsLogin, isLogin, se
         license: false, // boolean 값으로 변경 필요 -> 지금은 'on'
         content: '',
         photo: '',
-
     });
     //두번째 가입창을 보여주기 위한 상태
     const [isClicked, setIsClicked] = useState(false);
@@ -62,7 +61,7 @@ export default function PetSitterSignup({ petSitterInfo, setIsLogin, isLogin, se
 
             axios
                 .post(
-                    'https://localhost:4000/links/signup/petsitter',
+                    `${process.env.REACT_APP_API_URL}/links/signup/petsitter`,
                     {
                         email: userinfo.email,
                         password: userinfo.password,

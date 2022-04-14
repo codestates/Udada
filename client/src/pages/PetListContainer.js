@@ -13,7 +13,8 @@ import axios from 'axios';
 
 
 
-function PetListContainer({ accessToken, petUserInfo }) {
+function PetListContainer({ accessToken, petUserInfo}) {
+  console.log(petUserInfo)
 
   const [isPetUser, setIsPetUser] = useState(false);
   //선택된 유저 정보를 상세 Profile.js 페이지로 넘어갈때 값을 넘겨줌
@@ -69,7 +70,7 @@ function PetListContainer({ accessToken, petUserInfo }) {
 
   // 사용자가 선택한 지역에 따라 등록된 펫시터들의 모든 정보를 받아오는 함수
   const handleUserInfoByLocation = (e) => {
-    axios.get(`https://localhost:4000/bookings/petuser/?location=${e.target.value}`)
+    axios.get(`${process.env.REACT_APP_API_URL}/bookings/petuser/?location=${e.target.value}`)
       .then((result) => {
         //받아온 data로 유저 정보 update
         console.log(result.data.data);
@@ -81,7 +82,7 @@ function PetListContainer({ accessToken, petUserInfo }) {
   const handleUserRegister = () => {
     // console.log(userInfo);
     axios.post(
-      'https://localhost:4000/bookings/petuser',
+      'http://localhost:4000/bookings/petuser',
       {
         location: petUserInfo.location,
         content: petUserInfo.content,

@@ -27,12 +27,12 @@ import { dummyData } from './assets/state'
 //import ShoppingCart from './pages/ShoppingCart';
 
 function App() {
-
-
+  console.log(process.env)
   //유저 한명의 정보
   const [petUserInfo, setPetUserInfo] = useState(dummyData.petUser);
   const [petSitterInfo, setPetSitterInfo] = useState(dummyData.petSitter);
-
+  const [petUserAll, setPetUserAll] = useState(dummyData.petUser);
+  const [petSitterAll, setPetSitterAll] = useState(dummyData.petSitter);
   const [isLogin, setIsLogin] = useState(false);
   const [accessToken, setAccessToken] = useState('');
   //petSitter인지 petUser인지 결정지어주는 상태
@@ -75,7 +75,7 @@ function App() {
     // fake_auth_code
 
     await axios({
-      url: "https://localhost:4000/links/callback/github",
+      url: `${process.env.REACT_APP_API_URL}/links/callback/github`,
       method: "post",
       data: {
         authorizationCode
@@ -108,7 +108,7 @@ function App() {
     // fake_auth_code
 
     await axios({
-      url: "https://localhost:4000/links/callback/github",
+      url: `${process.env.REACT_APP_API_URL}/links/callback/github`,
       method: "post",
       data: {
         authorizationCode
@@ -145,7 +145,7 @@ function App() {
         - 비밀번호가 틀렸을 때 그에 맞는 에러 메세지
     */
     console.log(accessToken);
-    axios.get('https://localhost:4000/links/mypage/petsitter',
+    axios.get(`${process.env.REACT_APP_API_URL}/links/mypage/petsitter`,
       { headers: { Authorization: `Bearer ${accessToken}` } })
       .then((result) => {
         // console.log(result.data);
@@ -166,7 +166,7 @@ function App() {
     // TODO: 인증성공 후(로그인해서 토큰받아옴), 사용자 정보를 호출하고, 이에 성공하면 로그인 상태를 바꾼다.
     // TODO: 인증 성공한 토큰을 받아올 때는 상태 끌어올리기로 받아와야 한다.
     /* petuser 로그인 성공 후 데이터 가져올 때 */
-    axios.get('https://localhost:4000/links/mypage/petuser',
+    axios.get(`${process.env.REACT_APP_API_URL}/links/mypage/petuser`,
       { headers: { Authorization: `Bearer ${accessToken}` } })
       .then((result) => {
         console.log(result);
@@ -195,7 +195,7 @@ function App() {
   };
 
   const handleLogout = () => {
-    axios.get('https://localhost:4000/links/logout')
+    axios.get(`${process.env.REACT_APP_API_URL}/links/logout`)
       .then(() => {
         console.log('logout성공');
         setAccessToken('');
@@ -248,7 +248,7 @@ function App() {
       <Routes>
         <Route exact={true} path="/" element={<HomeContainer />} />
 
-        <Route path="/petsitterlist" element={<SitterListContainer petSitterInfo={petSitterInfo} setPetSitterInfo={setPetSitterInfo} accessToken={accessToken} />} />
+        <Route path="/petsitterlist" element={<SitterListContainer petSitterAllInfo={petSitterAll} dummypetSitterInfo={petSitterInfo} accessToken={accessToken} />} />
         <Route path="/petlist" element={
           <PetListContainer
             petUserInfo={petUserInfo}

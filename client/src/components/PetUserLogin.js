@@ -11,7 +11,7 @@ export default function PetUserLogin({ handleResponseSuccess, setAccessToken, us
         password: ''
     });
 
-    const [url, setUrl] = useState('https://github.com/login/oauth/authorize?client_id=1453e0a5001784ea6157')
+    const [url, setUrl] = useState(`https://github.com/login/oauth/authorize?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}`)
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
     const handleInputValue = (key) => (e) => {
@@ -26,7 +26,7 @@ export default function PetUserLogin({ handleResponseSuccess, setAccessToken, us
         // TODO : 이메일 및 비밀번호를 입력하지 않았을 경우 에러를 표시해야 합니다.
         if (loginInfo.email && loginInfo.password) {
             axios.post(
-                "https://localhost:4000/links/login/petuser",
+                `${process.env.REACT_APP_API_URL}/links/login/petuser`,
                 {
                     email: loginInfo.email,
                     password: loginInfo.password

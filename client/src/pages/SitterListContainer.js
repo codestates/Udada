@@ -3,6 +3,7 @@ import SitterItem from '../components/SitterItem';
 import Profile from '../components/Profile';
 import axios from "axios";
 import { locations, time } from '../assets/state'
+import { Img } from "../assets/images"
 import $ from "jquery";
 
 
@@ -10,30 +11,94 @@ import '../App.css';
 
 // 서버 registration
 
-function SitterListContainer({ accessToken }) {
+function SitterListContainer({petSitterAllInfo, dummypetSitterInfo ,accessToken}) {
   // if (accessToken !== '') {
   //   accessToken = accessToken;
   // } else {
   //   accessToken = window.sessionStorage.getItem("accessToken")
   // }
 
+const petSitterInfo = window.JSON.parse(sessionStorage.getItem("petSitterInfo")) 
 
-  const petSitterInfo = window.JSON.parse(sessionStorage.getItem("petSitterInfo"));
 
-  const [isPetSitter, setIsPetSitter] = useState(false);
-  const [clickedSitterInfo, setClickedSitterInfo] = useState([]);
-  const [sitterInfo, setSitterInfo] = useState(petSitterInfo);
-  const [filteredSitter, setFilteredSitter] = useState([]);
-  const [otherComponent, setOtherComponent] = useState({
-    days: '요일 협의',
-    startdate: '07',
-    enddate: '07',
-    payment: 9160
+const [isPetSitter, setIsPetSitter] = useState(false);
+const [clickedSitterInfo, setClickedSitterInfo] = useState([]);
+const [sitterInfo, setSitterInfo] = useState(petSitterInfo);
+const [filteredSitter, setFilteredSitter] = useState(petSitterAllInfo);
+const [otherComponent, setOtherComponent] = useState({
+  days: '요일 협의',
+  startdate: '07',
+  enddate: '07',
+  payment: 9160
+});
+// console.log(sitterInfo)
+
+function show() {
+  const box = document.getElementById("petSitterInfo-apply")
+  box.style.display = "block"
+}
+
+async function hide() {
+  await axios.post(
+    `${process.env.REACT_APP_API_URL}/bookings/petsitter`,
+    {
+      location: sitterInfo.location,
+      content: sitterInfo.content,
+      ...otherComponent
+    },
+    {
+      headers: {autorization: accessToken}
+    }
+  )
+  const box = document.getElementById("petSitterInfo-apply")
+  box.style.display = "none"
+}
+
+const handleClickedPetSitter = (item) => {
+  setSitterInfo(item)
+  setClickedSitterInfo(item);
+  setIsPetSitter(true)
+}
+
+// console.log(clickedSitterInfo)
+
+const handleLogin = () => {
+  setIsPetSitter(false);
+}
+
+const handleInputValue = (key) => (e) =>  {
+  setOtherComponent({ ...otherComponent, [key]: e.target.value })
+}
+
+const handleSitterInfo = (e) => {
+  console.log(e.target.value)
+  axios.get(`${process.env.REACT_APP_API_URL}/bookings/petsitter/?location=${e.target.value}`)
+    .then((result) => {
+      //받아온 data로 유저 정보 update
+      // setUserInfo(result.data.data);
+      console.log(result);
+      setFilteredSitter(result.data.data);
+    })
+}
+
+// console.log(filteredSitter)
+
+const handleInputWeekdaysValue = (key) => (e) => {
+  //클릭이 될때마다 days가 "월화수목,,," string에 바로 붙이도록
+  const query = 'input[name="days"]:checked';
+  const selectedEls = document.querySelectorAll(query);
+  // console.log(selectedEls);
+  // 선택된 목록에서 value 찾기
+  let result = '';
+  selectedEls.forEach((el) => {
+    result += el.value;
   });
   // console.log(sitterInfo)
+  setOtherComponent({ ...otherComponent, [key]: result })
   const body = document.querySelector("body");
   body.addEventListener('click', clickBodyEvent);
-
+  }
+  
   function clickBodyEvent(event) {
     const target = event.target;
     console.log(target)
@@ -42,81 +107,8 @@ function SitterListContainer({ accessToken }) {
       const box = document.getElementById("petSitterInfo-apply")
       box.style.display = "none"
     }
-
   }
 
-  function show() {
-    const box = document.getElementById("petSitterInfo-apply")
-    box.style.display = "block"
-  }
-
-  async function hide() {
-    await axios.post(
-      'https://localhost:4000/bookings/petsitter',
-      {
-        location: sitterInfo.location,
-        content: sitterInfo.content,
-        ...otherComponent
-      },
-      {
-        headers: { authorization: `Bearer ${accessToken}` }
-      }
-    )
-    const box = document.getElementById("petSitterInfo-apply")
-    box.style.display = "none"
-  }
-
-  const handleClickedPetSitter = (item) => {
-    setSitterInfo(item)
-    setClickedSitterInfo(item);
-    setIsPetSitter(true)
-  }
-
-  console.log(clickedSitterInfo)
-
-  const handleLogin = () => {
-    setIsPetSitter(false);
-  }
-
-  const handleSitterInfo = (e) => {
-    console.log(e.target.value)
-    axios.get(`https://localhost:4000/bookings/petsitter/?location=${e.target.value}`)
-      .then((result) => {
-        //받아온 data로 유저 정보 update
-        // setUserInfo(result.data.data);
-        console.log(result);
-        setFilteredSitter(result.data.data);
-      })
-  }
-
-  // console.log(filteredSitter)
-
-  const handleInputWeekdaysValue = (key) => (e) => {
-    //클릭이 될때마다 days가 "월화수목,,," string에 바로 붙이도록
-    const query = 'input[name="days"]:checked';
-    const selectedEls = document.querySelectorAll(query);
-    // console.log(selectedEls);
-    // 선택된 목록에서 value 찾기
-    let result = '';
-    selectedEls.forEach((el) => {
-      result += el.value;
-    });
-
-    // 출력
-    console.log(result);
-    setOtherComponent({ ...otherComponent, [key]: result })
-  };
-
-
-  const handleInputValue = (key) => (e) => {
-    console.log(key); // 매개변수와, 이벤트 객체가 같이 들어옴.
-    console.log(e);
-    setOtherComponent({ ...otherComponent, [key]: e.target.value });
-  };
-
-  // console.log(sitterInfo);
-  // console.log(isPetSitter)
-  // console.log(petSitterInfo)
   return (
     <div>
       {isPetSitter ? <Profile Information={clickedSitterInfo}
@@ -152,29 +144,41 @@ function SitterListContainer({ accessToken }) {
                 <div className="popup-head">
 
                   <span className="head-title">UDADA</span>
-                </div>
-                <div className="popup-body">
-                  <div className="body-content">
-                    <div className="body-titlebox">
-                      <h1>registration💕</h1>
-                    </div>
-                    <div className="body-infobox">
+              </div>
+              <div className="popup-body">	
+                <div className="body-content">
+                  <div className="body-titlebox">
+                    <h1>registration💕</h1>
+                  </div>
+                  {sitterInfo ? 
+                     <div className="body-infobox">
+                     <div className="body-infobox-img">
+                         <img src={sitterInfo.img} alt={"이미지를 등록하세요"} />
+                     </div> 
+                     <div className="body-infobox-info">
+                       <div className="body-infobox-name">{sitterInfo.name}</div>
+                       <div className="body-infobox-age">{sitterInfo.age}살</div>
+                       <div className="body-infobox-location">{sitterInfo.location}</div>
+                       <div className="body-infobox-content">{sitterInfo.content}</div>
+                     </div>
+                   </div> : 
+                      <div className="body-infobox">
                       <div className="body-infobox-img">
-                        <img src={sitterInfo.img} alt={"이미지를 등록하세요"} />
-                      </div>
+                          <img src={dummypetSitterInfo[0].img} alt={"펫시터로 로그인 하세요"} />
+                      </div> 
                       <div className="body-infobox-info">
-                        <div className="body-infobox-name">{sitterInfo.name}</div>
-                        <div className="body-infobox-age">{sitterInfo.age}살</div>
-                        <div className="body-infobox-location">{sitterInfo.location}</div>
-                        <div className="body-infobox-content">{sitterInfo.content}</div>
-
+                        <div className="body-infobox-name">{dummypetSitterInfo[0].name}</div>
+                        <div className="body-infobox-age">{dummypetSitterInfo[0].age}살</div>
+                        <div className="body-infobox-location">{dummypetSitterInfo[0].location}</div>
+                        <div className="body-infobox-content">{dummypetSitterInfo[0].content}</div>
                       </div>
-                    </div>
-                    <div className="body-infobox-input">
-                      <div className="days">
-                        <div className="days-title">✔︎ 가능한 요일을 체크해주세요</div>
-                        <div className="all_days">
-                          <input type="checkbox" id="a1" name="days" value='월' onClick={handleInputWeekdaysValue('days')} />
+                  </div>}
+                  
+                  <div className="body-infobox-input">
+                    <div className="days">
+                      <div className="days-title">✔︎ 가능한 요일을 체크해주세요</div>
+                      <div className="all_days">
+                      <input type="checkbox" id="a1" name="days" value='월' onClick={handleInputWeekdaysValue('days')} />
                           <label for="a1"><span>Mon</span></label>
                           <input type="checkbox" id="a2" name="days" value='화' onClick={handleInputWeekdaysValue('days')} />
                           <label for="a2"><span>Tue</span></label>
