@@ -99,8 +99,10 @@ module.exports = {
             location: data.location,
             payment: data.payment,
             content: data.content,
+
             startdate: data.startdate,
             enddate: data.enddate,
+
             days: data.days,
             petuser_id: id
         })
@@ -111,8 +113,10 @@ module.exports = {
         petsitter_registration.create({
             location: data.location,
             payment: data.payment,
+
             startdate: data.startdate,
             enddate: data.enddate,
+
             days: data.days,
             content: data.content,
             date: data.date,
@@ -147,11 +151,12 @@ module.exports = {
         booking_petuser.create({
             location: data.location,
             isBooking: false,
-            petuser_id: id,
             startdate: data.startdate,
             enddate: data.enddate,
             payment : data.payment,
             days : data.days,
+            petuser_id: id
+
         })
     },
 
@@ -164,6 +169,7 @@ module.exports = {
             enddate: data.enddate,
             payment : data.payment,
             days : data.days,
+
         })
     },
 
