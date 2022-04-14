@@ -63,29 +63,29 @@ function Profile({ Information, handleLogin, title, accessToken, postUrl }) {
 
                     <img src={Information.petsitter.photo.includes(".png", ".jpg") ? Information.petsitter.photo : Img[1]} alt={"등록되지 않았습니다."} />
                 </div>
-                // ! petsitter 구분 어떤걸로 할지 변수 고민해보기
-                {Information.petsitter_id ?
-                    <div id="profile-info-write">
-                        <div className="profile-info-name">{Information.petsitter.name}</div>
-                        <div className="profile-info-age">{Information.petsitter.age} 살</div>
-                        <div className="profile-info-location">{Information.petsitter.location} 거주</div>
-                        <div className="profile-info-time">돌봄 가능 시간 : {Information.startdate}시 ~{Information.enddate}시</div>
-                        <div className="profile-info-days">요일 : {Information.days}</div>
-                        <div className="profile-info-payment">시급은 {Information.payment}원 입니다</div>
-                        <div className="profile-info-content">{Information.petsitter.content}</div>
-                    </div>
-                    :
-                    <div id="profile-info-write">
-                        <div className="profile-info-name">{Information.name} {Information.petAge} 살 {Information.howBig}</div>
-                        <div className="profile-info-location">{Information.location} 거주</div>
-                        <div className="profile-info-time">돌봄 요청 시간 : {Information.startTime}시 ~{Information.lastTime}시</div>
-                        <div className="profile-info-days">요일 : {Information.days}</div>
-                        <div className="profile-info-careType">{Information.careType} 서비스 원해요</div>
-                        <div className="profile-info-payment">시급은 {Information.payment}원 입니다</div>
-                        <div className="profile-info-content">{Information.content}</div>
 
+// ! petsitter 구분 어떤걸로 할지 변수 고민해보기
+                {Information.petsitter_id ?   
+                <div id="profile-info-write">
+                    <div className="profile-info-name">{Information.petsitter.name}</div>
+                    <div className="profile-info-age">{Information.petsitter.age} 살</div>
+                    <div className="profile-info-location">{Information.petsitter.location} 거주</div>
+                    <div className="profile-info-time">돌봄 가능 시간 : {Information.startdate}시 ~{Information.enddate}시</div>
+                    <div className="profile-info-days">요일 : {Information.days}</div>
+                    <div className="profile-info-payment">시급은 {Information.payment}원 입니다</div>
+                    <div className="profile-info-content">{Information.petsitter.content}</div>
+                </div>
+                : 
+                <div id="profile-info-write">
+                    <div className="profile-info-name">{Information.name} {Information.petAge} 살 {Information.howBig}</div>
+                    <div className="profile-info-location">{Information.location} 거주</div>
+                    <div className="profile-info-time">돌봄 요청 시간 : {Information.startTime}시 ~{Information.lastTime}시</div>
+                    <div className="profile-info-days">요일 : {Information.days}</div>
+                    <div className="profile-info-careType">{Information.careType} 서비스 원해요</div>
+                    <div className="profile-info-payment">시급은 {Information.payment}원 입니다</div>
+                    <div className="profile-info-content">{Information.content}</div>
+                </div>
 
-                    </div>
                 }
                  // ! petsitter 구분 어떤걸로 할지 변수 고민해보기
                 {Information.petsitter.license ?

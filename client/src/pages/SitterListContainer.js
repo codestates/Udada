@@ -3,6 +3,8 @@ import SitterItem from '../components/SitterItem';
 import Profile from '../components/Profile';
 import axios from "axios";
 import { locations, time } from '../assets/state'
+import $ from "jquery";
+
 
 import '../App.css';
 
@@ -15,75 +17,89 @@ function SitterListContainer({ accessToken }) {
   //   accessToken = window.sessionStorage.getItem("accessToken")
   // }
 
-  const petSitterInfo = window.JSON.parse(sessionStorage.getItem("petSitterInfo"));
 
-  const [isPetSitter, setIsPetSitter] = useState(false);
-  const [clickedSitterInfo, setClickedSitterInfo] = useState([]);
-  const [sitterInfo, setSitterInfo] = useState(petSitterInfo);
-  const [filteredSitter, setFilteredSitter] = useState([]);
-  const [otherComponent, setOtherComponent] = useState({
-    days: '요일 협의',
-    startdate: '07',
-    enddate: '07',
-    payment: 9160
-  });
-  // console.log(sitterInfo)
+const petSitterInfo = window.JSON.parse(sessionStorage.getItem("petSitterInfo"));
 
-  function show() {
-    const box = document.getElementById("petSitterInfo-apply")
-    box.style.display = "block"
+const [isPetSitter, setIsPetSitter] = useState(false);
+const [clickedSitterInfo, setClickedSitterInfo] = useState([]);
+const [sitterInfo, setSitterInfo] = useState(petSitterInfo);
+const [filteredSitter, setFilteredSitter] = useState([]);
+const [otherComponent, setOtherComponent] = useState({
+  days: '요일 협의',
+  startdate: '07',
+  enddate: '07',
+  payment: 9160
+});
+// console.log(sitterInfo)
+const body = document.querySelector("body");
+body.addEventListener('click', clickBodyEvent);
+
+function clickBodyEvent(event){
+  const target = event.target;
+  console.log(target)
+
+  if($(event.target).hasClass("popup-wrap") ){
+        const box = document.getElementById("petSitterInfo-apply")
+  box.style.display = "none"
   }
 
-  async function hide() {
-    await axios.post(
-      'https://localhost:4000/bookings/petsitter',
-      {
-        location: sitterInfo.location,
-        content: sitterInfo.content,
-        ...otherComponent
-      },
-      {
-        headers: { authorization: `Bearer ${accessToken}` }
-      }
-    )
-    const box = document.getElementById("petSitterInfo-apply")
-    box.style.display = "none"
-  }
+}
 
-  const handleClickedPetSitter = (item) => {
-    setSitterInfo(item)
-    setClickedSitterInfo(item);
-    setIsPetSitter(true)
-  }
+function show() {
+  const box = document.getElementById("petSitterInfo-apply")
+  box.style.display = "block"
+}
 
-  console.log(clickedSitterInfo)
+async function hide() {
+  await axios.post(
+    'https://localhost:4000/bookings/petsitter',
+    {
+      location: sitterInfo.location,
+      content: sitterInfo.content,
+      ...otherComponent
+    },
+    {
+      headers: {authorization: `Bearer ${accessToken}` }
+    }
+  )
+  const box = document.getElementById("petSitterInfo-apply")
+  box.style.display = "none"
+}
 
-  const handleLogin = () => {
-    setIsPetSitter(false);
-  }
+const handleClickedPetSitter = (item) => {
+  setSitterInfo(item)
+  setClickedSitterInfo(item);
+  setIsPetSitter(true)
+}
 
-  const handleSitterInfo = (e) => {
-    console.log(e.target.value)
-    axios.get(`https://localhost:4000/bookings/petsitter/?location=${e.target.value}`)
-      .then((result) => {
-        //받아온 data로 유저 정보 update
-        // setUserInfo(result.data.data);
-        console.log(result);
-        setFilteredSitter(result.data.data);
-      })
-  }
+console.log(clickedSitterInfo)
 
-  // console.log(filteredSitter)
+const handleLogin = () => {
+  setIsPetSitter(false);
+}
 
-  const handleInputWeekdaysValue = (key) => (e) => {
-    //클릭이 될때마다 days가 "월화수목,,," string에 바로 붙이도록
-    const query = 'input[name="days"]:checked';
-    const selectedEls = document.querySelectorAll(query);
-    // console.log(selectedEls);
-    // 선택된 목록에서 value 찾기
-    let result = '';
-    selectedEls.forEach((el) => {
-      result += el.value;
+const handleSitterInfo = (e) => {
+  console.log(e.target.value)
+  axios.get(`https://localhost:4000/bookings/petsitter/?location=${e.target.value}`)
+    .then((result) => {
+      //받아온 data로 유저 정보 update
+      // setUserInfo(result.data.data);
+      console.log(result);
+      setFilteredSitter(result.data.data);
+    })
+}
+
+// console.log(filteredSitter)
+
+const handleInputWeekdaysValue = (key) => (e) => {
+  //클릭이 될때마다 days가 "월화수목,,," string에 바로 붙이도록
+  const query = 'input[name="days"]:checked';
+  const selectedEls = document.querySelectorAll(query);
+  // console.log(selectedEls);
+  // 선택된 목록에서 value 찾기
+  let result = '';
+  selectedEls.forEach((el) => {
+    result += el.value;
     });
 
     // 출력
@@ -91,6 +107,7 @@ function SitterListContainer({ accessToken }) {
     setOtherComponent({ ...otherComponent, [key]: result })
   };
 
+    
   const handleInputValue = (key) => (e) => {
     console.log(key); // 매개변수와, 이벤트 객체가 같이 들어옴.
     console.log(e);
@@ -128,10 +145,12 @@ function SitterListContainer({ accessToken }) {
             {filteredSitter.map((item, idx) => <SitterItem item={item} key={idx} handlePetSitter={handleClickedPetSitter} />)}
           </div>
 
-          <div id="petSitterInfo-apply">
-            <div className="popup-wrap" id="popup" onClick={() => hide()}>
-              <div className="popup">
-                <div className="popup-head">
+
+        <div id="petSitterInfo-apply"> 
+          <div className="popup-wrap" id="popup" > 
+            <div className="popup">	
+              <div className="popup-head">	
+
                   <span className="head-title">UDADA</span>
                 </div>
                 <div className="popup-body">

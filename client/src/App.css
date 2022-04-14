@@ -356,6 +356,7 @@ a:hover {
   bottom:0;               
   display:flex; 
   padding:15px; 
+  z-index: 100;
 }
 
 .popup{
@@ -479,7 +480,12 @@ input[type="checkbox"]:checked + label {
   background-color: rgb(252, 232, 36);
   color: #F9F9F9;
   font-weight: 450;
-
+}
+#popup input[type="checkbox"]:checked + label {
+  border-color: #904BD4;
+  background-color: #904BD4;
+  color: #F9F9F9;
+  font-weight: 450;
 }
 .all_days input[type="checkbox"] {
   display: none;
