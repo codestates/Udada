@@ -66,7 +66,9 @@ console.log(petSitterInfo)
     <div>
       {isPetSitter ?  <Profile Information={sitterInfo} 
                                handleLogin={handleLogin}
-                               title="pet sitter application"/> : 
+                               title="pet sitter application"
+                               accessToken={accessToken}
+                               postUrl="petsitter"/> : 
 
       <div id="petSitterInfo-container">
         <div id="petSitterInfo-header">
@@ -114,7 +116,7 @@ console.log(petSitterInfo)
 
 
         <div id="petSitterInfo-apply"> 
-          <div className="popup-wrap" id="popup"> 
+          <div className="popup-wrap" id="popup" onClick={() => hide()}> 
             <div className="popup">	
               <div className="popup-head">	
                   <span className="head-title">UDADA</span>
