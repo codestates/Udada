@@ -3,6 +3,8 @@ import SitterItem from '../components/SitterItem';
 import Profile from '../components/Profile';
 import axios from "axios";
 import { locations, time } from '../assets/state'
+import $ from "jquery";
+
 
 import '../App.css';
 
@@ -28,6 +30,19 @@ const [otherComponent, setOtherComponent] = useState({
   payment: 9160
 });
 // console.log(sitterInfo)
+const body = document.querySelector("body");
+body.addEventListener('click', clickBodyEvent);
+
+function clickBodyEvent(event){
+  const target = event.target;
+  console.log(target)
+
+  if($(event.target).hasClass("popup-wrap") ){
+        const box = document.getElementById("petSitterInfo-apply")
+  box.style.display = "none"
+  }
+
+}
 
 function show() {
   const box = document.getElementById("petSitterInfo-apply")
@@ -36,7 +51,7 @@ function show() {
 
 async function hide() {
   await axios.post(
-    'http://localhost:4000/bookings/petsitter',
+    'https://localhost:4000/bookings/petsitter',
     {
       location: sitterInfo.location,
       content: sitterInfo.content,
@@ -64,7 +79,7 @@ const handleLogin = () => {
 
 const handleSitterInfo = (e) => {
   console.log(e.target.value)
-  axios.get(`http://localhost:4000/bookings/petsitter/?location=${e.target.value}`)
+  axios.get(`https://localhost:4000/bookings/petsitter/?location=${e.target.value}`)
     .then((result) => {
       //받아온 data로 유저 정보 update
       // setUserInfo(result.data.data);
@@ -129,7 +144,7 @@ const handleInputValue = (key) => (e) => {
         </div>
 
         <div id="petSitterInfo-apply"> 
-          <div className="popup-wrap" id="popup" onClick={() => hide()}> 
+          <div className="popup-wrap" id="popup" > 
             <div className="popup">	
               <div className="popup-head">	
                   <span className="head-title">UDADA</span>

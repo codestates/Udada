@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import PetItem from '../components/PetItem';
 import Profile from '../components/Profile';
 import { locations, time, dummyData } from '../assets/state'
+import $ from "jquery";
+
 
 
 // 내정보 불러와서 프롭스로 내려줘야함
 
 import '../App.css';
 import axios from 'axios';
-
-
 
 
 
@@ -27,17 +27,32 @@ function PetListContainer({ accessToken, petUserInfo }) {
   });
   const [petUserAll, setPetUserAll] = useState(dummyData.petUser);
 
-  //const [location, setLocation] = useState('');
+
+  const body = document.querySelector("body");
+  body.addEventListener('click', clickBodyEvent);
 
   function show() {
     const box = document.getElementById("petSitterInfo-apply")
     box.style.display = "block"
   }
+
+  function clickBodyEvent(event){
+    const target = event.target;
+    console.log(target)
+
+    if($(event.target).hasClass("popup-wrap") ){
+          const box = document.getElementById("petSitterInfo-apply")
+    box.style.display = "none"
+    }
+  
+  }
+
+
   function hide() {
+    // const target = event.target;
     const box = document.getElementById("petSitterInfo-apply")
     box.style.display = "none"
   }
-
   const handleUser = (item) => {
     setIsPetUser(true)
     console.log(item);
@@ -77,14 +92,8 @@ function PetListContainer({ accessToken, petUserInfo }) {
       },
       { headers: { Authorization: `Bearer ${accessToken}` } }
     ).then((result) => {
-      console.log(result.data);
+      // console.log(result.data);
     })
-
-
-    // console.log(userlist)
-
-
-
   }
 
   const handleInputValue = (key) => (e) => {
@@ -140,7 +149,7 @@ function PetListContainer({ accessToken, petUserInfo }) {
           </div>
 
           <div id="petSitterInfo-apply">
-            <div className="popup-wrap" id="popup" onClick={() => hide()}>
+            <div className="popup-wrap" id="popup" >
               <div className="popup">
                 <div className="popup-head">
                   <span className="head-title">UDADA</span>
