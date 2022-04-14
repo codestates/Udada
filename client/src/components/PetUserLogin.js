@@ -38,7 +38,7 @@ export default function PetUserLogin({ handleResponseSuccess, setAccessToken, us
                 //onChange('user');
                 setUserType('user')
                 window.sessionStorage.setItem('userType', "user");
-                // window.sessionStorage.setItem('accessToken', res.data.data.accessToken);
+                window.sessionStorage.setItem('accessToken', res.data.data.accessToken);
                 handleResponseSuccess(userType);
                 navigate('/');
             })

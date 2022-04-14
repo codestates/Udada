@@ -6,9 +6,12 @@ import Booking from '../components/Booking';
 import axios from 'axios';
 
 
-export default function Reservation({ petUserInfo, accessToken }) {
+export default function Reservation({ petUserInfo, setPetUserInfo, accessToken }) {
     //임시 데이터
     const info = dummyData.petUser;
+
+    // setPetUserInfo(petUserInSession);
+    //console.log(petUserInSession);
     //유저정보
     const [userBookingList, setUserBookingList] = useState(info);
     const [isInfo, setIsInfo] = useState("");
@@ -30,12 +33,14 @@ export default function Reservation({ petUserInfo, accessToken }) {
     }
 
     const handleReservation = () => {
+        console.log(petUserInfo.location);
+        console.log(accessToken);
         axios.get(`https://localhost:4000/bookings/list/petuser/?location=${petUserInfo.location}`,
-            { headers: { Authorization: `Bearer ${accessToken}` } }
+            { headers: { authorization: `Bearer ${accessToken}` } }
         )
             .then((result) => {
                 //받아온 data로 유저 정보 update
-                console.log(result.data.data);
+                console.log(result);
                 setUserBookingList(result.data.data);
             })
     }

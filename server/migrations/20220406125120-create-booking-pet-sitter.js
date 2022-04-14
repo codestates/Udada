@@ -11,10 +11,10 @@ module.exports = {
       location: {
         type: Sequelize.STRING
       },
-      isBooking:{
+      isBooking: {
         type: Sequelize.BOOLEAN
       },
-      payment :{
+      payment: {
         type: Sequelize.INTEGER
       },
       startdate: {
