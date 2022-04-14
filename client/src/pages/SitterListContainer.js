@@ -3,24 +3,25 @@ import SitterItem from '../components/SitterItem';
 import Profile from '../components/Profile';
 import axios from "axios";
 import { locations, time } from '../assets/state'
-
+import { Img } from "../assets/images"
 import '../App.css';
 
 // 서버 registration
 
-function SitterListContainer({accessToken}) {
+function SitterListContainer({petSitterAllInfo, dummypetSitterInfo ,accessToken}) {
   // if (accessToken !== '') {
   //   accessToken = accessToken;
   // } else {
   //   accessToken = window.sessionStorage.getItem("accessToken")
   // }
 
-const petSitterInfo = window.JSON.parse(sessionStorage.getItem("petSitterInfo"));
+const petSitterInfo = window.JSON.parse(sessionStorage.getItem("petSitterInfo")) 
+
 
 const [isPetSitter, setIsPetSitter] = useState(false);
 const [clickedSitterInfo, setClickedSitterInfo] = useState([]);
 const [sitterInfo, setSitterInfo] = useState(petSitterInfo);
-const [filteredSitter, setFilteredSitter] = useState([]);
+const [filteredSitter, setFilteredSitter] = useState(petSitterAllInfo);
 const [otherComponent, setOtherComponent] = useState({
   days: '요일 협의',
   startdate: '07',
@@ -36,7 +37,7 @@ function show() {
 
 async function hide() {
   await axios.post(
-    'http://localhost:4000/bookings/petsitter',
+    `${process.env.REACT_APP_API_URL}/bookings/petsitter`,
     {
       location: sitterInfo.location,
       content: sitterInfo.content,
@@ -56,7 +57,7 @@ const handleClickedPetSitter = (item) => {
   setIsPetSitter(true)
 }
 
-console.log(clickedSitterInfo)
+// console.log(clickedSitterInfo)
 
 const handleLogin = () => {
   setIsPetSitter(false);
@@ -64,7 +65,7 @@ const handleLogin = () => {
 
 const handleSitterInfo = (e) => {
   console.log(e.target.value)
-  axios.get(`http://localhost:4000/bookings/petsitter/?location=${e.target.value}`)
+  axios.get(`${process.env.REACT_APP_API_URL}/bookings/petsitter/?location=${e.target.value}`)
     .then((result) => {
       //받아온 data로 유저 정보 update
       // setUserInfo(result.data.data);
@@ -97,7 +98,7 @@ const handleInputValue = (key) => (e) => {
   setOtherComponent({ ...otherComponent, [key]: e.target.value });
 };
 
-// console.log(sitterInfo);
+console.log(sitterInfo);
 // console.log(isPetSitter)
 // console.log(petSitterInfo)
   return (
@@ -137,18 +138,30 @@ const handleInputValue = (key) => (e) => {
                   <div className="body-titlebox">
                     <h1>registration💕</h1>
                   </div>
-                  <div className="body-infobox">
-                    <div className="body-infobox-img">
-                      <img src={sitterInfo.img} alt={"이미지를 등록하세요"} />
-                    </div>
-                    <div className="body-infobox-info">
-                      <div className="body-infobox-name">{sitterInfo.name}</div>
-                      <div className="body-infobox-age">{sitterInfo.age}살</div>
-                      <div className="body-infobox-location">{sitterInfo.location}</div>
-                      <div className="body-infobox-content">{sitterInfo.content}</div>
-
-                    </div>
-                  </div>
+                  {sitterInfo ? 
+                     <div className="body-infobox">
+                     <div className="body-infobox-img">
+                         <img src={sitterInfo.img} alt={"이미지를 등록하세요"} />
+                     </div> 
+                     <div className="body-infobox-info">
+                       <div className="body-infobox-name">{sitterInfo.name}</div>
+                       <div className="body-infobox-age">{sitterInfo.age}살</div>
+                       <div className="body-infobox-location">{sitterInfo.location}</div>
+                       <div className="body-infobox-content">{sitterInfo.content}</div>
+                     </div>
+                   </div> : 
+                      <div className="body-infobox">
+                      <div className="body-infobox-img">
+                          <img src={dummypetSitterInfo[0].img} alt={"펫시터로 로그인 하세요"} />
+                      </div> 
+                      <div className="body-infobox-info">
+                        <div className="body-infobox-name">{dummypetSitterInfo[0].name}</div>
+                        <div className="body-infobox-age">{dummypetSitterInfo[0].age}살</div>
+                        <div className="body-infobox-location">{dummypetSitterInfo[0].location}</div>
+                        <div className="body-infobox-content">{dummypetSitterInfo[0].content}</div>
+                      </div>
+                  </div>}
+                  
                   <div className="body-infobox-input">
                     <div className="days">
                       <div className="days-title">✔︎ 가능한 요일을 체크해주세요</div>

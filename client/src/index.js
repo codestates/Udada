@@ -8,8 +8,6 @@ import "react-responsive-carousel/lib/styles/carousel.css";
 import {
   BrowserRouter as Router,
 } from "react-router-dom";
-// require('dotenv').config();
-
 createRoot(document.getElementById('root')).render(
       <Router>
         <App />

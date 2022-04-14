@@ -16,7 +16,7 @@ export default function PetSitterLogin({ handleResponseSuccess, setAccessToken, 
 
 
     //client_id 환경변수 클라이언트로
-    const [url, setUrl] = useState('https://github.com/login/oauth/authorize?client_id=1453e0a5001784ea6157')
+    const [url, setUrl] = useState(`https://github.com/login/oauth/authorize?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}`)
     const [errorMessage, setErrorMessage] = useState('');
     const handleInputValue = (key) => (e) => {
         // console.log(key); // 매개변수와, 이벤트 객체가 같이 들어옴.
@@ -31,7 +31,7 @@ export default function PetSitterLogin({ handleResponseSuccess, setAccessToken, 
         // TODO : 이메일 및 비밀번호를 입력하지 않았을 경우 에러를 표시해야 합니다.
         if (loginInfo.email && loginInfo.password) {
             axios.post(
-                "https://localhost:4000/links/login/petsitter",
+                `${process.env.REACT_APP_API_URL}/links/login/petsitter`,
                 {
                     email: loginInfo.email,
                     password: loginInfo.password
