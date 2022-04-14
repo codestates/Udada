@@ -75,7 +75,7 @@ function App() {
     // fake_auth_code
 
     await axios({
-      url: "http://localhost:4000/links/callback/github",
+      url: "https://localhost:4000/links/callback/github",
       method: "post",
       data: {
         authorizationCode
@@ -194,7 +194,7 @@ function App() {
   };
 
   const handleLogout = () => {
-    axios.get('http://localhost:4000/links/logout')
+    axios.get('https://localhost:4000/links/logout')
       .then(() => {
         console.log('logout성공');
         setAccessToken('');

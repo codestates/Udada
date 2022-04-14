@@ -83,9 +83,8 @@ function Profile({Information, handleLogin, title, accessToken, postUrl}) {
                     <div className="profile-info-careType">{Information.careType} 서비스 원해요</div>
                     <div className="profile-info-payment">시급은 {Information.payment}원 입니다</div>
                     <div className="profile-info-content">{Information.content}</div>
-
-
                 </div>
+                }
                  // ! petsitter 구분 어떤걸로 할지 변수 고민해보기
                 {Information.license ?
                     // petSitterList에서 선택하면 보이는 세부사항
