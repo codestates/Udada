@@ -51,8 +51,6 @@ export default function PetSitterLogin({ handleResponseSuccess, setAccessToken, 
                 // window.sessionStorage.setItem('accessToken', res.data.data.accessToken);
                 handleResponseSuccess(userType);
                 navigate('/');
-
-                // navigate('/');
             })
         } else {
             setErrorMessage('이메일과 비밀번호를 입력하세요');
@@ -69,6 +67,7 @@ export default function PetSitterLogin({ handleResponseSuccess, setAccessToken, 
             <center className="login-body">
                 <div className='login-social-here-container'>
 
+
                 <h2 id="loginH2">pet sitter Login</h2>
                 <div className='login-social-here-btn'>
                     <span className='login-text'>간편 로그인</span>
@@ -84,6 +83,7 @@ export default function PetSitterLogin({ handleResponseSuccess, setAccessToken, 
                         <span>네이버 로그인</span> 
                     </button>
                 </div>
+
 
                     <form className="login-here-box" onSubmit={(e) => e.preventDefault()}>
                         <div className="login-here-input">

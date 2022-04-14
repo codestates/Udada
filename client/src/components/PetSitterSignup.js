@@ -4,7 +4,7 @@ import axios from 'axios';
 
 axios.defaults.withCredentials = true;
 
-export default function PetSitterSignup({ petSitterInfo, setIsLogin, isLogin,  setPetSitterInfo }) {
+export default function PetSitterSignup({ petSitterInfo, setIsLogin, isLogin, setPetSitterInfo }) {
     const [userinfo, setuserinfo] = useState({
         email: '',
         password: '',
@@ -56,8 +56,8 @@ export default function PetSitterSignup({ petSitterInfo, setIsLogin, isLogin,  s
         // if (userinfo.license === 'on') {
         //     setuserinfo()
         // }
-        
-        
+
+
         if (userinfo.email && userinfo.password && userinfo.name && userinfo.phoneNumber && userinfo.age) {
 
             axios
@@ -77,7 +77,6 @@ export default function PetSitterSignup({ petSitterInfo, setIsLogin, isLogin,  s
                     { 'Content-Type': 'application/json', withCredentials: true }
                 ).then((res) => {
                     console.log(userinfo);
-                    setIsLogin(false);
                     navigate('/');
                     alert('회원가입 완료');
 
@@ -86,7 +85,7 @@ export default function PetSitterSignup({ petSitterInfo, setIsLogin, isLogin,  s
             alert('모든 항목은 필수입니다.')
             setErrorMessage('모든 항목은 필수입니다');
         }
-        
+
     };
 
     return (
@@ -139,10 +138,10 @@ export default function PetSitterSignup({ petSitterInfo, setIsLogin, isLogin,  s
                     }
                     <div id="first-signup-body">
                         <div className="signup-box-text certificate" >
-                        <input type='checkbox' className="sigup-box-textfield" onChange={handleCheckbox('license')} />
-                            <span >반려동물 관련 자격증이 있으신가요? <br/>있다면 체크해주세요</span>
-                            
-                            
+                            <input type='checkbox' className="sigup-box-textfield" onChange={handleCheckbox('license')} />
+                            <span >반려동물 관련 자격증이 있으신가요? <br />있다면 체크해주세요</span>
+
+
                         </div>
                         <div className="signup-box-text">
                             <span >어디서 활동하길 원하세요?</span>
