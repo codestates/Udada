@@ -23,10 +23,9 @@ function Profile({Information, handleLogin, title, accessToken, postUrl}) {
                 ...IsRequestTime
             },
             {
-                headers: {autorization: accessToken}
+                headers: { Authorization: `Bearer ${accessToken}` } 
             }
             )
-            
             console.log(IsRequestTime)
 
         const box = document.getElementById("profile-modal-container")
