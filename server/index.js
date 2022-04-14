@@ -2,8 +2,11 @@ const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser')
 const indexRouter = require('./routes')
-const linksRouter = require('./routes/links')
-const bookingRouter = require('./routes/bookings') 
+const linksRouter = require('./routes/links') 
+// const http = require('http')
+
+// const fs = require('fs')
+const bookingRouter = require('./routes/bookings')
 const https = require('https')
 const fs = require('fs')
 
@@ -34,7 +37,7 @@ let server = https
     {
       key: fs.readFileSync(__dirname + '/key.pem', 'utf-8'),
       cert: fs.readFileSync(__dirname + '/cert.pem', 'utf-8'),
-    },app)
+    }, app)
   .listen(HTTPS_PORT,() => {
 
     console.log(`      🚀 Server is starting on ${HTTPS_PORT}`);

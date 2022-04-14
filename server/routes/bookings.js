@@ -3,6 +3,7 @@ const router = express.Router();
 const controller = require('../controllers');
 
 router.get('/petuser', controller.reservation.petuser.get),
+
     router.post('/petuser', controller.reservation.petuser.post),
     router.get('/petsitter', controller.reservation.petsitter.get),
     router.post('/petsitter', controller.reservation.petsitter.post),

@@ -10,14 +10,14 @@ import axios from 'axios';
 
 
 
-function PetListContainer({ accessToken, petUserInfo, petUserAll, setPetUserAll }) {
+function PetListContainer({ accessToken, petUserInfo, petUserAll }) {
 
 
   const [isPetUser, setIsPetUser] = useState(false);
   const [userInfo, setUserInfo] = useState(petUserInfo);
-  
-  //const [location, setLocation] = useState('');
+  // const [days, setDays] = useState('');
 
+  //const [location, setLocation] = useState('');
 
   function show() {
     const box = document.getElementById("petSitterInfo-apply")
@@ -60,6 +60,7 @@ function PetListContainer({ accessToken, petUserInfo, petUserAll, setPetUserAll 
         startdate: userInfo.startdate,
         enddate: userInfo.enddate,
         payment: userInfo.payment,
+        days: userInfo.days
         //content: userInfo.content,
       },
       { headers: { Authorization: `Bearer ${accessToken}` } }
@@ -68,7 +69,7 @@ function PetListContainer({ accessToken, petUserInfo, petUserAll, setPetUserAll 
     })
 
 
-    console.log(userlist)
+    // console.log(userlist)
 
 
 
@@ -77,11 +78,24 @@ function PetListContainer({ accessToken, petUserInfo, petUserAll, setPetUserAll 
   const handleInputValue = (key) => (e) => {
     setUserInfo({ ...userInfo, [key]: e.target.value });
   };
+
+  let days = '';
   const handleInputWeekdaysValue = (key) => (e) => {
     //클릭이 될때마다 days가 "월화수목,,," string에 바로 붙이도록
-    let days = e.target.value;
-    setUserInfo({ ...userInfo, [key]: days += days });
+    let day = e.target.name;
+    // setDays(...days, day);
+    days += day
+      ; setUserInfo({ ...userInfo, [key]: days });
   };
+
+  // const handleCheckbox = (key) => (e) => {
+  //   if (e.target.value === 'on') {
+  //     console.log('checkbox checked!');
+  //     setuserinfo({ ...userinfo, [key]: true });
+  //   } else {
+  //     setuserinfo({ ...userinfo, [key]: false });
+  //   }
+  // }
 
 
   return (
@@ -90,7 +104,10 @@ function PetListContainer({ accessToken, petUserInfo, petUserAll, setPetUserAll 
         // user로 인증이 되었다면 프로필 컴포넌트를 띄워 세부사항 확인 가능 
         <Profile Information={userInfo}
           handleLogin={handleLogin}
-          title="pet user application" />
+          title="pet user application" 
+          setIsPetUser={setIsPetUser}
+          accessToken={accessToken}
+          postUrl="petuser"/>
         : //모든 사람에게 보여지는 list
         <div id="petUserInfo-container">
           <div id="petUserInfo-header">
@@ -111,7 +128,7 @@ function PetListContainer({ accessToken, petUserInfo, petUserAll, setPetUserAll 
           </div>
 
           <div id="petSitterInfo-apply">
-            <div className="popup-wrap" id="popup">
+            <div className="popup-wrap" id="popup" onClick={() => hide()}>
               <div className="popup">
                 <div className="popup-head">
                   <span className="head-title">UDADA</span>

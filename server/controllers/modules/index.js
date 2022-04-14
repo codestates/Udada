@@ -99,14 +99,13 @@ module.exports = {
             location: data.location,
             payment: data.payment,
             content: data.content,
-            startdate : data.startdate,
-            enddate : data.enddate,
+
+            startdate: data.startdate,
+            enddate: data.enddate,
+
             days: data.days,
             petuser_id: id
         })
-
-
-
     },
 
     reserveSitterData: async (data, id) => {
@@ -114,14 +113,15 @@ module.exports = {
         petsitter_registration.create({
             location: data.location,
             payment: data.payment,
-            startdate : data.startdate,
-            enddate : data.enddate,
+
+            startdate: data.startdate,
+            enddate: data.enddate,
+
             days: data.days,
             content: data.content,
             date: data.date,
             petsitter_id: id
         })
-
     },
 
     findreserveUserlist: async (location) => {
@@ -156,6 +156,7 @@ module.exports = {
             payment : data.payment,
             days : data.days,
             petuser_id: id
+
         })
     },
 
@@ -163,11 +164,12 @@ module.exports = {
         booking_petsitter.create({
             location: data.location,
             isBooking: false,
+            petsitter_id: id,
             startdate: data.startdate,
             enddate: data.enddate,
             payment : data.payment,
             days : data.days,
-            petsitter_id: id
+
         })
     },
 
