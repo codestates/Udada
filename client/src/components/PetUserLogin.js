@@ -15,8 +15,8 @@ export default function PetUserLogin({ handleResponseSuccess, setAccessToken, us
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
     const handleInputValue = (key) => (e) => {
-        console.log(key);
-        console.log(e);
+        // console.log(key);
+        // console.log();
         setLoginInfo({ ...loginInfo, [key]: e.target.value });
     };
 
