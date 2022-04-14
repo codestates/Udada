@@ -123,17 +123,19 @@ module.exports = {
     findreserveUserlist: async (location) => {
 
         const userlists = await petuser_registration.findAll({
-            where: location
+            where: location,
+            include: [petuser]
         })
 
-        return userlists
+        return userlists;
 
     },
 
     findreserveSitterlist: async (location) => {
 
         const sitterlists = await petsitter_registration.findAll({
-            where: location
+            where: location,
+            include: [petsitter]
         })
 
         // console.log(sitterlists)
@@ -145,7 +147,10 @@ module.exports = {
         booking_petuser.create({
             location: data.location,
             isBooking: false,
-            date: data.date,
+            startdate: data.startdate,
+            enddate: data.enddate,
+            days: data.days,
+            payment: data.payment,
             petuser_id: id
         })
     },
@@ -154,14 +159,18 @@ module.exports = {
         booking_petsitter.create({
             location: data.location,
             isBooking: false,
-            date: data.date,
+            startdate: data.startdate,
+            enddate: data.enddate,
+            days: data.days,
+            payment: data.payment,
             petsitter_id: id
         })
     },
 
     findBookingUserlist: async (id) => {
         const bookingUserlists = await booking_petuser.findAll({
-            where: id
+            where: id,
+            include: [petuser]
         })
 
         //console.log(bookingUserlists)
@@ -171,7 +180,8 @@ module.exports = {
 
     findBookingSitterlist: async (id) => {
         const bookingSitterlists = await booking_petsitter.findAll({
-            where: id
+            where: id,
+            include: [petsitter]
         })
 
         // console.log(bookingSitterlists)

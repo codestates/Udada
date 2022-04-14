@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { dummyData } from '../assets/state'
 import PwChange from '../components/PwChange';
+import axios from 'axios';
 
 
 
-export default function Mypage({ petUserInfo, setPetUserInfo, petSitterInfo, setPetSitterInfo }) {
+export default function Mypage({ petUserInfo, petSitterInfo, accessToken }) {
 
     const [pwChange, setPwChange] = useState(false)
     const handlePwChange = () => {
@@ -35,6 +36,23 @@ export default function Mypage({ petUserInfo, setPetUserInfo, petSitterInfo, set
         box1.style.display = "none"
     }
 
+    const handleSignout = () => {
+        if (petUserInfo) {
+            axios.get('https://localhost:4000/links/signout/petuser',
+                { headers: { Authorization: `Bearer ${accessToken}` } }
+            ).then((result) => {
+                console.log(result)
+                alert(result.data.message)
+            })
+        } else {
+            axios.get('https://localhost:4000/links/signout/petsitter',
+                { headers: { Authorization: `Bearer ${accessToken}` } }
+            ).then((result) => {
+                alert(result.data.message)
+            })
+        }
+    }
+
     //펫 유저와 펫시터의 정보를 따로 저장
     const info = petUserInfo || petSitterInfo
 
@@ -51,10 +69,12 @@ export default function Mypage({ petUserInfo, setPetUserInfo, petSitterInfo, set
                     </Link>
                     {/* petAge값이 있으면 petUser, 없으면 petSitter임을 구분 */}
                     {info.petAge ?
+                        // petUser일 때 보이는 예약현황 : petUser가 신청한 내역들을 보는 페이지
                         <Link to="/reservation">
                             <button id="mypage-sidebar">예<br />약<br /><br /> 현<br />황</button>
                         </Link>
                         :
+                        // petUser일 때 보이는 예약현황 : petUser가 신청한 내역들을 보는 페이지
                         <Link to="/application">
                             <button id="mypage-sidebar">신<br />청<br /><br /> 현<br />황</button>
                         </Link>
@@ -84,7 +104,7 @@ export default function Mypage({ petUserInfo, setPetUserInfo, petSitterInfo, set
                         <span id="profile-modal-close" onClick={() => hide()}>✕</span>
                         <div id="profile-modal-text" >정말 탈퇴하시겠습니까? 🙄</div>
                         <div id="profile-modal-btn-container">
-                            <button className="profile-modal-btn" onClick={() => secessionShow()}>예, 탈퇴합니다</button>
+                            <button className="profile-modal-btn" onClick={() => { secessionShow(); handleSignout(); }}>예, 탈퇴합니다</button>
                             {/* <Link to="/mypage"> */}
                             <button className="profile-modal-btn" onClick={() => hide()}>아니요</button>
                             {/* </Link> */}

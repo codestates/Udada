@@ -17,11 +17,11 @@ module.exports = (sequelize, DataTypes) => {
   petuser_registration.init({
     location: DataTypes.STRING,
     startdate: DataTypes.STRING,
-    enddate : DataTypes.STRING,
-    days : DataTypes.STRING,
+    enddate: DataTypes.STRING,
+    days: DataTypes.STRING,
     payment: DataTypes.INTEGER,
     content: DataTypes.STRING,
-    petuser_id:DataTypes.INTEGER
+    petuser_id: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'petuser_registration',

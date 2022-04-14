@@ -48,8 +48,6 @@ export default function PetSitterLogin({ handleResponseSuccess, setAccessToken, 
                 setUserType('sitter');
                 handleResponseSuccess(userType);
                 navigate('/');
-
-                navigate('/');
             })
         } else {
             setErrorMessage('이메일과 비밀번호를 입력하세요');
@@ -85,24 +83,24 @@ export default function PetSitterLogin({ handleResponseSuccess, setAccessToken, 
             <center className="login-body">
                 <div className='login-social-here-container'>
 
-                <h2 id="loginH2">pet sitter Login</h2>
-                <div className='login-social-here-btn'>
-                    <span className='login-text'>간편 로그인</span>
-                    <button
-                        onClick={socialLoginHandler}
-                        id='login-social-button1'>
-                        <img id="login-social-kakao-logo" alt="kakao-login-logo" src={logo[0]} />
-                        <span>깃헙 로그인</span> 
-                    </button>
-                    {/* <a href={"https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=cffd0f88a990b18a92bbcbe2002f7e1e&redirect_uri=http://localhost:3000"}>카카오 로그인</a> */}
-                    <button
-                        onClick={Login}
-                        id='login-social-button2'>
-                        {/* <img id="login-social-naver-logo" alt="naver-login-logo" src={logo[1]} /> */}
-                        <div id='naverIdLogin' />
-                        <span>네이버 로그인</span> 
-                    </button>
-                </div>
+                    <h2 id="loginH2">pet sitter Login</h2>
+                    <div className='login-social-here-btn'>
+                        <span className='login-text'>간편 로그인</span>
+                        <button
+                            onClick={socialLoginHandler}
+                            id='login-social-button1'>
+                            <img id="login-social-kakao-logo" alt="kakao-login-logo" src={logo[0]} />
+                            <span>깃헙 로그인</span>
+                        </button>
+                        {/* <a href={"https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=cffd0f88a990b18a92bbcbe2002f7e1e&redirect_uri=http://localhost:3000"}>카카오 로그인</a> */}
+                        <button
+                            onClick={Login}
+                            id='login-social-button2'>
+                            {/* <img id="login-social-naver-logo" alt="naver-login-logo" src={logo[1]} /> */}
+                            <div id='naverIdLogin' />
+                            <span>네이버 로그인</span>
+                        </button>
+                    </div>
 
                     <form className="login-here-box" onSubmit={(e) => e.preventDefault()}>
                         <div className="login-here-input">

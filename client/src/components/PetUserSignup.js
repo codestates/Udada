@@ -63,7 +63,7 @@ export default function PetUserSignup({ petUserInfo, setPetUserInfo }) {
                     },
                     { 'Content-Type': 'application/json', withCredentials: true }
                 ).then((res) => {
-                    navigate('/login/petuser');
+                    navigate('/');
                     alert('회원가입 완료');
                 })
         } else {

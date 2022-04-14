@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import PetItem from '../components/PetItem';
 import Profile from '../components/Profile';
-import { locations, time } from '../assets/state'
+import { locations, time, dummyData } from '../assets/state'
+
 
 // 내정보 불러와서 프롭스로 내려줘야함
 
@@ -10,12 +11,20 @@ import axios from 'axios';
 
 
 
-function PetListContainer({ accessToken, petUserInfo, petUserAll, setPetUserAll }) {
+function PetListContainer({ accessToken, petUserInfo }) {
 
 
   const [isPetUser, setIsPetUser] = useState(false);
-  const [userInfo, setUserInfo] = useState(petUserInfo);
-  // const [days, setDays] = useState('');
+  //선택된 유저 정보를 상세 Profile.js 페이지로 넘어갈때 값을 넘겨줌
+  const [clickedUserInfo, setClickedUserInfo] = useState(petUserInfo);
+  const [otherComponent, setOtherComponent] = useState({
+    //default 설정값 -> placeholer에 default값 보여지도록 추후 설정
+    days: '요일 협의',
+    startdate: '07',
+    enddate: '07',
+    payment: 9160
+  });
+  const [petUserAll, setPetUserAll] = useState(dummyData.petUser);
 
   //const [location, setLocation] = useState('');
 
@@ -31,7 +40,8 @@ function PetListContainer({ accessToken, petUserInfo, petUserAll, setPetUserAll 
 
   const handleUser = (item) => {
     setIsPetUser(true)
-    setUserInfo(item)
+    console.log(item);
+    setClickedUserInfo(item);
   }
   const handleLogin = () => {
     setIsPetUser(false);
@@ -43,26 +53,27 @@ function PetListContainer({ accessToken, petUserInfo, petUserAll, setPetUserAll 
   // }
 
   // 사용자가 선택한 지역에 따라 등록된 펫시터들의 모든 정보를 받아오는 함수
-  const handleUserInfo = (e) => {
+  const handleUserInfoByLocation = (e) => {
     axios.get(`https://localhost:4000/bookings/petuser/?location=${e.target.value}`)
       .then((result) => {
         //받아온 data로 유저 정보 update
-        setUserInfo(result.data.data);
+        console.log(result.data.data);
+        setPetUserAll(result.data.data);
       })
   }
 
 
   const handleUserRegister = () => {
-    console.log(userInfo);
+    // console.log(userInfo);
     axios.post(
       'https://localhost:4000/bookings/petuser',
       {
-        location: userInfo.location,
-        startdate: userInfo.startdate,
-        enddate: userInfo.enddate,
-        payment: userInfo.payment,
-        days: userInfo.days
-        //content: userInfo.content,
+        location: petUserInfo.location,
+        content: petUserInfo.content,
+        startdate: otherComponent.startdate,
+        enddate: otherComponent.enddate,
+        payment: otherComponent.payment,
+        days: otherComponent.days,
       },
       { headers: { Authorization: `Bearer ${accessToken}` } }
     ).then((result) => {
@@ -77,42 +88,42 @@ function PetListContainer({ accessToken, petUserInfo, petUserAll, setPetUserAll 
   }
 
   const handleInputValue = (key) => (e) => {
-    setUserInfo({ ...userInfo, [key]: e.target.value });
+    setOtherComponent({ ...otherComponent, [key]: e.target.value });
   };
 
-  let days = '';
+  //let days = '';
   const handleInputWeekdaysValue = (key) => (e) => {
     //클릭이 될때마다 days가 "월화수목,,," string에 바로 붙이도록
-    let day = e.target.name;
-    // setDays(...days, day);
-    days += day
-      ; setUserInfo({ ...userInfo, [key]: days });
+    const query = 'input[name="days"]:checked';
+    const selectedEls = document.querySelectorAll(query);
+
+    // 선택된 목록에서 value 찾기
+    let result = '';
+    selectedEls.forEach((el) => {
+      result += el.value;
+    });
+
+    // 출력
+    //console.log(result);
+    setOtherComponent({ ...otherComponent, [key]: result })
+
   };
-
-  // const handleCheckbox = (key) => (e) => {
-  //   if (e.target.value === 'on') {
-  //     console.log('checkbox checked!');
-  //     setuserinfo({ ...userinfo, [key]: true });
-  //   } else {
-  //     setuserinfo({ ...userinfo, [key]: false });
-  //   }
-  // }
-
 
   return (
     <div>
       {isPetUser ?
         // user로 인증이 되었다면 프로필 컴포넌트를 띄워 세부사항 확인 가능 
-        <Profile Information={userInfo}
+        <Profile Information={clickedUserInfo}
           handleLogin={handleLogin}
-          title="pet user application" />
+          title="pet user application"
+        />
         : //모든 사람에게 보여지는 list
         <div id="petUserInfo-container">
           <div id="petUserInfo-header">
             <div id='petUserInfo-btn-div'>
               <button id='petUserInfo-btn' onClick={() => show()}>우리아이 등록</button>
             </div>
-            <select name="" id="petUserInfo-select" onChange={handleUserInfo}>
+            <select name="" id="petUserInfo-select" onChange={handleUserInfoByLocation}>
               <option value="">돌봄 지역을 선택해주세요</option>
               {locations.map((el) =>
                 <option value={el}>{el}</option>
@@ -158,32 +169,32 @@ function PetListContainer({ accessToken, petUserInfo, petUserAll, setPetUserAll 
                       <div className="days">
                         <div className="days-title">✔︎ 가능한 요일을 체크해주세요</div>
                         <div className="all_days">
-                          <input type="checkbox" id="a1" name="월" onChange={handleInputWeekdaysValue('days')} />
+                          <input type="checkbox" id="a1" name="days" value="월" onClick={handleInputWeekdaysValue('days')} />
                           <label for="a1"><span>Mon</span></label>
-                          <input type="checkbox" id="a2" name="화" onChange={handleInputWeekdaysValue('days')} />
+                          <input type="checkbox" id="a2" name="days" value="화" onClick={handleInputWeekdaysValue('days')} />
                           <label for="a2"><span>Tue</span></label>
-                          <input type="checkbox" id="a3" name="수" onChange={handleInputWeekdaysValue('days')} />
+                          <input type="checkbox" id="a3" name="days" value="수" onClick={handleInputWeekdaysValue('days')} />
                           <label for="a3"><span>Wed</span></label>
-                          <input type="checkbox" id="a4" name="목" onChange={handleInputWeekdaysValue('days')} />
+                          <input type="checkbox" id="a4" name="days" value="목" onClick={handleInputWeekdaysValue('days')} />
                           <label for="a4"><span>Thu</span></label>
-                          <input type="checkbox" id="a5" name="금" onChange={handleInputWeekdaysValue('days')} />
+                          <input type="checkbox" id="a5" name="days" value="금" onClick={handleInputWeekdaysValue('days')} />
                           <label for="a5"><span>Fri</span></label>
-                          <input type="checkbox" id="a6" name="토" onChange={handleInputWeekdaysValue('days')} />
+                          <input type="checkbox" id="a6" name="days" value="토" onClick={handleInputWeekdaysValue('days')} />
                           <label for="a6"><span>Sat</span></label>
-                          <input type="checkbox" id="a7" name="일" onChange={handleInputWeekdaysValue('days')} />
+                          <input type="checkbox" id="a7" name="days" value="일" onClick={handleInputWeekdaysValue('days')} />
                           <label for="a7"><span>Sun</span></label>
                         </div>
                       </div>
                       <div className="days">
                         <div className="days-title">✔︎ 가능한 시간을 체크해주세요</div>
                         <div className="registrationTime-container">
-                          <select name="startTime" id="registrationStartTime" onChange={handleInputValue('startdate')}>
+                          <select name="startTime" id="registrationStartTime" onClick={handleInputValue('startdate')}>
                             {time.map((el) =>
                               <option value={el}>{el}</option>
                             )}
                           </select><span>시 부터 </span>
 
-                          <select name="endTime" id="registrationLastTime" onChange={handleInputValue('enddate')}>
+                          <select name="endTime" id="registrationLastTime" onClick={handleInputValue('enddate')}>
                             {time.map((el) =>
                               <option value={el}>{el}</option>
                             )}

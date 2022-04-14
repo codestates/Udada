@@ -11,15 +11,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.booking_petuser.belongsTo(models.petuser,{foreignKey: 'petuser_id'})
+      models.booking_petuser.belongsTo(models.petuser, { foreignKey: 'petuser_id' })
     }
   }
   booking_petuser.init({
     location: DataTypes.STRING,
-    isBooking : DataTypes.BOOLEAN,
+    isBooking: DataTypes.BOOLEAN,
     startdate: DataTypes.STRING,
-    enddate : DataTypes.STRING,
-    days : DataTypes.STRING,
+    enddate: DataTypes.STRING,
+    days: DataTypes.STRING,
+    payment: DataTypes.INTEGER,
     petuser_id: DataTypes.INTEGER
   }, {
     sequelize,

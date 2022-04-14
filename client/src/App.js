@@ -28,18 +28,15 @@ import { dummyData } from './assets/state'
 
 function App() {
 
+
   //유저 한명의 정보
   const [petUserInfo, setPetUserInfo] = useState(dummyData.petUser);
   const [petSitterInfo, setPetSitterInfo] = useState(dummyData.petSitter);
-  //유저 전체의 정보
-  const [petUserAll, setPetUserAll] = useState(dummyData.petUser);
-  const [petSitterAll, setPetSitterAll] = useState(dummyData.petSitter);
 
   const [isLogin, setIsLogin] = useState(false);
   const [accessToken, setAccessToken] = useState('');
   //petSitter인지 petUser인지 결정지어주는 상태
   const [userType, setUserType] = useState('');
-
 
   const getAccessToken = async (authorizationCode) => {
     // 받아온 authorization code로 다시 OAuth App에 요청해서 access token을 받을 수 있습니다.
@@ -61,12 +58,12 @@ function App() {
         authorizationCode
       }
     }).then(res => {
-      console.log(res)
+      // console.log(res)
       setIsLogin(true);
       setAccessToken(res.data.accessToken)
-      console.log(authorizationCode)
-      console.log('petsitter login 인증 성공');
-      console.log('petsitter login 인증 성공');
+      // console.log(authorizationCode)
+      // console.log('petsitter login 인증 성공');
+      // console.log('petsitter login 인증 성공');
     })
   }
 
@@ -176,12 +173,10 @@ function App() {
       <Routes>
         <Route exact={true} path="/" element={<HomeContainer />} />
 
-        <Route path="/petsitterlist" element={<SitterListContainer petSitterInfo={petSitterAll} setPetSitterInfo={setPetSitterInfo} accessToken={accessToken} />} />
+        <Route path="/petsitterlist" element={<SitterListContainer petSitterInfo={petSitterInfo} setPetSitterInfo={setPetSitterInfo} accessToken={accessToken} />} />
         <Route path="/petlist" element={
           <PetListContainer
             petUserInfo={petUserInfo}
-            petUserAll={petUserAll}
-            setPetUserAll={setPetUserAll}
             setPetUserInfo={setPetUserInfo}
             accessToken={accessToken} />} />
 
@@ -215,10 +210,11 @@ function App() {
             setPetUserInfo={setPetUserInfo}
             petSitterInfo={petSitterInfo}
             setPetSitterInfo={setPetSitterInfo}
+            accessToken={accessToken}
           />}
         />
-        <Route path="/reservation" element={<Reservation />} />
-        <Route path="/application" element={<Application />} />
+        <Route path="/reservation" element={<Reservation petUserInfo={petUserInfo} accessToken={accessToken} />} />
+        <Route path="/application" element={<Application petSitterInfo={petSitterInfo} accessToken={accessToken} />} />
       </Routes>
       <Footer />
     </>
