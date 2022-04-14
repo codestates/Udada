@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Img } from "../assets/images"
 import axios from 'axios';
-
-
 
 function Profile({Information, handleLogin, title, accessToken, postUrl}) {
 
@@ -26,8 +25,8 @@ function Profile({Information, handleLogin, title, accessToken, postUrl}) {
                 headers: { Authorization: `Bearer ${accessToken}` } 
             }
             )
-            console.log(IsRequestTime)
-
+      
+    function show() {
         const box = document.getElementById("profile-modal-container")
         box.style.display = "flex"
     }
@@ -59,17 +58,17 @@ function Profile({Information, handleLogin, title, accessToken, postUrl}) {
             <div id="profile-title">{title}</div>
             <div id="profile-info">
                 <div id="profile-info-img">
-                    <img src={Information.img} alt={Information.name} />
+                    <img src={Information.petsitter.photo.includes(".png", ".jpg") ? Information.petsitter.photo : Img[1]} alt={"등록되지 않았습니다."} />
                 </div>
-                {Information.license ?   
+                {Information.petsitter_id ?   
                 <div id="profile-info-write">
-                    <div className="profile-info-name">{Information.name}</div>
-                    <div className="profile-info-age">{Information.age} 살</div>
-                    <div className="profile-info-location">{Information.location} 거주</div>
-                    <div className="profile-info-time">돌봄 가능 시간 : {Information.startTime}시 ~{Information.lastTime}시</div>
+                    <div className="profile-info-name">{Information.petsitter.name}</div>
+                    <div className="profile-info-age">{Information.petsitter.age} 살</div>
+                    <div className="profile-info-location">{Information.petsitter.location} 거주</div>
+                    <div className="profile-info-time">돌봄 가능 시간 : {Information.startdate}시 ~{Information.enddate}시</div>
                     <div className="profile-info-days">요일 : {Information.days}</div>
                     <div className="profile-info-payment">시급은 {Information.payment}원 입니다</div>
-                    <div className="profile-info-content">{Information.content}</div>
+                    <div className="profile-info-content">{Information.petsitter.content}</div>
                 </div>
                 : 
                 <div id="profile-info-write">

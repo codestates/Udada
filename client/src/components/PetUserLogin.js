@@ -11,10 +11,12 @@ export default function PetUserLogin({ handleResponseSuccess, setAccessToken, us
         password: ''
     });
 
-    const [url, setUrl] = useState('https://github.com/login/oauth/authorize?client_id=ec1357998ab3f7ed0e27')
+    const [url, setUrl] = useState('https://github.com/login/oauth/authorize?client_id=1453e0a5001784ea6157')
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
     const handleInputValue = (key) => (e) => {
+        // console.log(key);
+        // console.log();
         setLoginInfo({ ...loginInfo, [key]: e.target.value });
     };
 
@@ -35,6 +37,8 @@ export default function PetUserLogin({ handleResponseSuccess, setAccessToken, us
                 setAccessToken(res.data.data.accessToken);
                 //onChange('user');
                 setUserType('user')
+                window.sessionStorage.setItem('userType', "user");
+                // window.sessionStorage.setItem('accessToken', res.data.data.accessToken);
                 handleResponseSuccess(userType);
                 navigate('/');
             })
@@ -45,6 +49,7 @@ export default function PetUserLogin({ handleResponseSuccess, setAccessToken, us
 
     function socialLoginHandler() {
         window.location.assign(url)
+        window.sessionStorage.setItem('githubuserType', "githubuser");
     }
     return (
         <div>
@@ -54,7 +59,7 @@ export default function PetUserLogin({ handleResponseSuccess, setAccessToken, us
                     <div className='login-social-here-btn'>
                         <span className='login-text'>간편 로그인</span>
                         <button
-                            // onClick={this.socialLoginHandler}
+                            onClick={socialLoginHandler}
                             id='login-social-button1'>
                             <img id="login-social-kakao-logo" alt="kakao-login-logo" src={logo[0]} />
                             <span>카카오 로그인</span>
