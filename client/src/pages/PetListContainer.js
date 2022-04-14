@@ -105,7 +105,8 @@ function PetListContainer({ accessToken, petUserInfo, petUserAll }) {
         <Profile Information={userInfo}
           handleLogin={handleLogin}
           title="pet user application" 
-          setIsPetUser={setIsPetUser}/>
+          setIsPetUser={setIsPetUser}
+          accessToken={accessToken}/>
         : //모든 사람에게 보여지는 list
         <div id="petUserInfo-container">
           <div id="petUserInfo-header">
@@ -122,7 +123,7 @@ function PetListContainer({ accessToken, petUserInfo, petUserAll }) {
           {/* petUserAll -> 유저 전체 정보 */}
           <div id="petUserInfo-body">
             {petUserAll.map((item, idx) => <PetItem item={item} key={idx}
-              handleUser={() => handleUser(item)} />)}
+              handleUser={() => handleUser(item)} postUrl="petuser"/>)}
           </div>
 
           <div id="petSitterInfo-apply">

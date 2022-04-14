@@ -66,7 +66,9 @@ console.log(petSitterInfo)
     <div>
       {isPetSitter ?  <Profile Information={sitterInfo} 
                                handleLogin={handleLogin}
-                               title="pet sitter application"/> : 
+                               title="pet sitter application"
+                               accessToken={accessToken}
+                               postUrl="petsitter"/> : 
 
       <div id="petSitterInfo-container">
         <div id="petSitterInfo-header">
