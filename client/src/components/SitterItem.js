@@ -15,9 +15,6 @@ export default function SitterItem({ item , handlePetSitter}) {
             <div className="item-license">{item.petsitter.license? "보유" : "미보유"}</div>
             <div className="item-content">{item.petsitter.content}</div>
         </div>
-
-
-      {/* <button className="item-button" onClick={(e) => handleClick(e, item.id)}>장바구니 담기</button> */}
     </div>
   )
 }

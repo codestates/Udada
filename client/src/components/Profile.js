@@ -10,7 +10,9 @@ function Profile({Information, handleLogin, title, accessToken, postUrl}) {
         startdate: '07',
         enddate: '07'
       }));
- 
+
+    // Information은  PetListContainer에서 어떤 PetItem을 선택했는지 해당 객체를 넘겨받음
+
 
     async function show() {
         await axios.post(
@@ -26,7 +28,7 @@ function Profile({Information, handleLogin, title, accessToken, postUrl}) {
             }
             )
       
-    function show() {
+
         const box = document.getElementById("profile-modal-container")
         box.style.display = "flex"
     }
@@ -58,8 +60,10 @@ function Profile({Information, handleLogin, title, accessToken, postUrl}) {
             <div id="profile-title">{title}</div>
             <div id="profile-info">
                 <div id="profile-info-img">
+
                     <img src={Information.petsitter.photo.includes(".png", ".jpg") ? Information.petsitter.photo : Img[1]} alt={"등록되지 않았습니다."} />
                 </div>
+// ! petsitter 구분 어떤걸로 할지 변수 고민해보기
                 {Information.petsitter_id ?   
                 <div id="profile-info-write">
                     <div className="profile-info-name">{Information.petsitter.name}</div>
@@ -79,10 +83,36 @@ function Profile({Information, handleLogin, title, accessToken, postUrl}) {
                     <div className="profile-info-careType">{Information.careType} 서비스 원해요</div>
                     <div className="profile-info-payment">시급은 {Information.payment}원 입니다</div>
                     <div className="profile-info-content">{Information.content}</div>
+
+
                 </div>
+                 // ! petsitter 구분 어떤걸로 할지 변수 고민해보기
+                {Information.license ?
+                    // petSitterList에서 선택하면 보이는 세부사항
+                    <div id="profile-info-write">
+                        <div className="profile-info-name">{Information.petsitter.name}</div>
+                        <div className="profile-info-age">{Information.petsitter.petAge} 살</div>
+                        <div className="profile-info-location">{Information.petsitter.location} 거주</div>
+                        <div className="profile-info-time">돌봄 가능 시간 : {Information.startdate}시 ~{Information.enddate}시</div>
+                        <div className="profile-info-days">요일 : {Information.days}</div>
+                        <div className="profile-info-payment">시급은 {Information.payment}원 입니다</div>
+                        <div className="profile-info-content">{Information.petsitter.content}</div>
+                    </div>
+                    :
+                    // petUserList에서 선택하면 보이는 세부사항
+                    <div id="profile-info-write">
+                        <div className="profile-info-name">{Information.petuser.name} | {Information.petuser.petAge} 살 | {Information.petuser.howBig}</div>
+                        <div className="profile-info-location">{Information.petuser.location} 거주</div>
+                        <div className="profile-info-time">돌봄 요청 시간 : {Information.startdate}시 ~{Information.enddate}시</div>
+                        <div className="profile-info-days">요일 : {Information.days}</div>
+                        <div className="profile-info-careType">{Information.careType} 서비스 원해요</div>
+                        <div className="profile-info-payment">시급은 {Information.payment}원 입니다</div>
+                        <div className="profile-info-content">{Information.petuser.content}</div>
+                    </div>
                 }
             </div>
             <div id="profile-date">
+
                 <div className="profile-date-guide">
                     <span>돌봄을 신청할 요일, <br/>시간을 선택해주세요</span> 
                 </div>
@@ -165,9 +195,8 @@ function Profile({Information, handleLogin, title, accessToken, postUrl}) {
                 </div>
             </div>
         </div>
-        
+
     );
-  }
-  
-  export default Profile;
-  
+}
+
+export default Profile;
