@@ -16,7 +16,7 @@ module.exports = {
 
                 const { email } = accessTokenData || refreshTokenData
                 const userInfo = await findUserData({ email })
-
+                console.log(userInfo.id)
                 if (location) {
                     const bookingUserlist = await findBookingUserlist({ petuser_id: userInfo.id })
 
