@@ -6,14 +6,14 @@ module.exports = {
 
     petuser: async (req, res) => {
         const accessTokenData = isAuthorized(req)
-        console.log(accessTokenData)
+        // console.log(accessTokenData)
         const refreshTokenData = checkRefreshToken(req)
 
-        if (accessTokenData && refreshTokenData || !accessTokenData && refreshTokenData) {
-            deleteUserData({ email: accessTokenData ? accessTokenData.email : refreshTokenData.email })
-            res.status(200).clearCookie('refreshToken').json({ message: "good bye" })
-        } else {
-            res.status(403).json({ message: 'not Authorized' })
+        if(accessTokenData && refreshTokenData || !accessTokenData && refreshTokenData){
+            deleteUserData({ email : accessTokenData ? accessTokenData.email : refreshTokenData.email})
+            res.status(200).cookie('refreshToken',null,{ httpOnly: true, sameSite: 'none', secure: true, maxAge : 0 }).json({message : "good bye"})
+        }else{
+            res.status(403).json({message : 'not Authorized'})
         }
 
         if (accessTokenData && !refreshTokenData) {
@@ -32,11 +32,12 @@ module.exports = {
         const accessTokenData = isAuthorized(req)
         const refreshTokenData = checkRefreshToken(req)
 
-        if (accessTokenData && refreshTokenData || !accessTokenData && refreshTokenData) {
-            deleteSitterData({ email: accessTokenData ? accessTokenData.email : refreshTokenData.email })
-            res.status(200).clearCookie('refreshToken').json({ message: "good bye" })
-        } else {
-            res.status(403).json({ message: 'not Authorized' })
+        if(accessTokenData && refreshTokenData || !accessTokenData && refreshTokenData){
+            deleteSitterData({ email : accessTokenData ? accessTokenData.email : refreshTokenData.email})
+            res.status(200).cookie('refreshToken',null,{ httpOnly: true, sameSite: 'none', secure: true, maxAge : 0 }).json({message : "good bye"})
+        }else{
+            res.status(403).json({message : 'not Authorized'})
+
         }
 
         if (accessTokenData && !refreshTokenData) {

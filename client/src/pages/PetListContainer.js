@@ -11,8 +11,9 @@ import axios from 'axios';
 
 
 
-function PetListContainer({ accessToken, petUserInfo }) {
 
+
+function PetListContainer({ accessToken, petUserInfo }) {
 
   const [isPetUser, setIsPetUser] = useState(false);
   //선택된 유저 정보를 상세 Profile.js 페이지로 넘어갈때 값을 넘겨줌
@@ -27,7 +28,6 @@ function PetListContainer({ accessToken, petUserInfo }) {
   const [petUserAll, setPetUserAll] = useState(dummyData.petUser);
 
   //const [location, setLocation] = useState('');
-
 
   function show() {
     const box = document.getElementById("petSitterInfo-apply")
@@ -115,8 +115,11 @@ function PetListContainer({ accessToken, petUserInfo }) {
         // user로 인증이 되었다면 프로필 컴포넌트를 띄워 세부사항 확인 가능 
         <Profile Information={clickedUserInfo}
           handleLogin={handleLogin}
-          title="pet user application"
-        />
+          title="pet user application" 
+          setIsPetUser={setIsPetUser}
+          accessToken={accessToken}
+          postUrl="petuser"/>
+
         : //모든 사람에게 보여지는 list
         <div id="petUserInfo-container">
           <div id="petUserInfo-header">
@@ -137,7 +140,7 @@ function PetListContainer({ accessToken, petUserInfo }) {
           </div>
 
           <div id="petSitterInfo-apply">
-            <div className="popup-wrap" id="popup">
+            <div className="popup-wrap" id="popup" onClick={() => hide()}>
               <div className="popup">
                 <div className="popup-head">
                   <span className="head-title">UDADA</span>

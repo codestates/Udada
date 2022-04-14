@@ -21,7 +21,9 @@ module.exports = (sequelize, DataTypes) => {
     days: DataTypes.STRING,
     payment: DataTypes.INTEGER,
     content: DataTypes.STRING,
-    petuser_id: DataTypes.INTEGER
+    petuser_id:DataTypes.INTEGER,
+    careType: DataTypes.STRING,
+
   }, {
     sequelize,
     modelName: 'petuser_registration',

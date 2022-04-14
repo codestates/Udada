@@ -9,6 +9,7 @@ module.exports = {
         get: async (req, res) => {
             const accessTokenData = isAuthorized(req)
             const refreshTokenData = checkRefreshToken(req)
+
             const { location } = req.query
 
             if (accessTokenData && refreshTokenData || !accessTokenData && refreshTokenData) {
@@ -58,6 +59,7 @@ module.exports = {
         get: async (req, res) => {
             const accessTokenData = isAuthorized(req)
             const refreshTokenData = checkRefreshToken(req)
+
             const { location } = req.query
 
             if (accessTokenData && refreshTokenData || !accessTokenData && refreshTokenData) {

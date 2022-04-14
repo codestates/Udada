@@ -38,7 +38,63 @@ function App() {
   //petSitter인지 petUser인지 결정지어주는 상태
   const [userType, setUserType] = useState('');
 
-  const getAccessToken = async (authorizationCode) => {
+
+  const onLogin = () => {
+    setIsLogin(true);
+  }
+    // Logout Func
+  const onLogout = () => {
+    setIsLogin(false);
+  };
+
+  useEffect(() => {
+    const isLogin = window.sessionStorage.getItem('isLogin');
+
+    if(isLogin) {
+      onLogin();
+    }
+    else {
+      onLogout();
+    }
+  }, [])
+
+  console.log(accessToken)
+  console.log(window.sessionStorage);
+
+  const petSitterGetAccessToken = async (authorizationCode) => {
+    // 받아온 authorization code로 다시 OAuth App에 요청해서 access token을 받을 수 있습니다.
+    // access token은 보안 유지가 필요하기 때문에 클라이언트에서 직접 OAuth App에 요청을 하는 방법은 보안에 취약할 수 있습니다.
+    // authorization code를 서버로 보내주고 서버에서 access token 요청을 하는 것이 적절합니다.
+
+    // TODO: 서버의 /callback 엔드포인트로 authorization code를 보내주고 access token을 받아옵니다.
+    // access token을 받아온 후
+    //  - 로그인 상태를 true로 변경하고,
+    //  - state에 access token을 저장하세요
+
+    // console.log(authorizationCode)
+    // fake_auth_code
+
+    await axios({
+      url: "http://localhost:4000/links/callback/github",
+      method: "post",
+      data: {
+        authorizationCode
+      }
+    }).then(res => {
+      console.log(res)
+      console.log(res.data.data)
+      // setIsLogin(true);
+      if (res.data.data) {
+        setAccessToken(res.data.accessToken);
+        setIsLogin(true);
+        console.log('petsitter login 인증 성공');
+      }
+      // setAccessToken(res.data.accessToken)
+      // console.log(authorizationCode)
+    })
+  }
+
+  const petUserGetAccessToken = async (authorizationCode) => {
     // 받아온 authorization code로 다시 OAuth App에 요청해서 access token을 받을 수 있습니다.
     // access token은 보안 유지가 필요하기 때문에 클라이언트에서 직접 OAuth App에 요청을 하는 방법은 보안에 취약할 수 있습니다.
     // authorization code를 서버로 보내주고 서버에서 access token 요청을 하는 것이 적절합니다.
@@ -58,12 +114,17 @@ function App() {
         authorizationCode
       }
     }).then(res => {
-      // console.log(res)
-      setIsLogin(true);
-      setAccessToken(res.data.accessToken)
+
+      console.log(res)
+      console.log(res.data.data)
+      // setIsLogin(true);
+      if (res.data.data) {
+        setAccessToken(res.data.accessToken);
+        setIsLogin(true);
+        console.log('petuser login 인증 성공');
+      }
+      // setAccessToken(res.data.accessToken)
       // console.log(authorizationCode)
-      // console.log('petsitter login 인증 성공');
-      // console.log('petsitter login 인증 성공');
     })
   }
 
@@ -93,6 +154,8 @@ function App() {
         console.log('petsitter login 인증 성공');
         // console.log(petSitterInfo);
         setIsLogin(true);
+        window.sessionStorage.setItem('isLogin', true);
+        window.sessionStorage.setItem('petSitterInfo', JSON.stringify(result.data.data.petsitterData));
         alert('펫시터 로그인 성공');
       })
 
@@ -110,6 +173,8 @@ function App() {
         console.log('petuser login 인증 성공');
         // console.log(petUserInfo);
         setIsLogin(true);
+        window.sessionStorage.setItem('isLogin', true);
+        window.sessionStorage.setItem('petUserInfo', JSON.stringify(result.data.data.petuserData));
         alert('펫유저 로그인 성공');
       })
   };
@@ -129,7 +194,7 @@ function App() {
   };
 
   const handleLogout = () => {
-    axios.get('https://localhost:4000/links/logout')
+    axios.get('http://localhost:4000/links/logout')
       .then(() => {
         console.log('logout성공');
         setAccessToken('');
@@ -137,26 +202,35 @@ function App() {
         //isLogin이 false일 때 home redirect한다면 handleLogout상태가 되어야 함
         setPetUserInfo('');
         setPetSitterInfo('');
+        window.sessionStorage.clear();
       })
   }
 
   useEffect(() => {
-    console.log(isLogin)
-    if (isLogin === false) {
-      handleLogout();
+    const githubuserType = window.sessionStorage.getItem('githubuserType')
+    if (githubuserType === 'githubsitter') {
+      const url = new URL(window.location.href)
+      const authorizationCode = url.searchParams.get('code')
+
+      if (authorizationCode) {
+        // authorization server로부터 클라이언트로 리디렉션된 경우, authorization code가 함께 전달됩니다.
+        // ex) http://localhost:3000/?code=5e52fb85d6a1ed46a51f
+        petSitterGetAccessToken(authorizationCode)
+      }
     }
+    if (githubuserType === 'githubuser') {
+      const url = new URL(window.location.href)
+      const authorizationCode = url.searchParams.get('code')
+
+      if (authorizationCode) {
+        // authorization server로부터 클라이언트로 리디렉션된 경우, authorization code가 함께 전달됩니다.
+        // ex) http://localhost:3000/?code=5e52fb85d6a1ed46a51f
+        petUserGetAccessToken(authorizationCode)
+      }
+    } 
   }, [])
 
   useEffect(() => {
-    const url = new URL(window.location.href)
-    const authorizationCode = url.searchParams.get('code')
-
-    if (authorizationCode) {
-      // authorization server로부터 클라이언트로 리디렉션된 경우, authorization code가 함께 전달됩니다.
-      // ex) http://localhost:3000/?code=5e52fb85d6a1ed46a51f
-      getAccessToken(authorizationCode)
-    }
-
     // isAuthenticated();
 
     if (userType === 'user') isPetUserAuthenticated();
@@ -183,7 +257,7 @@ function App() {
         {/* Signup page */}
         <Route path="/signup" element={<Signup />} />
         <Route path="/signup/petuser" element={<PetUserSignup petUserInfo={petUserInfo} setPetUserInfo={setPetUserInfo} />} />
-        <Route path="/signup/petsitter" element={<PetSitterSignup petSitterInfo={petSitterInfo} setPetSitterInfo={setPetSitterInfo} />} />
+        <Route path="/signup/petsitter" element={<PetSitterSignup setIsLogin={setIsLogin} petSitterInfo={petSitterInfo} setPetSitterInfo={setPetSitterInfo} />} />
         {/* Login page */}
         <Route path="/login" element={<Login />} />
         <Route path="/login/petuser" element={

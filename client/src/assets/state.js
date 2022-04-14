@@ -16,9 +16,6 @@ export const dummyData = {
                 "howBig": "중형",
                 "petAge": 5,
                 "days": '월화수',
-
-
-
             }
         },
         {
@@ -197,3 +194,4 @@ export const time = [
     "21",
     "22",
 ]
+

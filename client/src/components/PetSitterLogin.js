@@ -15,11 +15,12 @@ export default function PetSitterLogin({ handleResponseSuccess, setAccessToken, 
     });
 
 
-
     //client_id 환경변수 클라이언트로
-    const [url, setUrl] = useState('https://github.com/login/oauth/authorize?client_id=e4bdb55f0a9d1117cd1e')
+    const [url, setUrl] = useState('https://github.com/login/oauth/authorize?client_id=1453e0a5001784ea6157')
     const [errorMessage, setErrorMessage] = useState('');
     const handleInputValue = (key) => (e) => {
+        // console.log(key); // 매개변수와, 이벤트 객체가 같이 들어옴.
+        // console.log(e);
         setLoginInfo({ ...loginInfo, [key]: e.target.value });
     };
 
@@ -46,6 +47,8 @@ export default function PetSitterLogin({ handleResponseSuccess, setAccessToken, 
                 //setRefreshToken(res.cookies);
                 setIsLogin(true);
                 setUserType('sitter');
+                window.sessionStorage.setItem('userType', "sitter");
+                // window.sessionStorage.setItem('accessToken', res.data.data.accessToken);
                 handleResponseSuccess(userType);
                 navigate('/');
             })
@@ -56,26 +59,7 @@ export default function PetSitterLogin({ handleResponseSuccess, setAccessToken, 
 
     function socialLoginHandler() {
         window.location.assign(url)
-    }
-
-    const Login = () => {
-        Naver();
-        //   UserProfile();
-    }
-
-    useEffect(Login, []);
-
-    const Naver = () => {
-        const { naver } = window;
-
-        const naverLogin = new naver.LoginWithNaverId({
-            clientId: "jVEcRaxQuctuGDwOLYRW",
-            callbackUrl: "http://localhost:3000/",
-            isPopup: false,
-            loginButton: { color: "green", type: 1, height: 30 },
-            callbackHandle: true
-        });
-        naverLogin.init();
+        window.sessionStorage.setItem('githubuserType', "githubsitter");
     }
 
     return (
@@ -83,24 +67,23 @@ export default function PetSitterLogin({ handleResponseSuccess, setAccessToken, 
             <center className="login-body">
                 <div className='login-social-here-container'>
 
-                    <h2 id="loginH2">pet sitter Login</h2>
-                    <div className='login-social-here-btn'>
-                        <span className='login-text'>간편 로그인</span>
-                        <button
-                            onClick={socialLoginHandler}
-                            id='login-social-button1'>
-                            <img id="login-social-kakao-logo" alt="kakao-login-logo" src={logo[0]} />
-                            <span>깃헙 로그인</span>
-                        </button>
-                        {/* <a href={"https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=cffd0f88a990b18a92bbcbe2002f7e1e&redirect_uri=http://localhost:3000"}>카카오 로그인</a> */}
-                        <button
-                            onClick={Login}
-                            id='login-social-button2'>
-                            {/* <img id="login-social-naver-logo" alt="naver-login-logo" src={logo[1]} /> */}
-                            <div id='naverIdLogin' />
-                            <span>네이버 로그인</span>
-                        </button>
-                    </div>
+
+                <h2 id="loginH2">pet sitter Login</h2>
+                <div className='login-social-here-btn'>
+                    <span className='login-text'>간편 로그인</span>
+                    <button
+                        onClick={socialLoginHandler}
+                        id='login-social-button1'>
+                        <img id="login-social-kakao-logo" alt="kakao-login-logo" src={logo[0]} />
+                        <span>깃헙 로그인</span> 
+                    </button>
+                    <button
+                        id='login-social-button2'>
+                        <div id='naverIdLogin' />
+                        <span>네이버 로그인</span> 
+                    </button>
+                </div>
+
 
                     <form className="login-here-box" onSubmit={(e) => e.preventDefault()}>
                         <div className="login-here-input">

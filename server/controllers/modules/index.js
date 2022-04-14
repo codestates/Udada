@@ -99,8 +99,10 @@ module.exports = {
             location: data.location,
             payment: data.payment,
             content: data.content,
+
             startdate: data.startdate,
             enddate: data.enddate,
+
             days: data.days,
             petuser_id: id
         })
@@ -111,8 +113,10 @@ module.exports = {
         petsitter_registration.create({
             location: data.location,
             payment: data.payment,
+
             startdate: data.startdate,
             enddate: data.enddate,
+
             days: data.days,
             content: data.content,
             date: data.date,
@@ -136,9 +140,9 @@ module.exports = {
         const sitterlists = await petsitter_registration.findAll({
             where: location,
             include: [petsitter]
+
         })
 
-        // console.log(sitterlists)
         return sitterlists;
 
     },
@@ -152,6 +156,7 @@ module.exports = {
             days: data.days,
             payment: data.payment,
             petuser_id: id
+
         })
     },
 
@@ -171,6 +176,7 @@ module.exports = {
         const bookingUserlists = await booking_petuser.findAll({
             where: id,
             include: [petuser]
+
         })
 
         //console.log(bookingUserlists)
@@ -182,6 +188,7 @@ module.exports = {
         const bookingSitterlists = await booking_petsitter.findAll({
             where: id,
             include: [petsitter]
+
         })
 
         // console.log(bookingSitterlists)
