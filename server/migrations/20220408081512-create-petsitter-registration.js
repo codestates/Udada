@@ -26,6 +26,9 @@ module.exports = {
       content: {
         type: Sequelize.STRING
       },
+      careType: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

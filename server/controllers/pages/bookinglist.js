@@ -9,16 +9,18 @@ module.exports = {
         get : async (req, res) =>{
             const accessTokenData = isAuthorized(req)
             const refreshTokenData = checkRefreshToken(req)
-            const {location} = req.body
+            const {location} = req.query
 
+            //console.log(location)
             if(accessTokenData && refreshTokenData || !accessTokenData && refreshTokenData){
                 
                 const {email} = accessTokenData || refreshTokenData
                 const userInfo = await findUserData({email})
+                //console.log(userInfo)
 
                 if(location){
                     const bookingUserlist = await findBookingUserlist({ petuser_id : userInfo.id })
-                
+                    console.log(bookingUserlist)
                     if(bookingUserlist.length !== 0){
                         res.status(200).json({data : bookingUserlist, message : "ok"})
                     }else{
@@ -58,7 +60,7 @@ module.exports = {
         get : async (req, res) =>{
             const accessTokenData = isAuthorized(req)
             const refreshTokenData = checkRefreshToken(req)
-            const {location} = req.body
+            const {location} = req.query
 
             if(accessTokenData && refreshTokenData || !accessTokenData && refreshTokenData){
                 
@@ -66,8 +68,9 @@ module.exports = {
                 const sitterInfo = await findSitterData({email})
 
                 if(location){
-                    const bookingSitterlist = await findBookingSitterlist({sitter_id : sitterInfo.id})
-                
+                    const bookingSitterlist = await findBookingSitterlist({petsitter_id : sitterInfo.id})
+                    
+                    console.log(bookingSitterlist)
                     if(bookingSitterlist.length !== 0){
                         res.status(200).json({data : bookingSitterlist, message : "ok"})
                     }else{
